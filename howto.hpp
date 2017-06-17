@@ -15,6 +15,17 @@ howto::howto(void){
 
 int howto::Run(sf::RenderWindow &window){
 
+    sf::Sprite background;
+
+    sf::Texture texture;
+
+    if(!texture.loadFromFile("fundo.bmp")){
+        std::cout << "Error" << std::endl;
+    }
+
+    background.setTexture(texture);
+
+
     while (window.isOpen()){
         sf::Event event;
         // Checa os eventos em loop
@@ -23,12 +34,14 @@ int howto::Run(sf::RenderWindow &window){
                 window.close(); 
             }
             if (event.type == sf::Event::KeyPressed){
-                if (event.key.code == sf::Keyboard::Escape){
+                if (event.key.code == sf::Keyboard::Space){
                     return 0;
                 }
             }
         }
-        window.clear(sf::Color::White);
+
+        window.draw(background);
+        //window.clear(sf::Color::White);
         window.display();
     }
 	return (-1);
