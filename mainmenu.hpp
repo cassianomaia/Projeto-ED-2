@@ -15,15 +15,15 @@ mainmenu::mainmenu(void){
 }
 
 int mainmenu::Run(sf::RenderWindow &window){
-    sf::View view(sf::FloatRect(0, 0, 550, 450));
+    //sf::View view(sf::FloatRect(0, 0, 550, 450));
 
-    window.setView(view);
+    //window.setView(view);
 
     sf::Sprite background;
 
     sf::Texture texture;
 
-    if(!texture.loadFromFile("fazenda.jpeg")){
+    if(!texture.loadFromFile("menu_sem_texto.bmp")){
         std::cout << "Error" << std::endl;
     }
 
@@ -42,6 +42,15 @@ int mainmenu::Run(sf::RenderWindow &window){
 
         while (window.pollEvent(event)){
             switch(event.type){
+                /*case sf::Event::MouseButtonPressed:
+                    switch(event.key.code){
+
+                        case sf::Mouse::Left:
+                            std::cout << "Pressed" << std::endl;
+                            return menu.GetPressedItem();
+                        break;
+                    }*/
+
                 case sf::Event::KeyReleased:
                     switch(event.key.code){
                         case sf::Keyboard::Up:
@@ -55,6 +64,10 @@ int mainmenu::Run(sf::RenderWindow &window){
                         case sf::Keyboard::Return:
                             return menu.GetPressedItem();
                         break;
+                        
+                        case sf::Keyboard::Escape:
+                            window.close();
+                        break;
                     }
                     
                     break;
@@ -64,18 +77,14 @@ int mainmenu::Run(sf::RenderWindow &window){
                     break;
                 
             }
-        }
 
-        /*if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-            
-            std::cout << "Pressed" << std::endl;
-            
         }
+        
 
+        //std::cout << sf::Mouse::getPosition().x << std::endl;
         //std::cout << sf::Mouse::getPosition(window).x << std::endl;
-        std::cout << sf::Mouse::getPosition(window).x << std::endl;
 
-        sf::Mouse::setPosition(sf::vector21(40,50));*/
+        //sf::Mouse::setPosition(sf::Vector2f(40,50), window);
 
         window.clear();
         window.draw(background);

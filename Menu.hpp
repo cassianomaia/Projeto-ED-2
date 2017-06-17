@@ -13,10 +13,12 @@ public:
 	void draw(sf::RenderWindow &window);
 	void MoveUp();
 	void MoveDown();
+	void Position();
 	int GetPressedItem();
 
 private:
 	int SelectedItemIndex;
+	int posicaoy, posicaox;
 	sf::Font font;
 	sf::Text menu[Max_Itens];
 };
@@ -29,26 +31,26 @@ Menu::Menu(float width, float height){
 	menu[0].setFont(font);
 	menu[0].setColor(sf::Color::Black);
 	menu[0].setString("LITTLE FARM");
-	menu[0].setPosition(sf::Vector2f(140,60));	
-	menu[0].setCharacterSize(60);	
+	menu[0].setPosition(sf::Vector2f(175,60));	
+	menu[0].setCharacterSize(100);	
 
 	menu[1].setFont(font);
 	menu[1].setColor(sf::Color::Black);
 	menu[1].setString("PLAY");
-	menu[1].setPosition(sf::Vector2f(240,200));	
-	menu[1].setCharacterSize(40);	
+	menu[1].setPosition(sf::Vector2f(350,280));	
+	menu[1].setCharacterSize(60);	
 
 	menu[2].setFont(font);
 	menu[2].setColor(sf::Color::Black);
 	menu[2].setString("HOW TO PLAY");
-	menu[2].setPosition(sf::Vector2f(190, 250));	
-	menu[2].setCharacterSize(40);	
+	menu[2].setPosition(sf::Vector2f(270, 350));	
+	menu[2].setCharacterSize(60);	
 
 	menu[3].setFont(font);
 	menu[3].setColor(sf::Color::Black);
 	menu[3].setString("EXIT");
-	menu[3].setPosition(sf::Vector2f(240, 300));	
-	menu[3].setCharacterSize(40);	
+	menu[3].setPosition(sf::Vector2f(350, 420));	
+	menu[3].setCharacterSize(60);	
 
 	SelectedItemIndex = 0;
 }
@@ -81,7 +83,40 @@ void Menu::MoveDown(){
 	}
 }
 
+/*void Menu::Position(){
+
+	posicao = sf::Mouse::getPosition().y;
+	std::cout << posicao << std::endl;
+}*/
+
 int Menu::GetPressedItem(){
+
 	cout << SelectedItemIndex << endl;
 	return SelectedItemIndex;
+
+	/*posicaoy = sf::Mouse::getPosition().y;
+	posicaox = sf::Mouse::getPosition().x;
+	std::cout << posicaox << " , "<< posicaoy << std::endl;
+
+	if (posicaoy>=463 && posicaoy<=487){
+		if (posicaox>= 916 && posicaox<=1011){
+			SelectedItemIndex = 1;
+
+		}
+	}
+	else if (posicaoy>=528 && posicaoy<=554){
+		if (posicaox>= 841 && posicaox<=1100){
+			SelectedItemIndex = 2;
+
+		}
+	}
+	else if (posicaoy>=595 && posicaoy<=621){
+		if (posicaox>= 916 && posicaox<=1009){
+			SelectedItemIndex = 3;
+
+		}	
+	}
+
+	cout << SelectedItemIndex << endl;
+	return SelectedItemIndex;*/
 }
