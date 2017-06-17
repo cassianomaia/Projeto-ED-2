@@ -1,39 +1,22 @@
 #pragma once
 #include "SFML/Graphics.hpp"
+#include <iostream>
 #define Max_Itens 4
+
+using namespace std;
 
 class Menu{
 public:
 	Menu (float width, float height);
 	~Menu();
 
-	void draw(sf::RenderWindow &window){
-		for(int i=0; i < Max_Itens; i++){
-			window.draw(menu[i]);
-		}
-	}
-	
-	void MoveUp(){
-		if(SelectecItemIndex - 1 >= 1){
-			menu[SelectecItemIndex].setColor(sf::Color::Black);
-			SelectecItemIndex--;
-			menu[SelectecItemIndex].setColor(sf::Color::Red);
-		}
-	}
-	void MoveDown(){
-		if(SelectecItemIndex + 1 < Max_Itens){
-			menu[SelectecItemIndex].setColor(sf::Color::Black);
-			SelectecItemIndex++;
-			menu[SelectecItemIndex].setColor(sf::Color::Red);
-		}
-	}
-
-	int GetPressedItem(){
-		return SelectecItemIndex;
-	}
+	void draw(sf::RenderWindow &window);
+	void MoveUp();
+	void MoveDown();
+	int GetPressedItem();
 
 private:
-	int SelectecItemIndex;
+	int SelectedItemIndex;
 	sf::Font font;
 	sf::Text menu[Max_Itens];
 };
@@ -67,10 +50,38 @@ Menu::Menu(float width, float height){
 	menu[3].setPosition(sf::Vector2f(240, 300));	
 	menu[3].setCharacterSize(40);	
 
-	SelectecItemIndex = 0;
+	SelectedItemIndex = 0;
 }
 
 Menu::~Menu(){
 
 }
 
+void Menu::draw(sf::RenderWindow &window){
+	for(int i=0; i < Max_Itens; i++){
+		window.draw(menu[i]);
+	}
+}
+
+void Menu::MoveUp(){
+	if(SelectedItemIndex - 1 >= 1){
+		menu[SelectedItemIndex].setColor(sf::Color::Black);
+		SelectedItemIndex--;
+		cout << SelectedItemIndex << endl;
+		menu[SelectedItemIndex].setColor(sf::Color::Red);
+	}
+}
+
+void Menu::MoveDown(){
+	if(SelectedItemIndex + 1 < Max_Itens){
+		menu[SelectedItemIndex].setColor(sf::Color::Black);
+		SelectedItemIndex++;
+		cout << SelectedItemIndex << endl;
+		menu[SelectedItemIndex].setColor(sf::Color::Red);
+	}
+}
+
+int Menu::GetPressedItem(){
+	cout << SelectedItemIndex << endl;
+	return SelectedItemIndex;
+}

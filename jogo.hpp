@@ -28,7 +28,6 @@ int jogo::Run(sf::RenderWindow &Tela){
                 }
             }
         }
-
         Tela.clear(sf::Color::White);
         Tela.display();
     }

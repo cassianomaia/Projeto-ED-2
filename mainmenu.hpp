@@ -51,26 +51,15 @@ int mainmenu::Run(sf::RenderWindow &window){
                     switch(event.key.code){
                         case sf::Keyboard::Up:
                             menu.MoveUp();
-                            break;
+                        break;
                         
                         case sf::Keyboard::Down:
                             menu.MoveDown();
-                            break;
+                        break;
 
                         case sf::Keyboard::Return:
-                            switch(menu.GetPressedItem()){
-                                case 1:
-                                    std::cout << "Pressed Play"<< std::endl;
-                                    break;
-                                case 2:
-                                    std::cout << "Pressed Options"<< std::endl;
-                                    break;
-                                case 3:
-                                    window.close();
-                                    break;
-
-                            }
-                            break;
+                            return menu.GetPressedItem();
+                        break;
                     }
                     
                     break;
