@@ -9,22 +9,22 @@ public:
 
 	void draw(sf::RenderWindow &window){
 		for(int i=0; i < Max_Itens; i++){
-		window.draw(menu[i]);
+			window.draw(menu[i]);
 		}
 	}
 	
 	void MoveUp(){
 		if(SelectecItemIndex - 1 >= 1){
-		menu[SelectecItemIndex].setColor(sf::Color::Black);
-		SelectecItemIndex--;
-		menu[SelectecItemIndex].setColor(sf::Color::Red);
+			menu[SelectecItemIndex].setColor(sf::Color::Black);
+			SelectecItemIndex--;
+			menu[SelectecItemIndex].setColor(sf::Color::Red);
 		}
 	}
 	void MoveDown(){
 		if(SelectecItemIndex + 1 < Max_Itens){
-		menu[SelectecItemIndex].setColor(sf::Color::Black);
-		SelectecItemIndex++;
-		menu[SelectecItemIndex].setColor(sf::Color::Red);
+			menu[SelectecItemIndex].setColor(sf::Color::Black);
+			SelectecItemIndex++;
+			menu[SelectecItemIndex].setColor(sf::Color::Red);
 		}
 	}
 
