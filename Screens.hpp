@@ -7,7 +7,6 @@
 //Including each screen of application
 #include "mainmenu.hpp"
 #include "jogo.hpp"
-//#include "options.hpp"
-//#include "howto.hpp"
+#include "howto.hpp"
 
 #endif //SCREENS_HPP_INCLUDED

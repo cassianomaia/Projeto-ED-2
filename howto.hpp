@@ -1,19 +1,19 @@
 #include "cScreen.hpp"
 #include <SFML/Graphics.hpp>
 
-class jogo : public cScreen{
+class howto : public cScreen{
 private:
 
 public:
-	jogo(void);
+	howto(void);
 	virtual int Run(sf::RenderWindow &window);
 };
 
-jogo::jogo(void){
+howto::howto(void){
 
 }
 
-int jogo::Run(sf::RenderWindow &window){
+int howto::Run(sf::RenderWindow &window){
 
     while (window.isOpen()){
         sf::Event event;

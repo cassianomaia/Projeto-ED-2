@@ -13,8 +13,8 @@ int main(){
     Screens.push_back(&s0);
     jogo s1;
     Screens.push_back(&s1);
-/*  options s2;
-    Screens.push_back(&s2); */
+    howto s2;
+    Screens.push_back(&s2);
 
     while (screen >= 0){
         switch (screen = Screens[screen]->Run(window)){
