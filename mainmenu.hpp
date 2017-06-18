@@ -89,7 +89,6 @@ int mainmenu::Run(sf::RenderWindow &window){
         window.clear();
         window.draw(background);
         menu.draw(window);
-        //window.draw(sprite);
         window.display();
 
     }
