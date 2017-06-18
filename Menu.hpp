@@ -13,17 +13,18 @@ public:
 	void draw(sf::RenderWindow &window);
 	void MoveUp();
 	void MoveDown();
-	//void Posicao();
-	int GetPressedItem();
+	void Position(int posicaox, int posicaoy);
+	int GetPressedItem(int posicaox, int posicaoy);
 
 private:
 	int SelectedItemIndex;
-	int posicaoy, posicaox, posicao;
+	int posicaox, posicaoy, posicao;
 	sf::Font font;
 	sf::Text menu[Max_Itens];
 };
 
 Menu::Menu(float width, float height){
+
 	if (!font.loadFromFile("barn.otf")){
 		//handle error
 	}
@@ -85,24 +86,24 @@ void Menu::MoveDown(){
 
 
 
-/*void Menu::Posicao(){
+void Menu::Position(int posicaox, int posicaoy){
 
-	posicaoy = sf::Mouse::getPosition().y;
-	posicaox = sf::Mouse::getPosition().x;
-
-	if (posicaoy>=477 && posicaoy<=508){
-		if (posicaox>= 415 && posicaox<=514){
+	if (posicaoy>=310 && posicaoy<=341){
+		if (posicaox>= 351 && posicaox<=450){
 			posicao = 1;
+
 		}
 	}
-	else if (posicaoy>=547 && posicaoy<=579){
-		if (posicaox>= 336 && posicaox<=602){
+	else if (posicaoy>=380 && posicaoy<=412){
+		if (posicaox>= 271 && posicaox<=538){
 			posicao = 2;
+
 		}
 	}
-	else if (posicaoy>=618 && posicaoy<=649){
-		if (posicaox>= 415 && posicaox<=621){
+	else if (posicaoy>=451 && posicaoy<=480){
+		if (posicaox>= 351 && posicaox<=450){
 			posicao = 3;
+
 		}	
 	}
 
@@ -120,37 +121,30 @@ void Menu::MoveDown(){
 	else if(posicao == 3){
 		menu[3].setColor(sf::Color::Red);
 	}
-}*/
+}
 
 
-int Menu::GetPressedItem(){
+int Menu::GetPressedItem(int posicaox, int posicaoy){
 
 
-	/*posicaoy = sf::Mouse::getPosition().y;
-	posicaox = sf::Mouse::getPosition().x;
-	std::cout << posicaox << " , "<< posicaoy << std::endl;
-
-	if (posicaoy>=477 && posicaoy<=508){
-		if (posicaox>= 415 && posicaox<=514){
-			posicao = 1;
+	if (posicaoy>=310 && posicaoy<=341){
+		if (posicaox>= 351 && posicaox<=450){
 			SelectedItemIndex = 1;
 
 		}
 	}
-	else if (posicaoy>=547 && posicaoy<=579){
-		if (posicaox>= 336 && posicaox<=602){
-			posicao = 2;
+	else if (posicaoy>=380 && posicaoy<=412){
+		if (posicaox>= 271 && posicaox<=538){
 			SelectedItemIndex = 2;
 
 		}
 	}
-	else if (posicaoy>=618 && posicaoy<=649){
-		if (posicaox>= 415 && posicaox<=621){
-			posicao = 3;
+	else if (posicaoy>=451 && posicaoy<=480){
+		if (posicaox>= 351 && posicaox<=450){
 			SelectedItemIndex = 3;
 
 		}	
-	}*/
+	}
 
 	cout << SelectedItemIndex << endl;
 	return SelectedItemIndex;

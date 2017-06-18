@@ -4,6 +4,8 @@
 
 class mainmenu : public cScreen{
 private:
+    int posicaoy, posicaox;
+    int SelectedItemIndex;
 
 public:
 	mainmenu(void);
@@ -15,9 +17,6 @@ mainmenu::mainmenu(void){
 }
 
 int mainmenu::Run(sf::RenderWindow &window){
-    //sf::View view(sf::FloatRect(0, 0, 550, 450));
-
-    //window.setView(view);
 
     sf::Sprite background;
 
@@ -41,17 +40,21 @@ int mainmenu::Run(sf::RenderWindow &window){
         sf::Event event;
 
         while (window.pollEvent(event)){
+            posicaoy = sf::Mouse::getPosition(window).y;
+            posicaox = sf::Mouse::getPosition(window).x;
+
             switch(event.type){
-                /*case sf::Event::MouseButtonPressed:
+                case sf::Event::MouseButtonPressed:
                     switch(event.key.code){
 
                         case sf::Mouse::Left:
                             std::cout << "Pressed" << std::endl;
-                            return menu.GetPressedItem();
+                            std::cout << posicaox << " , "<< posicaoy << std::endl;
+                            return menu.GetPressedItem(posicaox, posicaoy);
                         break;
-                    }*/
+                    }
 
-                case sf::Event::KeyReleased:
+                /*case sf::Event::KeyReleased:
                     switch(event.key.code){
                         case sf::Keyboard::Up:
                             menu.MoveUp();
@@ -68,7 +71,7 @@ int mainmenu::Run(sf::RenderWindow &window){
                         case sf::Keyboard::Escape:
                             window.close();
                         break;
-                    }
+                    }*/
                     
                     break;
 
@@ -76,19 +79,13 @@ int mainmenu::Run(sf::RenderWindow &window){
                     window.close();
                     break;
                 
-                /*case sf::Event::MouseMoved:
-                	menu.Posicao();
-                	break;*/
+                case sf::Event::MouseMoved:
+                	menu.Position(posicaox, posicaoy);
+                	break;
             }
 
         }
         
-
-        //std::cout << sf::Mouse::getPosition().x << std::endl;
-        //std::cout << sf::Mouse::getPosition(window).x << std::endl;
-
-        //sf::Mouse::setPosition(sf::Vector2f(40,50), window);
-
         window.clear();
         window.draw(background);
         menu.draw(window);
