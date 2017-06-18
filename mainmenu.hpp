@@ -54,9 +54,9 @@ int mainmenu::Run(sf::RenderWindow &window){
                         break;
                     }
 
-                /*case sf::Event::KeyReleased:
+                case sf::Event::KeyReleased:
                     switch(event.key.code){
-                        case sf::Keyboard::Up:
+                        /*case sf::Keyboard::Up:
                             menu.MoveUp();
                         break;
                         
@@ -66,12 +66,12 @@ int mainmenu::Run(sf::RenderWindow &window){
 
                         case sf::Keyboard::Return:
                             return menu.GetPressedItem();
-                        break;
+                        break;*/
                         
                         case sf::Keyboard::Escape:
                             window.close();
                         break;
-                    }*/
+                    }
                     
                     break;
 
