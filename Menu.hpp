@@ -13,12 +13,12 @@ public:
 	void draw(sf::RenderWindow &window);
 	void MoveUp();
 	void MoveDown();
-	void Position();
+	void Posicao();
 	int GetPressedItem();
 
 private:
 	int SelectedItemIndex;
-	int posicaoy, posicaox;
+	int posicaoy, posicaox, posicao;
 	sf::Font font;
 	sf::Text menu[Max_Itens];
 };
@@ -89,34 +89,75 @@ void Menu::MoveDown(){
 	std::cout << posicao << std::endl;
 }*/
 
+void Menu::Posicao(){
+
+	posicaoy = sf::Mouse::getPosition().y;
+	posicaox = sf::Mouse::getPosition().x;
+
+	if (posicaoy>=477 && posicaoy<=508){
+		if (posicaox>= 415 && posicaox<=514){
+			posicao = 1;
+		}
+	}
+	else if (posicaoy>=547 && posicaoy<=579){
+		if (posicaox>= 336 && posicaox<=602){
+			posicao = 2;
+		}
+	}
+	else if (posicaoy>=618 && posicaoy<=649){
+		if (posicaox>= 415 && posicaox<=621){
+			posicao = 3;
+		}	
+	}
+
+	menu[1].setColor(sf::Color::Black);
+	menu[2].setColor(sf::Color::Black);
+	menu[3].setColor(sf::Color::Black);
+
+
+	if (posicao == 1){
+		menu[1].setColor(sf::Color::Red);
+	}
+	else if(posicao == 2){
+		menu[2].setColor(sf::Color::Red);
+	}
+	else if(posicao == 3){
+		menu[3].setColor(sf::Color::Red);
+	}
+}
+
+
 int Menu::GetPressedItem(){
 
-	cout << SelectedItemIndex << endl;
-	return SelectedItemIndex;
+	/*cout << SelectedItemIndex << endl;
+	return SelectedItemIndex;*/
 
-	/*posicaoy = sf::Mouse::getPosition().y;
+	posicaoy = sf::Mouse::getPosition().y;
 	posicaox = sf::Mouse::getPosition().x;
 	std::cout << posicaox << " , "<< posicaoy << std::endl;
 
-	if (posicaoy>=463 && posicaoy<=487){
-		if (posicaox>= 916 && posicaox<=1011){
+	if (posicaoy>=477 && posicaoy<=508){
+		if (posicaox>= 415 && posicaox<=514){
+			posicao = 1;
 			SelectedItemIndex = 1;
 
 		}
 	}
-	else if (posicaoy>=528 && posicaoy<=554){
-		if (posicaox>= 841 && posicaox<=1100){
+	else if (posicaoy>=547 && posicaoy<=579){
+		if (posicaox>= 336 && posicaox<=602){
+			posicao = 2;
 			SelectedItemIndex = 2;
 
 		}
 	}
-	else if (posicaoy>=595 && posicaoy<=621){
-		if (posicaox>= 916 && posicaox<=1009){
+	else if (posicaoy>=618 && posicaoy<=649){
+		if (posicaox>= 415 && posicaox<=621){
+			posicao = 3;
 			SelectedItemIndex = 3;
 
 		}	
 	}
 
 	cout << SelectedItemIndex << endl;
-	return SelectedItemIndex;*/
+	return SelectedItemIndex;
 }

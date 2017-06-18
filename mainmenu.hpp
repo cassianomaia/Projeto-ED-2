@@ -42,16 +42,16 @@ int mainmenu::Run(sf::RenderWindow &window){
 
         while (window.pollEvent(event)){
             switch(event.type){
-                /*case sf::Event::MouseButtonPressed:
+                case sf::Event::MouseButtonPressed:
                     switch(event.key.code){
 
                         case sf::Mouse::Left:
                             std::cout << "Pressed" << std::endl;
                             return menu.GetPressedItem();
                         break;
-                    }*/
+                    }
 
-                case sf::Event::KeyReleased:
+                /*case sf::Event::KeyReleased:
                     switch(event.key.code){
                         case sf::Keyboard::Up:
                             menu.MoveUp();
@@ -68,7 +68,7 @@ int mainmenu::Run(sf::RenderWindow &window){
                         case sf::Keyboard::Escape:
                             window.close();
                         break;
-                    }
+                    }*/
                     
                     break;
 
@@ -76,6 +76,9 @@ int mainmenu::Run(sf::RenderWindow &window){
                     window.close();
                     break;
                 
+                case sf::Event::MouseMoved:
+                	menu.Posicao();
+                	break;
             }
 
         }

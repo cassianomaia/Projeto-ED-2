@@ -15,8 +15,19 @@ howto::howto(void){
 
 int howto::Run(sf::RenderWindow &window){
 
-    sf::Sprite background;
+    sf::Font font;
+    if (!font.loadFromFile("barn.otf")){
+        //erro
+    }
 
+    sf::Text text;
+    text.setFont(font);
+    text.setString("HOW TO PLAY");
+    text.setColor(sf::Color::Black);
+    text.setPosition(sf::Vector2f(175,60));
+    text.setCharacterSize(100);
+
+    sf::Sprite background;
     sf::Texture texture;
 
     if(!texture.loadFromFile("fundo.bmp")){
@@ -41,6 +52,7 @@ int howto::Run(sf::RenderWindow &window){
         }
 
         window.draw(background);
+        window.draw(text);
         //window.clear(sf::Color::White);
         window.display();
     }
