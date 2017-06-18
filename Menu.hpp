@@ -13,7 +13,7 @@ public:
 	void draw(sf::RenderWindow &window);
 	void MoveUp();
 	void MoveDown();
-	void Posicao();
+	//void Posicao();
 	int GetPressedItem();
 
 private:
@@ -83,13 +83,9 @@ void Menu::MoveDown(){
 	}
 }
 
-/*void Menu::Position(){
 
-	posicao = sf::Mouse::getPosition().y;
-	std::cout << posicao << std::endl;
-}*/
 
-void Menu::Posicao(){
+/*void Menu::Posicao(){
 
 	posicaoy = sf::Mouse::getPosition().y;
 	posicaox = sf::Mouse::getPosition().x;
@@ -124,15 +120,13 @@ void Menu::Posicao(){
 	else if(posicao == 3){
 		menu[3].setColor(sf::Color::Red);
 	}
-}
+}*/
 
 
 int Menu::GetPressedItem(){
 
-	/*cout << SelectedItemIndex << endl;
-	return SelectedItemIndex;*/
 
-	posicaoy = sf::Mouse::getPosition().y;
+	/*posicaoy = sf::Mouse::getPosition().y;
 	posicaox = sf::Mouse::getPosition().x;
 	std::cout << posicaox << " , "<< posicaoy << std::endl;
 
@@ -156,7 +150,7 @@ int Menu::GetPressedItem(){
 			SelectedItemIndex = 3;
 
 		}	
-	}
+	}*/
 
 	cout << SelectedItemIndex << endl;
 	return SelectedItemIndex;
