@@ -30,38 +30,38 @@ Plantas::Plantas(float width, float height){
 	player[0].setFont(font);
 	player[0].setColor(sf::Color::Black);
 	player[0].setString("00");
-	player[0].setPosition(sf::Vector2f(175,60));	
-	player[0].setCharacterSize(60);	
+	player[0].setPosition(sf::Vector2f(25,550));	
+	player[0].setCharacterSize(30);	
 
 	player[1].setFont(font);
 	player[1].setColor(sf::Color::Black);
 	player[1].setString("00");
-	player[1].setPosition(sf::Vector2f(350,280));	
-	player[1].setCharacterSize(60);	
+	player[1].setPosition(sf::Vector2f(92,550));	
+	player[1].setCharacterSize(30);	
 
 	player[2].setFont(font);
 	player[2].setColor(sf::Color::Black);
 	player[2].setString("00");
-	player[2].setPosition(sf::Vector2f(270, 350));	
-	player[2].setCharacterSize(60);	
+	player[2].setPosition(sf::Vector2f(152, 550));	
+	player[2].setCharacterSize(30);	
 
 	player[3].setFont(font);
 	player[3].setColor(sf::Color::Black);
 	player[3].setString("00");
-	player[3].setPosition(sf::Vector2f(350, 420));	
-	player[3].setCharacterSize(60);	
+	player[3].setPosition(sf::Vector2f(205, 550));	
+	player[3].setCharacterSize(30);	
 
 	player[4].setFont(font);
 	player[4].setColor(sf::Color::Black);
 	player[4].setString("00");
-	player[4].setPosition(sf::Vector2f(350, 420));	
-	player[4].setCharacterSize(60);	
+	player[4].setPosition(sf::Vector2f(270, 550));	
+	player[4].setCharacterSize(30);	
 
 	player[5].setFont(font);
 	player[5].setColor(sf::Color::Black);
 	player[5].setString("00");
-	player[5].setPosition(sf::Vector2f(350, 420));	
-	player[5].setCharacterSize(60);	
+	player[5].setPosition(sf::Vector2f(315, 550));	
+	player[5].setCharacterSize(30);	
 
 	planta = -1;
 
