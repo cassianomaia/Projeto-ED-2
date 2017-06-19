@@ -22,7 +22,7 @@ int mainmenu::Run(sf::RenderWindow &window){
 
     sf::Texture texture;
 
-    if(!texture.loadFromFile("menu_sem_texto.bmp")){
+    if(!texture.loadFromFile("../Images/menu_sem_texto.bmp")){
         std::cout << "Error" << std::endl;
     }
 

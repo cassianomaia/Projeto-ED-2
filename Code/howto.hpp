@@ -16,7 +16,7 @@ howto::howto(void){
 int howto::Run(sf::RenderWindow &window){
 
     sf::Font font;
-    if (!font.loadFromFile("barn.otf")){
+    if (!font.loadFromFile("../Fonts/barn.otf")){
         //erro
     }
 
@@ -30,7 +30,7 @@ int howto::Run(sf::RenderWindow &window){
     sf::Sprite background;
     sf::Texture texture;
 
-    if(!texture.loadFromFile("fundo.bmp")){
+    if(!texture.loadFromFile("../Images/fundo.bmp")){
         std::cout << "Error" << std::endl;
     }
 

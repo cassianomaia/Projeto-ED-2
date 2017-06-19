@@ -23,7 +23,7 @@ private:
 
 Plantas::Plantas(float width, float height){
 
-	if (!font.loadFromFile("barn.otf")){
+	if (!font.loadFromFile("../Fonts/barn.otf")){
 		//handle error
 	}
 

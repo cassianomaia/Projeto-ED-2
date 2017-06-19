@@ -19,7 +19,7 @@ int jogo::Run(sf::RenderWindow &window){
 
     sf::Sprite background;
     sf::Texture texture;
-    if(!texture.loadFromFile("principal_acordada.bmp")){
+    if(!texture.loadFromFile("../Images/background.bmp")){
         std::cout << "Error" << std::endl;
     }
     background.setTexture(texture);
@@ -37,6 +37,7 @@ int jogo::Run(sf::RenderWindow &window){
 
             switch(event.type){
                 case sf::Event::MouseButtonPressed:
+                    
                     switch(event.key.code){
 
                         case sf::Mouse::Left:
