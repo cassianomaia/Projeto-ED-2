@@ -66,11 +66,11 @@ int mainmenu::Run(sf::RenderWindow &window){
 
                         case sf::Keyboard::Return:
                             return menu.GetPressedItem();
-                        break;*/
+                        break;
                         
                         case sf::Keyboard::Escape:
                             window.close();
-                        break;
+                        break;*/
                     }
                     
                     break;
