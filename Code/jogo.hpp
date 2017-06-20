@@ -14,10 +14,7 @@ private:
     sf::Text timerhead;
     std::string countdownString;
     std::ostringstream converter;
-    sf::Texture slot1;
-    sf::Texture slot2;
-    sf::Texture slot3;
-    sf::Texture slot4;
+    sf::Texture slotvazio;
     sf::Sprite background;
     sf::Texture texture;
 
@@ -49,32 +46,23 @@ int jogo::Run(sf::RenderWindow &window){
     timerhead.setPosition(473, 0);
     timerhead.setCharacterSize(40);
 
-    //Imagem slot baixo direita
-    if(!slot1.loadFromFile("../Images/vazio.png")){
+    if(!slotvazio.loadFromFile("../Images/vazio.png")){
         std::cout << "Error" << std::endl;
     }
-    sf::Sprite Slot1(slot1);
+    //Imagem slot baixo direita
+    sf::Sprite Slot1(slotvazio);
     Slot1.setPosition(sf::Vector2f(30,-10));
 
     //Imagem slot baixo esquerda
-    if(!slot2.loadFromFile("../Images/vazio.png")){
-        std::cout << "Error" << std::endl;
-    }
-    sf::Sprite Slot2(slot2);
+    sf::Sprite Slot2(slotvazio);
     Slot2.setPosition(sf::Vector2f(-36,-32));
 
     //Imagem slot cima esquerda
-    if(!slot3.loadFromFile("../Images/vazio.png")){
-        std::cout << "Error" << std::endl;
-    }
-    sf::Sprite Slot3(slot3);
+    sf::Sprite Slot3(slotvazio);
     Slot3.setPosition(sf::Vector2f(20,-70));
 
     //Imagem slot cima direita
-    if(!slot4.loadFromFile("../Images/vazio.png")){
-        std::cout << "Error" << std::endl;
-    }
-    sf::Sprite Slot4(slot4);
+    sf::Sprite Slot4(slotvazio);
     Slot4.setPosition(sf::Vector2f(86,-48));
 
     //Background
