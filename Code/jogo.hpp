@@ -14,6 +14,12 @@ private:
     sf::Text timerhead;
     std::string countdownString;
     std::ostringstream converter;
+    sf::Texture slot1;
+    sf::Texture slot2;
+    sf::Texture slot3;
+    sf::Texture slot4;
+    sf::Sprite background;
+    sf::Texture texture;
 
 public:
 	jogo(void);
@@ -44,7 +50,6 @@ int jogo::Run(sf::RenderWindow &window){
     timerhead.setCharacterSize(40);
 
     //Imagem slot baixo direita
-    sf::Texture slot1;
     if(!slot1.loadFromFile("../Images/vazio.png")){
         std::cout << "Error" << std::endl;
     }
@@ -52,7 +57,6 @@ int jogo::Run(sf::RenderWindow &window){
     Slot1.setPosition(sf::Vector2f(30,-10));
 
     //Imagem slot baixo esquerda
-    sf::Texture slot2;
     if(!slot2.loadFromFile("../Images/vazio.png")){
         std::cout << "Error" << std::endl;
     }
@@ -60,7 +64,6 @@ int jogo::Run(sf::RenderWindow &window){
     Slot2.setPosition(sf::Vector2f(-36,-32));
 
     //Imagem slot cima esquerda
-    sf::Texture slot3;
     if(!slot3.loadFromFile("../Images/vazio.png")){
         std::cout << "Error" << std::endl;
     }
@@ -68,7 +71,6 @@ int jogo::Run(sf::RenderWindow &window){
     Slot3.setPosition(sf::Vector2f(20,-70));
 
     //Imagem slot cima direita
-    sf::Texture slot4;
     if(!slot4.loadFromFile("../Images/vazio.png")){
         std::cout << "Error" << std::endl;
     }
@@ -76,8 +78,6 @@ int jogo::Run(sf::RenderWindow &window){
     Slot4.setPosition(sf::Vector2f(86,-48));
 
     //Background
-    sf::Sprite background;
-    sf::Texture texture;
     if(!texture.loadFromFile("../Images/background.bmp")){
         std::cout << "Error" << std::endl;
     }
