@@ -98,9 +98,6 @@ int jogo::Run(sf::RenderWindow &window){
                     switch(event.key.code){
                                                 
                         case sf::Keyboard::Escape:
-                            window.close();
-                        break;
-                        case sf::Keyboard::Space:
                             return 0;
                         break;
                     }

@@ -45,11 +45,8 @@ int howto::Run(sf::RenderWindow &window){
                 window.close(); 
             }
             if (event.type == sf::Event::KeyPressed){
-                if (event.key.code == sf::Keyboard::Space){
-                    return 0;
-                }
                 if (event.key.code == sf::Keyboard::Escape){
-                    window.close();
+                    return 0;
                 }
             }
         }
