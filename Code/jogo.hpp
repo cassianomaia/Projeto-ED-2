@@ -10,6 +10,7 @@ using namespace std;
 class jogo : public cScreen{
 private:
     int posicaox, posicaoy, posicao;
+    int mousestate;
     int countdown = 30;
     int countdown_vaca = 10;
     sf::Clock clock;
@@ -22,6 +23,13 @@ private:
     sf::Texture slotvazio;
     sf::Texture vaquinha;
     sf::Texture vaquinha_leite;
+    sf::Texture mouse0;
+    sf::Texture mouse1;
+    sf::Texture mouse2;
+    sf::Texture mouse3;
+    sf::Texture mouse4;
+    sf::Texture mouse5;
+    sf::Sprite mousesprite;
     sf::Sprite background;
     sf::Texture texture;
 
@@ -83,6 +91,26 @@ int jogo::Run(sf::RenderWindow &window){
         std::cout << "Error" << std::endl;
     }
 
+    //mouse textures
+    if(!mouse0.loadFromFile("../Images/Mouse/cereja.png")){
+        std::cout << "Error" << std::endl;
+    }
+    if(!mouse1.loadFromFile("../Images/Mouse/melancia.png")){
+        std::cout << "Error" << std::endl;
+    }
+    if(!mouse2.loadFromFile("../Images/Mouse/tomate.png")){
+        std::cout << "Error" << std::endl;
+    }
+    if(!mouse3.loadFromFile("../Images/Mouse/cenoura.png")){
+        std::cout << "Error" << std::endl;
+    }
+    if(!mouse4.loadFromFile("../Images/Mouse/brocolis.png")){
+        std::cout << "Error" << std::endl;
+    }
+    if(!mouse5.loadFromFile("../Images/Mouse/beterraba.png")){
+        std::cout << "Error" << std::endl;
+    }
+
     //Background
     if(!texture.loadFromFile("../Images/background.bmp")){
         std::cout << "Error" << std::endl;
@@ -108,7 +136,32 @@ int jogo::Run(sf::RenderWindow &window){
                         case sf::Mouse::Left:
                             std::cout << "Pressed" << std::endl;
                             std::cout << posicaox << " , "<< posicaoy << std::endl;
-                            player.PositionPlants(posicaox, posicaoy);
+                            switch (mousestate = player.PositionPlants(posicaox, posicaoy)){
+                                case 0:
+                                    mousesprite.setTexture(mouse0);
+                                break;
+
+                                case 1:
+                                    mousesprite.setTexture(mouse1);
+                                break;
+
+                                case 2:
+                                    mousesprite.setTexture(mouse2);
+                                break;
+
+                                case 3:
+                                    mousesprite.setTexture(mouse3);
+                                break;
+
+                                case 4:
+                                    mousesprite.setTexture(mouse4);
+                                break;
+
+                                case 5:
+                                    mousesprite.setTexture(mouse5);
+                                break;
+                            }
+
                         break;
                     }
 
@@ -146,8 +199,12 @@ int jogo::Run(sf::RenderWindow &window){
         if(countdown_vaca==0){
             Vaquinha.setTexture(vaquinha_leite);
         }
-        
+
+        mousesprite.setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(window)));
         window.clear();
+        //if (player.PositionPlants(posicaox, posicaoy) != -1){
+
+        //}
         window.draw(background);
         player.draw(window);
         window.draw(Slot1);
@@ -157,6 +214,9 @@ int jogo::Run(sf::RenderWindow &window){
         window.draw(Vaquinha);
         window.draw(timerText);
         window.draw(timerhead);
+        if (mousestate != -1){
+            window.draw(mousesprite);
+        }
         window.display();
 
     }

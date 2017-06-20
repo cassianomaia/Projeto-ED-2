@@ -12,7 +12,7 @@ public:
 	~Plantas();
 
 	void draw(sf::RenderWindow &window);
-	void PositionPlants(int posicaox, int posicaoy);
+	int PositionPlants(int posicaox, int posicaoy);
 
 private:
 
@@ -125,8 +125,8 @@ void Plantas::draw(sf::RenderWindow &window){
 }
 
 
-void Plantas::PositionPlants(int posicaox, int posicaoy){
-
+int Plantas::PositionPlants(int posicaox, int posicaoy){
+	planta = -1;
 	if (posicaoy>=498 && posicaoy<=549){
 		if (posicaox>= 4 && posicaox<=66){
 			planta = 0;
@@ -202,6 +202,6 @@ void Plantas::PositionPlants(int posicaox, int posicaoy){
 		}	
 	}
 
-	cout << planta << endl;
+	return planta;
 }
 
