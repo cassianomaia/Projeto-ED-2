@@ -13,6 +13,7 @@ private:
     int countdown = 30;
     int countdown_vaca = 10;
     sf::Clock clock;
+    sf::Clock clock2;
     sf::Font font;
     sf::Text timerText;
     sf::Text timerhead;
@@ -137,10 +138,10 @@ int jogo::Run(sf::RenderWindow &window){
             clock.restart();
         }
 
-        int timer_vaca = clock.getElapsedTime().asSeconds();
+        int timer_vaca = clock2.getElapsedTime().asSeconds();
         if (timer_vaca > 0 && countdown_vaca > 0){
             countdown_vaca--;
-            clock.restart(); //
+            clock2.restart(); //
         }
         if(countdown_vaca==0){
             Vaquinha.setTexture(vaquinha_leite);
