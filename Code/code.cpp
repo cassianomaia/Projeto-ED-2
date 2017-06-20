@@ -1,9 +1,13 @@
 #include <iostream>
 #include <cstdlib>
 using namespace std;
+#define tam 3
+#define tamLista 6
 
 
-//classes
+
+
+//CLASSES
 
 class Planta{
 	public: 
@@ -19,32 +23,47 @@ class Planta{
 struct node{
 	
 	Planta info;
+	int checagem;
 	
-	struct node *esq;
-	struct node *dir;
+	struct node *next;
+};
+
+class SpotPlantar {
+	public:
+			SpotPlantar();
+			bool Vazia();
+			bool Cheia();
+			bool Insere(Planta&);
+			Planta Retira(int indiceRetira, bool& deuCerto);
+			int getNroElementos();
+			
+	protected:
+			node *field[tam];
 };
 
 
-
+//CLASSE LISTA DE ESCOLHA ONDE AS PLANTAS VEM RANDOM
 
 class Lista {
-	public:
-			bool Vazia();
-			void Insere(Planta&);
-			Planta Retira();
-			Lista();
-			int Contador();
+		public:
+				Lista();
+				bool Vazia();
+				bool Cheia();
+				void Insere(Planta&);
+				Planta Retira(int indiceRetiraLista);
+				int getNroElementos();
 			
-	private:
-			node *topo;
+		protected:
+				node *field[tamLista];
+			
 };
-
 
 class Melancia : public Planta {
 	
 	public: 
 		Melancia();
 };
+
 
 class Tomate : public Planta {
 	
@@ -76,172 +95,202 @@ class Cereja : public Planta {
 		Cereja();
 };
 
+Melancia::Melancia() : Planta(){
+	tempoCresc = 15;
+	valor = 2000;
+};
 
-//métodos
+Tomate::Tomate() : Planta(){
+	tempoCresc = 9;
+	valor = 900;
+};
+
+Cenoura::Cenoura() : Planta(){
+	tempoCresc = 6;
+	valor = 400;
+};
+
+Beterraba::Beterraba() : Planta(){
+	tempoCresc = 4;
+	valor = 250;
+};
+
+Brocolis::Brocolis(): Planta(){
+	tempoCresc = 2;
+	valor = 100;
+};
+
+Cereja::Cereja(): Planta(){
+	tempoCresc = 12;
+	valor = 1250;
+};
 
 Planta::Planta(){
 	
 }
 
-Lista::Lista(){
-	topo = NULL;
-}
 
 
-Melancia::Melancia() : Planta(){
-	tempoCresc = 15;
-	valor = 2000;
-}
 
-Tomate::Tomate() : Planta(){
-	tempoCresc = 9;
-	valor = 900;
-}
+//METODOS DA SPOTPLANTAR
 
-Cenoura::Cenoura() : Planta(){
-	tempoCresc = 6;
-	valor = 400;
-}
+bool deuCerto = true;
 
-Beterraba::Beterraba() : Planta(){
-	tempoCresc = 4;
-	valor = 250;
-}
-
-Brocolis::Brocolis(): Planta(){
-	tempoCresc = 2;
-	valor = 100;
-}
-
-Cereja::Cereja(): Planta(){
-	tempoCresc = 12;
-	valor = 1250;
-}
-
-int Planta::getValor(){
-	return valor;
-}
-
-void Lista::Insere(Planta& p1){
+SpotPlantar::SpotPlantar(){
+	int i;
 	
-	node *temp = new node;
-	
-	if (Lista::Vazia() == 1){
-		temp->info = p1;
-		temp->esq = temp;
-		temp->dir = temp;
-		topo = temp;
-		temp = NULL;
-		
-		delete temp;
-	} else if ((Lista::Vazia() != 1) && (topo->esq == topo->dir)){
-				
-				temp->info = p1;
-				topo->dir = temp;
-				topo->esq = temp;
-				temp->dir = topo;
-				temp->esq = topo;
-				topo = temp;
-				temp = NULL;
-				
-				delete temp;
-				
-		} else {
-				topo->dir = temp;
-				temp->dir = topo->esq;
-				topo->esq->esq = temp;
-				temp->esq = topo;
-				topo = temp;
-				temp = NULL;
-				
-				delete temp;
-				
-			}
-}
-
-bool Lista::Vazia(){
-	if (topo == NULL){
-		return 1;
-	} else
-		return 0;
-}
-
-Planta Lista::Retira(){
-	node *temp = new node;
-	Planta x;
-	
-	if (Lista::Vazia() != 1){
-		if (topo->esq == topo->dir){
-			x = topo->info;
-			
-			delete topo;
-		}else if ((topo->esq->esq == topo) && (topo->dir->dir == topo)){
-				temp = topo;
-				x = temp->info; 
-				topo = topo->esq;
-				topo->esq = topo;
-				topo->dir = topo;
-				
-				delete temp;
-			}else {
-					x = topo->info;
-					temp = topo;
-					topo = temp->esq;
-					topo->dir = temp->dir;
-					temp->dir->dir = topo;
-					
-					delete temp;
-				}
-		
-		return x;
-	}
+	for (i=0; i<tam; i++)
+		this->field[i]->checagem = 0;
 	
 }
 
-int Lista::Contador(){
+int SpotPlantar::getNroElementos(){
+	int i, cont;
 	
-	Lista fAux;
-	int cont = 0;
-	Planta aux;
-	
-	while (this->Vazia() != 1){
-		aux = this->Retira();
-		cont++;
-		fAux.Insere(aux);
-	}
-	
-	while (fAux.Vazia() != 1){
-		aux = fAux.Retira();
-		this->Insere(aux);
+	for (i=0; i<tam; i++){
+		if (this->field[i]->checagem != 0)
+			cont++;
 	}
 	
 	return cont;
 }
 
+bool SpotPlantar::Vazia(){
+	if (SpotPlantar::getNroElementos() == 0)
+		return true;
+	else
+		return false;
+}
 
-
-
-
-
-//int main
-
-int main () {
-	
-	Melancia m1;
-	Cereja c1;
-	Cenoura ce1;
-	Lista l1;
-	
-	l1.Insere(m1);
-	l1.Insere(c1);
-	l1.Insere(ce1);
-	
-	
-	
-	
-	return 0;
-	
-	
+bool SpotPlantar::Cheia(){
+	if (SpotPlantar::getNroElementos() == tam)
+		return true;
+	else
+		return false;
 }
 
 
+bool SpotPlantar::Insere(Planta& p1){
+	int i = 0;
+	
+	if (SpotPlantar::Cheia() != 1){
+		for (i=0; i<tam; i++){
+			if (this->field[i]->checagem == 0)
+				this->field[i]->info = p1;
+				this->field[i]->checagem = 1;
+		}
+		
+		return true;
+	} else
+		return false;
+}
+
+//ESSE INDICE RETIRA É O QUE O MÉTODO RECEBE DO MOUSE PARA RETIRAR O ELEMENTO CLICADO
+
+Planta SpotPlantar::Retira(int indiceRetira, bool& deuCerto){
+	int i;
+	
+	for (i=0; i< tam;i++){
+		if (indiceRetira == i){
+			deuCerto = true;
+			this->field[i]->checagem = 0;
+			return this->field[i]->info;
+		} else
+			deuCerto = false;
+	}
+}
+
+
+
+//METODOS LISTA
+
+//AQUI É NECESSÁRIO QUE A LISTA SEJAM INICIADAS COM PLANTINHAS RANDOM MAS AINDA NÃO SEI COMO IMPLEMENTAR ISSO
+//COLOCAR NO LUGAR DE "NULL" QUANDO CONSEGUIR
+Lista::Lista(){
+	int i;
+	
+	for (i=0; i<0; i++){
+		this->field[i]->checagem = 0;
+	}
+	
+}
+
+int Lista::getNroElementos(){
+	int i, cont;
+	
+	for (i=0; i<tamLista; i++){
+		if (this->field[0]->checagem != 0)
+			cont++;
+	}
+	
+	return cont;
+}
+
+bool Lista::Vazia(){
+	if (Lista::getNroElementos() == 0)
+		return true;
+	else
+		return false;
+}
+
+bool Lista::Cheia(){
+	if (Lista::getNroElementos() == tamLista)
+		return true;
+	else
+		return false;
+}
+
+//TODA A VEZ QUE ALGUM ELEMENTO FOR RETIRADO, É CHAMADA AUTOMATICAMENTE ESSA FUNÇÃO TAMBÉM PARA QUE OUTRO SEJA COLOCADO NO LUGAR
+
+void Lista::Insere(Planta& p1){
+	int i;
+	
+	for (i=0; i<0; i++){
+		if (this->field[i]->checagem == 0){
+			this->field[i]->info = p1;
+			this->field[i]->checagem = 1;
+			if (i!= tam){
+				this->field[i]->next = this->field[i+1];
+				this->field[i-1]->next = this->field[i];
+				}
+			else {
+				this->field[i]->next = this->field[0];
+				this->field[i-1]->next = this->field[i];
+			}
+		}
+	}
+}
+
+Planta Lista::Retira(int indiceRetiraLista){
+	int i;
+	for (i=0; i<0; i++){
+		if (indiceRetiraLista == i){
+			if(i!=tamLista || i!=0){
+				this->field[i-1]->next = this->field[i+1];
+			} else if (i==0){
+					this->field[tamLista]->next = this->field[i+1];
+				} else
+						this->field[i-1]->next = this->field[0];
+		}
+	}
+}
+
+
+
+
+
+int main() {
+	
+	bool teste;
+	
+	Melancia m1;
+	Cereja c1;
+	Brocolis b1;
+	
+	SpotPlantar spot;
+	
+	teste = spot.Insere(m1);
+	cout<< spot.getNroElementos() << endl;
+	
+	return 0;
+}
