@@ -3,6 +3,9 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <ctime>
+#include <sstream>
+
+using namespace std;
 
 class jogo : public cScreen{
 private:
@@ -15,6 +18,7 @@ private:
     std::string countdownString;
     std::ostringstream converter;
     sf::Texture slotvazio;
+    sf::Texture vaquinha;
     sf::Sprite background;
     sf::Texture texture;
 
@@ -64,6 +68,13 @@ int jogo::Run(sf::RenderWindow &window){
     //Imagem slot cima direita
     sf::Sprite Slot4(slotvazio);
     Slot4.setPosition(sf::Vector2f(86,-48));
+
+    //Vaquinha
+    if(!vaquinha.loadFromFile("../Images/ibagens_png/de_boa.png")){
+        std::cout << "Error" << std::endl;
+    }
+    sf::Sprite Vaquinha(vaquinha);
+    Vaquinha.setPosition(sf::Vector2f(0,0));
 
     //Background
     if(!texture.loadFromFile("../Images/background.bmp")){
@@ -118,7 +129,7 @@ int jogo::Run(sf::RenderWindow &window){
         int timer = clock.getElapsedTime().asSeconds();
         if (timer > 0 && countdown > 0){
             countdown--;
-            timerText.setString(std::to_string(countdown));
+            timerText.setString(to_string(countdown));
             clock.restart();
         }
         
@@ -129,6 +140,7 @@ int jogo::Run(sf::RenderWindow &window){
         window.draw(Slot2);
         window.draw(Slot3);
         window.draw(Slot4);
+        window.draw(Vaquinha);
         window.draw(timerText);
         window.draw(timerhead);
         window.display();
