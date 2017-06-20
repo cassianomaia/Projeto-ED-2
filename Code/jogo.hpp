@@ -17,12 +17,12 @@ jogo::jogo(void){
 
 int jogo::Run(sf::RenderWindow &window){
 
-    sf::Texture vaquinha;
+    /*sf::Texture vaquinha;
     if(!vaquinha.loadFromFile("../Images/terra.bmp")){
         std::cout << "Error" << std::endl;
     }
     sf::Sprite Vaquinha_acordada(vaquinha);
-    Vaquinha_acordada.setPosition(sf::Vector2f(150,150));
+    Vaquinha_acordada.setPosition(sf::Vector2f(150,150));*/
 
 
     sf::Sprite background;
@@ -79,7 +79,7 @@ int jogo::Run(sf::RenderWindow &window){
         window.clear();
         window.draw(background);
         player.draw(window);
-        window.draw(Vaquinha_acordada);
+        //window.draw(Vaquinha_acordada);
         window.display();
 
     }
