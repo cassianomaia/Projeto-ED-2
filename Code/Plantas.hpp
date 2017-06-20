@@ -13,11 +13,12 @@ public:
 
 	void draw(sf::RenderWindow &window);
 	int PositionPlants(int posicaox, int posicaoy);
+	int RetirarLeite(int posicaox, int posicaoy);
 
 private:
 
 	int posicaox, posicaoy;
-	int planta, money;
+	int planta, money, leite;
 	int icereja, imelancia, itomate, icenoura, ibrocolis, ibeterraba;
 
 	sf::Font font;
@@ -203,5 +204,15 @@ int Plantas::PositionPlants(int posicaox, int posicaoy){
 	}
 
 	return planta;
+}
+
+int Plantas::RetirarLeite(int posicaox, int posicaoy){
+	if (posicaoy>=289 && posicaoy<=475){
+		if (posicaox>= 568 && posicaox<=733){
+			leite = 1;
+			std::cout << "Leite" << std::endl;
+			return leite;
+		}	
+	}
 }
 

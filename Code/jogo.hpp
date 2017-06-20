@@ -198,13 +198,26 @@ int jogo::Run(sf::RenderWindow &window){
         }
         if(countdown_vaca==0){
             Vaquinha.setTexture(vaquinha_leite);
+            switch(event.type){
+                case sf::Event::MouseButtonPressed:
+                    
+                    switch(event.key.code){
+
+                        case sf::Mouse::Left:
+                            std::cout << "Pressed" << std::endl;
+                            std::cout << posicaox << " , "<< posicaoy << std::endl;
+                            if(player.RetirarLeite(posicaox, posicaoy) == 1){
+                                countdown_vaca = 10;
+                                Vaquinha.setTexture(vaquinha);
+                            }
+                        break;
+                    }
+            }
         }
+
 
         mousesprite.setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(window)));
         window.clear();
-        //if (player.PositionPlants(posicaox, posicaoy) != -1){
-
-        //}
         window.draw(background);
         player.draw(window);
         window.draw(Slot1);
