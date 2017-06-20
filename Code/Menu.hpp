@@ -26,7 +26,7 @@ private:
 Menu::Menu(float width, float height){
 
 	if (!font.loadFromFile("../Fonts/barn.otf")){
-		//handle error
+		std::cout << "Error" << std::endl;
 	}
 
 	menu[0].setFont(font);

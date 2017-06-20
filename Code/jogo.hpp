@@ -1,10 +1,19 @@
 #include "cScreen.hpp"
 #include "Plantas.hpp"
 #include <SFML/Graphics.hpp>
+#include <iostream>
+#include <ctime>
 
 class jogo : public cScreen{
 private:
     int posicaox, posicaoy, posicao;
+    int countdown = 30;
+    sf::Clock clock;
+    sf::Font font;
+    sf::Text timerText;
+    sf::Text timerhead;
+    std::string countdownString;
+    std::ostringstream converter;
 
 public:
 	jogo(void);
@@ -16,6 +25,23 @@ jogo::jogo(void){
 }
 
 int jogo::Run(sf::RenderWindow &window){
+
+    if (!font.loadFromFile("../Fonts/barn.otf")){
+        std::cout << "Error" << std::endl;
+    }
+
+    converter << countdown;
+    countdownString = converter.str();
+    timerText.setFont(font);
+    timerText.setString(countdownString);
+    timerText.setColor(sf::Color::Black);
+    timerText.setPosition(730, 0);
+    timerText.setCharacterSize(40);
+    timerhead.setFont(font);
+    timerhead.setString("Tempo restante:");
+    timerhead.setColor(sf::Color::Black);
+    timerhead.setPosition(473, 0);
+    timerhead.setCharacterSize(40);
 
     //Imagem slot baixo direita
     sf::Texture slot1;
@@ -100,6 +126,13 @@ int jogo::Run(sf::RenderWindow &window){
             }
 
         }
+
+        int timer = clock.getElapsedTime().asSeconds();
+        if (timer > 0 && countdown > 0){
+            countdown--;
+            timerText.setString(std::to_string(countdown));
+            clock.restart();
+        }
         
         window.clear();
         window.draw(background);
@@ -108,6 +141,8 @@ int jogo::Run(sf::RenderWindow &window){
         window.draw(Slot2);
         window.draw(Slot3);
         window.draw(Slot4);
+        window.draw(timerText);
+        window.draw(timerhead);
         window.display();
 
     }
