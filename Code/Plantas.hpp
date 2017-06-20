@@ -17,12 +17,12 @@ public:
 private:
 
 	int posicaox, posicaoy;
-	int planta;
+	int planta, money;
 	int icereja, imelancia, itomate, icenoura, ibrocolis, ibeterraba;
 
 	sf::Font font;
-	//sf::Text player[6];
 	sf::Text atext[6];
+	sf::Text dinheiro[2];
 
 };
 
@@ -34,6 +34,8 @@ Plantas::Plantas(float width, float height){
 	imelancia = 5; 
 	ibeterraba = 5;
 	ibrocolis = 5;
+
+	money = 0;
 
 	if (!font.loadFromFile("../Fonts/barn.otf")){
 		//handle error
@@ -88,6 +90,23 @@ Plantas::Plantas(float width, float height){
 	atext[5].setCharacterSize(30);	
 	atext[5].setString(ss5.str());
 
+	dinheiro[0].setFont(font);
+	dinheiro[0].setColor(sf::Color::Black);
+	dinheiro[0].setPosition(sf::Vector2f(580,27));	
+	dinheiro[0].setCharacterSize(40);	
+	dinheiro[0].setString("DINHEIRO: ");
+
+	std::ostringstream ss6;
+	ss6 << money << endl;
+	dinheiro[1].setFont(font);
+	dinheiro[1].setColor(sf::Color::Black);
+	dinheiro[1].setPosition(sf::Vector2f(730,27));	
+	dinheiro[1].setCharacterSize(40);	
+	dinheiro[1].setString(ss6.str());
+
+
+	
+
 	planta = -1;
 
 }
@@ -99,6 +118,9 @@ Plantas::~Plantas(){
 void Plantas::draw(sf::RenderWindow &window){
 	for(int i=0; i < 6; i++){
 		window.draw(atext[i]);
+	}
+	for(int j=0; j < 2; j++){
+		window.draw(dinheiro[j]);
 	}
 }
 
