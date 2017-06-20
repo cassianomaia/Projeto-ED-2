@@ -11,6 +11,7 @@ class jogo : public cScreen{
 private:
     int posicaox, posicaoy, posicao;
     int countdown = 30;
+    int countdown_vaca = 10;
     sf::Clock clock;
     sf::Font font;
     sf::Text timerText;
@@ -19,6 +20,7 @@ private:
     std::ostringstream converter;
     sf::Texture slotvazio;
     sf::Texture vaquinha;
+    sf::Texture vaquinha_leite;
     sf::Sprite background;
     sf::Texture texture;
 
@@ -76,6 +78,10 @@ int jogo::Run(sf::RenderWindow &window){
     sf::Sprite Vaquinha(vaquinha);
     Vaquinha.setPosition(sf::Vector2f(0,0));
 
+    if(!vaquinha_leite.loadFromFile("../Images/ibagens_png/dormindo_com_balde.png")){
+        std::cout << "Error" << std::endl;
+    }
+
     //Background
     if(!texture.loadFromFile("../Images/background.bmp")){
         std::cout << "Error" << std::endl;
@@ -123,11 +129,21 @@ int jogo::Run(sf::RenderWindow &window){
 
         }
 
+        //Cronômetro Geral
         int timer = clock.getElapsedTime().asSeconds();
         if (timer > 0 && countdown > 0){
             countdown--;
             timerText.setString(to_string(countdown));
             clock.restart();
+        }
+
+        int timer_vaca = clock.getElapsedTime().asSeconds();
+        if (timer_vaca > 0 && countdown_vaca > 0){
+            countdown_vaca--;
+            clock.restart();
+        }
+        if(countdown_vaca==0){
+            Vaquinha.setTexture(vaquinha_leite);
         }
         
         window.clear();
