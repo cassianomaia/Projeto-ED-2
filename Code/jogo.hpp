@@ -140,7 +140,7 @@ int jogo::Run(sf::RenderWindow &window){
         int timer_vaca = clock.getElapsedTime().asSeconds();
         if (timer_vaca > 0 && countdown_vaca > 0){
             countdown_vaca--;
-            clock.restart();
+            clock.restart(); //
         }
         if(countdown_vaca==0){
             Vaquinha.setTexture(vaquinha_leite);
