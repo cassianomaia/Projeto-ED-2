@@ -12,6 +12,7 @@ using namespace std;
 class Planta{
 	public: 
 			int getValor();
+			int getTempo();
 			Planta();
 	
 	protected:
@@ -127,6 +128,14 @@ Cereja::Cereja(): Planta(){
 
 Planta::Planta(){
 	
+}
+
+int Planta::getValor(){
+	return this->valor;
+}
+
+int Planta::getTempo(){
+	return this->tempoCresc;
 }
 
 
@@ -282,7 +291,7 @@ Planta Lista::Retira(int indiceRetiraLista){
 int main() {
 	
 	bool teste;
-	int vm1, vc1, vb1;
+	int tm1, tc1, tb1;
 
 	cout << "Bool e ints criados" <<endl;
 	
@@ -292,12 +301,18 @@ int main() {
 	
 	cout << "Plantas alocadas" << endl;
 	
-	vm1 = m1.getValor();
-	vc1 = c1.getValor();
-	vb1 = b1.getValor();
+	tm1 = m1.getValor();
+	tc1 = c1.getValor();
+	tb1 = b1.getValor();
 
-	cout << "Valores:" << vm1 << " - " << vc1 << " - " << vb1 << endl;
-	
+	cout << "Valores:" << tm1 << " - " << tc1 << " - " << tb1 << endl;
+
+	tm1 = m1.getTempo();
+	tc1 = c1.getTempo();
+	tb1 = b1.getTempo();	
+
+	cout << "Tempo:" << tm1 << " - " << tc1 << " - " << tb1 << endl;
+
 	SpotPlantar spot;
 	
 	cout << "Spot criado" << endl;
