@@ -282,14 +282,28 @@ Planta Lista::Retira(int indiceRetiraLista){
 int main() {
 	
 	bool teste;
+	int vm1, vc1, vb1;
+
+	cout << "Bool e ints criados" <<endl;
 	
 	Melancia m1;
 	Cereja c1;
 	Brocolis b1;
 	
+	cout << "Plantas alocadas" << endl;
+	
+	vm1 = m1.getValor();
+	vc1 = c1.getValor();
+	vb1 = b1.getValor();
+
+	cout << "Valores:" << vm1 << " - " << vc1 << " - " << vb1 << endl;
+	
 	SpotPlantar spot;
 	
+	cout << "Spot criado" << endl;
+
 	teste = spot.Insere(m1);
+	
 	cout<< spot.getNroElementos() << endl;
 	
 	return 0;
