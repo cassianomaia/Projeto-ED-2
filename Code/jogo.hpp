@@ -21,6 +21,7 @@ private:
     std::string countdownString;
     std::ostringstream converter;
     sf::Texture slotvazio;
+    sf::Texture semeado;
     sf::Texture vaquinha;
     sf::Texture vaquinha_leite;
     sf::Texture mouse0;
@@ -60,6 +61,11 @@ int jogo::Run(sf::RenderWindow &window){
     timerhead.setColor(sf::Color::Black);
     timerhead.setPosition(473, 0);
     timerhead.setCharacterSize(40);
+
+
+    if(!semeado.loadFromFile("../Images/ibagens_png/semeado.png")){
+        std::cout << "Error" << std::endl;
+    }
 
     if(!slotvazio.loadFromFile("../Images/vazio.png")){
         std::cout << "Error" << std::endl;
@@ -137,6 +143,15 @@ int jogo::Run(sf::RenderWindow &window){
                             std::cout << "Pressed" << std::endl;
                             std::cout << posicaox << " , "<< posicaoy << std::endl;
                             switch (mousestate = player.PositionPlants(posicaox, posicaoy)){
+                                case -1:
+                                    if (mousesprite.getGlobalBounds().intersects(Slot1.getGlobalBounds())){
+                                        Slot1.setTexture(semeado);
+                                        std::cout << "Plantar" << std::endl;
+                                    }
+                                    else if(mousesprite.getGlobalBounds().intersects(Slot2.getGlobalBounds())){
+                                        Slot2.setTexture(semeado);
+                                    }
+                                break;
                                 case 0:
                                     mousesprite.setTexture(mouse0);
                                 break;
@@ -230,6 +245,7 @@ int jogo::Run(sf::RenderWindow &window){
         if (mousestate != -1){
             window.draw(mousesprite);
         }
+
         window.display();
 
     }
