@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 using namespace std;
-#define tam 3
+#define tam 4
 #define tamLista 6
 
 
@@ -27,36 +27,6 @@ struct node{
 	int checagem;
 	
 	struct node *next;
-};
-
-class SpotPlantar {
-	public:
-			SpotPlantar();
-			bool Vazia();
-			bool Cheia();
-			bool Insere(Planta&);
-			Planta Retira(int indiceRetira, bool& deuCerto);
-			int getNroElementos();
-			
-	protected:
-			node *field[tam];
-};
-
-
-//CLASSE LISTA DE ESCOLHA ONDE AS PLANTAS VEM RANDOM
-
-class Lista {
-		public:
-				Lista();
-				bool Vazia();
-				bool Cheia();
-				void Insere(Planta&);
-				Planta Retira(int indiceRetiraLista);
-				int getNroElementos();
-			
-		protected:
-				node *field[tamLista];
-			
 };
 
 class Melancia : public Planta {
@@ -140,27 +110,38 @@ int Planta::getTempo(){
 
 
 
+class SpotPlantar {
+	public:
+			SpotPlantar();
+			bool Vazia();
+			bool Cheia();
+			bool Insere(Planta&);
+			Planta Retira(int indiceRetira, bool& deuCerto);
+			int getNroElementos();
+			
+	protected:
+			node *field[tam];
+};
 
 //METODOS DA SPOTPLANTAR
-
-bool deuCerto = true;
-
+	
 SpotPlantar::SpotPlantar(){
 	int i;
 	
-	for (i=0; i<tam; i++)
-		this->field[i]->checagem = 0;
-	
+	for (i=0; i<tam; i++){
+		field[i] = new node;
+		field[i]->checagem = 0;
+	}
 }
 
 int SpotPlantar::getNroElementos(){
 	int i, cont;
-	
+	cont = 0;
 	for (i=0; i<tam; i++){
-		if (this->field[i]->checagem != 0)
+		if (field[i]->checagem != 0){
 			cont++;
+		}
 	}
-	
 	return cont;
 }
 
@@ -182,11 +163,11 @@ bool SpotPlantar::Cheia(){
 bool SpotPlantar::Insere(Planta& p1){
 	int i = 0;
 	
-	if (SpotPlantar::Cheia() != 1){
+	if (SpotPlantar::Cheia() != true){
 		for (i=0; i<tam; i++){
-			if (this->field[i]->checagem == 0)
-				this->field[i]->info = p1;
-				this->field[i]->checagem = 1;
+			if (field[i]->checagem == 0)
+				field[i]->info = p1;
+				field[i]->checagem = 1;
 		}
 		
 		return true;
@@ -202,14 +183,30 @@ Planta SpotPlantar::Retira(int indiceRetira, bool& deuCerto){
 	for (i=0; i< tam;i++){
 		if (indiceRetira == i){
 			deuCerto = true;
-			this->field[i]->checagem = 0;
-			return this->field[i]->info;
+			field[i]->checagem = 0;
+			return field[i]->info;
 		} else
 			deuCerto = false;
 	}
 }
 
 
+//CLASSE LISTA DE ESCOLHA ONDE AS PLANTAS VEM RANDOM
+
+class Lista {
+		public:
+				Lista();
+				~Lista();
+				bool Vazia();
+				bool Cheia();
+				void Insere(Planta&);
+				Planta Retira(int indiceRetiraLista);
+				int getNroElementos();
+			
+		protected:
+				node *field[tamLista];
+			
+};
 
 //METODOS LISTA
 
@@ -222,6 +219,10 @@ Lista::Lista(){
 		this->field[i]->checagem = 0;
 	}
 	
+}
+
+Lista::~Lista(){
+	delete [] field;
 }
 
 int Lista::getNroElementos(){
@@ -316,8 +317,11 @@ int main() {
 	SpotPlantar spot;
 	
 	cout << "Spot criado" << endl;
+	cout << "Spot vazio:" << spot.Vazia() << endl;
 
 	teste = spot.Insere(m1);
+
+	cout << "Inseriu m1" << endl;
 	
 	cout<< spot.getNroElementos() << endl;
 	
