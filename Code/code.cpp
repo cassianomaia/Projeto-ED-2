@@ -115,7 +115,7 @@ class SpotPlantar {
 			SpotPlantar();
 			bool Vazia();
 			bool Cheia();
-			bool Insere(Planta&);
+			bool Insere(Planta&, int);
 			Planta Retira(int indiceRetira, bool& deuCerto);
 			int getNroElementos();
 			
@@ -160,16 +160,12 @@ bool SpotPlantar::Cheia(){
 }
 
 
-bool SpotPlantar::Insere(Planta& p1){
-	int i = 0;
-	
+bool SpotPlantar::Insere(Planta& p1, int i){
 	if (SpotPlantar::Cheia() != true){
-		for (i=0; i<tam; i++){
-			if (field[i]->checagem == 0)
-				field[i]->info = p1;
-				field[i]->checagem = 1;
+		if (field[i]->checagem == 0){
+			field[i]->info = p1;
+			field[i]->checagem = 1;
 		}
-		
 		return true;
 	} else
 		return false;
@@ -320,7 +316,7 @@ int main() {
 	cout << "Spot criado" << endl;
 	cout << "Spot vazio:" << spot.Vazia() << endl;
 
-	teste = spot.Insere(m1);
+	teste = spot.Insere(m1, 1);
 
 	cout << "Inseriu m1" << endl;
 	
