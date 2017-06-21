@@ -13,8 +13,13 @@ private:
     int mousestate;
     int countdown = 30;
     int countdown_vaca = 10;
-    sf::Clock clock;
-    sf::Clock clock2;
+    int countdown_slot0 = 0;
+    int countdown_slot1 = 0;
+    int countdown_slot2 = 0;
+    int countdown_slot3 = 0;
+    int countdown_slot4 = 0;
+    int countdown_slot5 = 0;
+    sf::Clock clockgeral;
     sf::Font font;
     sf::Text timerText;
     sf::Text timerhead;
@@ -210,18 +215,34 @@ int jogo::Run(sf::RenderWindow &window){
         }
 
         //Cronômetro Geral
-        int timer = clock.getElapsedTime().asSeconds();
+        int timer = clockgeral.getElapsedTime().asSeconds();
         if (timer > 0 && countdown > 0){
             countdown--;
+            if (countdown_vaca > 0){
+                countdown_vaca--;
+            }
+            if (countdown_slot0 > 0){
+                countdown_slot0--;
+            }
+            if (countdown_slot1 > 0){
+                countdown_slot1--;
+            }
+            if (countdown_slot2 > 0){
+                countdown_slot2--;
+            }
+            if (countdown_slot3 > 0){
+                countdown_slot3--;
+            }
+            if (countdown_slot4 > 0){
+                countdown_slot4--;
+            }
+            if (countdown_slot5 > 0){
+                countdown_slot5--;
+            }
             timerText.setString(to_string(countdown));
-            clock.restart();
+            clockgeral.restart();
         }
 
-        int timer_vaca = clock2.getElapsedTime().asSeconds();
-        if (timer_vaca > 0 && countdown_vaca > 0){
-            countdown_vaca--;
-            clock2.restart(); //
-        }
         if(countdown_vaca==0){
             Vaquinha.setTexture(vaquinha_leite);
             switch(event.type){
