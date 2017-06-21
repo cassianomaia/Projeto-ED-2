@@ -216,7 +216,8 @@ Lista::Lista(){
 	int i;
 	
 	for (i=0; i<0; i++){
-		this->field[i]->checagem = 0;
+		field[i] = new node;
+		field[i]->checagem = 0;
 	}
 	
 }
@@ -229,7 +230,7 @@ int Lista::getNroElementos(){
 	int i, cont;
 	
 	for (i=0; i<tamLista; i++){
-		if (this->field[0]->checagem != 0)
+		if (field[0]->checagem != 0)
 			cont++;
 	}
 	
@@ -256,16 +257,16 @@ void Lista::Insere(Planta& p1){
 	int i;
 	
 	for (i=0; i<0; i++){
-		if (this->field[i]->checagem == 0){
-			this->field[i]->info = p1;
-			this->field[i]->checagem = 1;
+		if (field[i]->checagem == 0){
+			field[i]->info = p1;
+			field[i]->checagem = 1;
 			if (i!= tam){
-				this->field[i]->next = this->field[i+1];
-				this->field[i-1]->next = this->field[i];
+				field[i]->next = field[i+1];
+				field[i-1]->next = field[i];
 				}
 			else {
-				this->field[i]->next = this->field[0];
-				this->field[i-1]->next = this->field[i];
+				field[i]->next = field[0];
+				field[i-1]->next = field[i];
 			}
 		}
 	}
@@ -276,11 +277,11 @@ Planta Lista::Retira(int indiceRetiraLista){
 	for (i=0; i<0; i++){
 		if (indiceRetiraLista == i){
 			if(i!=tamLista || i!=0){
-				this->field[i-1]->next = this->field[i+1];
+				field[i-1]->next = field[i+1];
 			} else if (i==0){
-					this->field[tamLista]->next = this->field[i+1];
+					field[tamLista]->next = field[i+1];
 				} else
-						this->field[i-1]->next = this->field[0];
+					field[i-1]->next = field[0];
 		}
 	}
 }
