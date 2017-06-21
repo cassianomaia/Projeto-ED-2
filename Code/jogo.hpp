@@ -63,28 +63,28 @@ int jogo::Run(sf::RenderWindow &window){
     timerhead.setCharacterSize(40);
 
 
-    if(!semeado.loadFromFile("../Images/ibagens_png/semeado.png")){
+    if(!semeado.loadFromFile("../Images/ibagens_png/semente.png")){
         std::cout << "Error" << std::endl;
     }
 
-    if(!slotvazio.loadFromFile("../Images/vazio.png")){
+    if(!slotvazio.loadFromFile("../Images/ibagens_png/terra5.png")){
         std::cout << "Error" << std::endl;
     }
     //Imagem slot baixo direita
     sf::Sprite Slot1(slotvazio);
-    Slot1.setPosition(sf::Vector2f(30,-10));
+    Slot1.setPosition(sf::Vector2f(200,420));
 
     //Imagem slot baixo esquerda
     sf::Sprite Slot2(slotvazio);
-    Slot2.setPosition(sf::Vector2f(-36,-32));
+    Slot2.setPosition(sf::Vector2f(132,398));
 
     //Imagem slot cima esquerda
     sf::Sprite Slot3(slotvazio);
-    Slot3.setPosition(sf::Vector2f(20,-70));
+    Slot3.setPosition(sf::Vector2f(191,360));
 
     //Imagem slot cima direita
     sf::Sprite Slot4(slotvazio);
-    Slot4.setPosition(sf::Vector2f(86,-48));
+    Slot4.setPosition(sf::Vector2f(260,382));
 
     //Vaquinha
     if(!vaquinha.loadFromFile("../Images/ibagens_png/de_boa.png")){
@@ -144,12 +144,23 @@ int jogo::Run(sf::RenderWindow &window){
                             std::cout << posicaox << " , "<< posicaoy << std::endl;
                             switch (mousestate = player.PositionPlants(posicaox, posicaoy)){
                                 case -1:
-                                    if (mousesprite.getGlobalBounds().intersects(Slot1.getGlobalBounds())){
+                                    if (Slot1.getGlobalBounds().contains(posicaox, posicaoy )){
                                         Slot1.setTexture(semeado);
-                                        std::cout << "Plantar" << std::endl;
+                                        std::cout << "slot 1" << std::endl;
                                     }
-                                    else if(mousesprite.getGlobalBounds().intersects(Slot2.getGlobalBounds())){
+                                    else if(Slot2.getGlobalBounds().contains(posicaox, posicaoy )){
                                         Slot2.setTexture(semeado);
+                                        std::cout << "slot 2" << std::endl;
+
+                                    }
+                                    else if(Slot3.getGlobalBounds().contains(posicaox, posicaoy )){
+                                        Slot3.setTexture(semeado);
+                                        std::cout << "slot 3" << std::endl;
+                                    }
+                                    else if(Slot4.getGlobalBounds().contains(posicaox, posicaoy )){
+                                        Slot4.setTexture(semeado);
+                                        std::cout << "slot 4" << std::endl;
+
                                     }
                                 break;
                                 case 0:
