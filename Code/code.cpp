@@ -68,32 +68,32 @@ class Cereja : public Planta {
 
 Melancia::Melancia() : Planta(){
 	tempoCresc = 15;
-	valor = 2000;
+	valor = 200;
 };
 
 Tomate::Tomate() : Planta(){
 	tempoCresc = 9;
-	valor = 900;
+	valor = 90;
 };
 
 Cenoura::Cenoura() : Planta(){
 	tempoCresc = 6;
-	valor = 400;
+	valor = 40;
 };
 
 Beterraba::Beterraba() : Planta(){
 	tempoCresc = 4;
-	valor = 250;
+	valor = 25;
 };
 
 Brocolis::Brocolis(): Planta(){
 	tempoCresc = 2;
-	valor = 100;
+	valor = 10;
 };
 
 Cereja::Cereja(): Planta(){
 	tempoCresc = 12;
-	valor = 1250;
+	valor = 125;
 };
 
 Planta::Planta(){
@@ -207,7 +207,7 @@ class Lista {
 //METODOS LISTA
 
 //AQUI É NECESSÁRIO QUE A LISTA SEJAM INICIADAS COM PLANTINHAS RANDOM MAS AINDA NÃO SEI COMO IMPLEMENTAR ISSO
-//COLOCAR NO LUGAR DE "NULL" QUANDO CONSEGUIR
+//COLOCAR NO LUGAR DE "NULL" QUANDO CONSEGUIR - null retirado
 Lista::Lista(){
 	int i;
 	
@@ -215,7 +215,6 @@ Lista::Lista(){
 		field[i] = new node;
 		field[i]->checagem = 0;
 	}
-	
 }
 
 Lista::~Lista(){
@@ -229,7 +228,6 @@ int Lista::getNroElementos(){
 		if (field[0]->checagem != 0)
 			cont++;
 	}
-	
 	return cont;
 }
 

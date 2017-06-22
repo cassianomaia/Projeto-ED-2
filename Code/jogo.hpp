@@ -29,12 +29,12 @@ private:
     sf::Texture semeado;
     sf::Texture vaquinha;
     sf::Texture vaquinha_leite;
-    sf::Texture mouse0;
-    sf::Texture mouse1;
-    sf::Texture mouse2;
-    sf::Texture mouse3;
-    sf::Texture mouse4;
-    sf::Texture mouse5;
+    sf::Texture texcereja;
+    sf::Texture texmelancia;
+    sf::Texture textomate;
+    sf::Texture texcenoura;
+    sf::Texture texbrocolis;
+    sf::Texture texbeterraba;
     sf::Sprite mousesprite;
     sf::Sprite background;
     sf::Texture texture;
@@ -102,22 +102,22 @@ int jogo::Run(sf::RenderWindow &window){
     }
 
     //mouse textures
-    if(!mouse0.loadFromFile("../Images/Mouse/cereja.png")){
+    if(!texcereja.loadFromFile("../Images/Mouse/cereja.png")){
         std::cout << "Error" << std::endl;
     }
-    if(!mouse1.loadFromFile("../Images/Mouse/melancia.png")){
+    if(!texmelancia.loadFromFile("../Images/Mouse/melancia.png")){
         std::cout << "Error" << std::endl;
     }
-    if(!mouse2.loadFromFile("../Images/Mouse/tomate.png")){
+    if(!textomate.loadFromFile("../Images/Mouse/tomate.png")){
         std::cout << "Error" << std::endl;
     }
-    if(!mouse3.loadFromFile("../Images/Mouse/cenoura.png")){
+    if(!texcenoura.loadFromFile("../Images/Mouse/cenoura.png")){
         std::cout << "Error" << std::endl;
     }
-    if(!mouse4.loadFromFile("../Images/Mouse/brocolis.png")){
+    if(!texbrocolis.loadFromFile("../Images/Mouse/brocolis.png")){
         std::cout << "Error" << std::endl;
     }
-    if(!mouse5.loadFromFile("../Images/Mouse/beterraba.png")){
+    if(!texbeterraba.loadFromFile("../Images/Mouse/beterraba.png")){
         std::cout << "Error" << std::endl;
     }
 
@@ -155,7 +155,6 @@ int jogo::Run(sf::RenderWindow &window){
                                     else if(Slot2.getGlobalBounds().contains(posicaox, posicaoy )){
                                         Slot2.setTexture(semeado);
                                         std::cout << "slot 2" << std::endl;
-
                                     }
                                     else if(Slot3.getGlobalBounds().contains(posicaox, posicaoy )){
                                         Slot3.setTexture(semeado);
@@ -164,34 +163,32 @@ int jogo::Run(sf::RenderWindow &window){
                                     else if(Slot4.getGlobalBounds().contains(posicaox, posicaoy )){
                                         Slot4.setTexture(semeado);
                                         std::cout << "slot 4" << std::endl;
-
                                     }
                                 break;
                                 case 0:
-                                    mousesprite.setTexture(mouse0);
+                                    mousesprite.setTexture(texcereja);
                                 break;
 
                                 case 1:
-                                    mousesprite.setTexture(mouse1);
+                                    mousesprite.setTexture(texmelancia);
                                 break;
 
                                 case 2:
-                                    mousesprite.setTexture(mouse2);
+                                    mousesprite.setTexture(textomate);
                                 break;
 
                                 case 3:
-                                    mousesprite.setTexture(mouse3);
+                                    mousesprite.setTexture(texcenoura);
                                 break;
 
                                 case 4:
-                                    mousesprite.setTexture(mouse4);
+                                    mousesprite.setTexture(texbrocolis);
                                 break;
 
                                 case 5:
-                                    mousesprite.setTexture(mouse5);
+                                    mousesprite.setTexture(texbeterraba);
                                 break;
                             }
-
                         break;
                     }
 
@@ -255,7 +252,7 @@ int jogo::Run(sf::RenderWindow &window){
                             if(player.RetirarLeite(posicaox, posicaoy) == 1){
                                 countdown_vaca = 10;
                                 Vaquinha.setTexture(vaquinha);
-                                player.addmoney(500);
+                                player.addmoney(50);
                             }
                         break;
                     }
