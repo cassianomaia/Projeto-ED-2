@@ -214,5 +214,5 @@ int Plantas::RetirarLeite(int posicaox, int posicaoy){
 }
 
 void Plantas::addmoney(int qtd){
-	this->money = qtd;
+	this->money += qtd;
 }
