@@ -3,6 +3,9 @@
 
 class howto : public cScreen{
 private:
+    sf::Texture texture;
+    sf::Texture htp;
+
 
 public:
 	howto(void);
@@ -14,6 +17,13 @@ howto::howto(void){
 }
 
 int howto::Run(sf::RenderWindow &window){
+
+    if (!htp.loadFromFile("../Images/HTP.png")){
+        //erro
+    }
+    sf::Sprite howtoplay(htp);
+    howtoplay.setPosition(sf::Vector2f(100,200));
+
 
     sf::Font font;
     if (!font.loadFromFile("../Fonts/barn.otf")){
@@ -28,7 +38,6 @@ int howto::Run(sf::RenderWindow &window){
     text.setCharacterSize(100);
 
     sf::Sprite background;
-    sf::Texture texture;
 
     if(!texture.loadFromFile("../Images/fundo.bmp")){
         std::cout << "Error" << std::endl;
@@ -53,7 +62,7 @@ int howto::Run(sf::RenderWindow &window){
 
         window.draw(background);
         window.draw(text);
-        //window.clear(sf::Color::White);
+        window.draw(howtoplay);
         window.display();
     }
 	return (-1);
