@@ -14,6 +14,7 @@ public:
 	void draw(sf::RenderWindow &window);
 	int PositionPlants(int posicaox, int posicaoy);
 	int RetirarLeite(int posicaox, int posicaoy);
+	void addmoney(int qtd);
 
 private:
 
@@ -35,8 +36,6 @@ Plantas::Plantas(float width, float height){
 	imelancia = 5; 
 	ibeterraba = 5;
 	ibrocolis = 5;
-
-	money = 0;
 
 	if (!font.loadFromFile("../Fonts/barn.otf")){
 		//handle error
@@ -103,10 +102,7 @@ Plantas::Plantas(float width, float height){
 	dinheiro[1].setColor(sf::Color::Black);
 	dinheiro[1].setPosition(sf::Vector2f(730,27));	
 	dinheiro[1].setCharacterSize(40);	
-	dinheiro[1].setString(ss6.str());
-
-
-	
+	dinheiro[1].setString(ss6.str());	
 
 	planta = -1;
 
@@ -120,6 +116,7 @@ void Plantas::draw(sf::RenderWindow &window){
 	for(int i=0; i < 6; i++){
 		window.draw(atext[i]);
 	}
+	dinheiro[1].setString(to_string(money));
 	for(int j=0; j < 2; j++){
 		window.draw(dinheiro[j]);
 	}
@@ -216,3 +213,6 @@ int Plantas::RetirarLeite(int posicaox, int posicaoy){
 	}
 }
 
+void Plantas::addmoney(int qtd){
+	this->money = qtd;
+}

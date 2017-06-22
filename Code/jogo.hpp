@@ -67,7 +67,6 @@ int jogo::Run(sf::RenderWindow &window){
     timerhead.setPosition(473, 0);
     timerhead.setCharacterSize(40);
 
-
     if(!semeado.loadFromFile("../Images/ibagens_png/semente.png")){
         std::cout << "Error" << std::endl;
     }
@@ -256,6 +255,7 @@ int jogo::Run(sf::RenderWindow &window){
                             if(player.RetirarLeite(posicaox, posicaoy) == 1){
                                 countdown_vaca = 10;
                                 Vaquinha.setTexture(vaquinha);
+                                player.addmoney(500);
                             }
                         break;
                     }
