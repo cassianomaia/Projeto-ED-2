@@ -10,7 +10,7 @@ using namespace std;
 class jogo : public cScreen{
 private:
     int posicaox, posicaoy, posicao;
-    int mousestate;
+    int mousestate, plantstate;
     int countdown = 30;
     int countdown_vaca = 10;
     int countdown_slot0 = 0;
@@ -122,12 +122,31 @@ int jogo::Run(sf::RenderWindow &window){
     }
 
     //Background
-    if(!texture.loadFromFile("../Images/background.bmp")){
+    if(!texture.loadFromFile("../Images/fundo_com_retangulo.bmp")){
         std::cout << "Error" << std::endl;
     }
     background.setTexture(texture);
 
     Plantas player(window.getSize().x, window.getSize().y);
+
+    //Plantinhas
+    sf::Sprite Planta1(texcenoura);
+    Planta1.setPosition(sf::Vector2f(4,495));
+
+    sf::Sprite Planta2(texmelancia);
+    Planta2.setPosition(sf::Vector2f(60,495));
+
+    sf::Sprite Planta3(textomate);
+    Planta3.setPosition(sf::Vector2f(120,495));
+
+    sf::Sprite Planta4(texcenoura);
+    Planta4.setPosition(sf::Vector2f(170,495));
+
+    sf::Sprite Planta5(texbrocolis);
+    Planta5.setPosition(sf::Vector2f(230,495));
+
+    sf::Sprite Planta6(texbeterraba);
+    Planta6.setPosition(sf::Vector2f(280,495));
 
 
     while (window.isOpen()){
@@ -164,29 +183,39 @@ int jogo::Run(sf::RenderWindow &window){
                                         Slot4.setTexture(semeado);
                                         std::cout << "slot 4" << std::endl;
                                     }
+                                    else {
+                                        player.retornaplanta(plantstate);
+                                    }
+                                    plantstate = -1;
                                 break;
                                 case 0:
                                     mousesprite.setTexture(texcereja);
+                                    plantstate = 0;
                                 break;
 
                                 case 1:
                                     mousesprite.setTexture(texmelancia);
+                                    plantstate = 1;
                                 break;
 
                                 case 2:
                                     mousesprite.setTexture(textomate);
+                                    plantstate = 2;
                                 break;
 
                                 case 3:
                                     mousesprite.setTexture(texcenoura);
+                                    plantstate = 3;
                                 break;
 
                                 case 4:
                                     mousesprite.setTexture(texbrocolis);
+                                    plantstate = 4;
                                 break;
 
                                 case 5:
                                     mousesprite.setTexture(texbeterraba);
+                                    plantstate = 5;
                                 break;
                             }
                         break;
@@ -271,6 +300,13 @@ int jogo::Run(sf::RenderWindow &window){
         window.draw(Vaquinha);
         window.draw(timerText);
         window.draw(timerhead);
+        window.draw(Planta1);
+        window.draw(Planta2);
+        window.draw(Planta3);
+        window.draw(Planta4);
+        window.draw(Planta5);
+        window.draw(Planta6);
+
         if (mousestate != -1){
             window.draw(mousesprite);
         }

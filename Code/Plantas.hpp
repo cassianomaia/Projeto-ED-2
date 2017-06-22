@@ -15,6 +15,7 @@ public:
 	int PositionPlants(int posicaox, int posicaoy);
 	int RetirarLeite(int posicaox, int posicaoy);
 	void addmoney(int qtd);
+	void retornaplanta(int index);
 
 private:
 
@@ -42,7 +43,7 @@ Plantas::Plantas(float width, float height){
 	}
 
 
-	std::ostringstream ss0;
+	/*std::ostringstream ss0;
 	ss0 << icereja << endl;
 	atext[0].setFont(font);
 	atext[0].setColor(sf::Color::Black);
@@ -88,7 +89,7 @@ Plantas::Plantas(float width, float height){
 	atext[5].setColor(sf::Color::Black);
 	atext[5].setPosition(sf::Vector2f(320,550));	
 	atext[5].setCharacterSize(30);	
-	atext[5].setString(ss5.str());
+	atext[5].setString(ss5.str());*/
 
 	dinheiro[0].setFont(font);
 	dinheiro[0].setColor(sf::Color::Black);
@@ -130,11 +131,11 @@ int Plantas::PositionPlants(int posicaox, int posicaoy){
 			planta = 0;
 			std::cout << "Cereja" << std::endl;
 				icereja--;
-				if (icereja >= 0){
+				/*if (icereja >= 0){
 					std::ostringstream ss0;
 					ss0 << icereja << endl;
 					atext[0].setString(ss0.str());
-				}
+				}*/
 				
 		}
 	}
@@ -143,11 +144,11 @@ int Plantas::PositionPlants(int posicaox, int posicaoy){
 			planta = 1;
 			std::cout << "Melancia" << std::endl;
 			imelancia--;
-			if (imelancia >= 0){
+			/*if (imelancia >= 0){
 					std::ostringstream ss1;
 					ss1 << imelancia << endl;
 					atext[1].setString(ss1.str());
-				}
+				}*/
 		}
 	}
 	if (posicaoy>=498 && posicaoy<=555){
@@ -155,11 +156,11 @@ int Plantas::PositionPlants(int posicaox, int posicaoy){
 			planta = 2;
 			std::cout << "Tomate" << std::endl;
 			itomate--;
-			if (itomate >= 0){
+			/*if (itomate >= 0){
 					std::ostringstream ss2;
 					ss2 << itomate << endl;
 					atext[2].setString(ss2.str());
-				}
+				}*/
 
 		}	
 	}
@@ -168,11 +169,11 @@ int Plantas::PositionPlants(int posicaox, int posicaoy){
 			planta = 3;
 			std::cout << "Cenoura" << std::endl;
 			icenoura--;
-			if (icenoura >= 0){
+			/*if (icenoura >= 0){
 					std::ostringstream ss3;
 					ss3 << icenoura << endl;
 					atext[3].setString(ss3.str());
-				}
+				}*/
 		}	
 	}
 	if (posicaoy>=498 && posicaoy<=560){
@@ -180,11 +181,11 @@ int Plantas::PositionPlants(int posicaox, int posicaoy){
 			planta = 4;
 			std::cout << "Brócolis" << std::endl;
 			ibrocolis--;
-			if (ibrocolis >= 0){
+			/*if (ibrocolis >= 0){
 					std::ostringstream ss4;
 					ss4 << ibrocolis << endl;
 					atext[4].setString(ss4.str());
-				}
+				}*/
 		}	
 	}
 	if (posicaoy>=484 && posicaoy<=564){
@@ -192,11 +193,11 @@ int Plantas::PositionPlants(int posicaox, int posicaoy){
 			planta = 5;
 			std::cout << "Beterraba" << std::endl;
 			ibeterraba--;
-			if (ibeterraba >= 0){
+			/*if (ibeterraba >= 0){
 					std::ostringstream ss5;
 					ss5 << ibeterraba << endl;
 					atext[5].setString(ss5.str());
-				}
+				}*/
 		}	
 	}
 
@@ -215,4 +216,52 @@ int Plantas::RetirarLeite(int posicaox, int posicaoy){
 
 void Plantas::addmoney(int qtd){
 	this->money += qtd;
+}
+
+void Plantas::retornaplanta(int index){
+	std::ostringstream ss0;
+	std::ostringstream ss1;
+	std::ostringstream ss2;
+	std::ostringstream ss3;
+	std::ostringstream ss4;
+	std::ostringstream ss5;
+
+
+	switch (index){
+		case 0:
+			icereja += 1;
+			ss0 << icereja << endl;
+			atext[0].setString(ss0.str());
+		break;
+		
+		case 1:
+			imelancia += 1;
+			ss1 << imelancia << endl;
+			atext[1].setString(ss1.str());		
+		break;
+		
+		case 2:
+			itomate += 1;
+			ss2 << itomate << endl;
+			atext[2].setString(ss2.str());
+		break;
+		
+		case 3:
+			icenoura += 1;
+			ss3 << icenoura << endl;
+			atext[3].setString(ss3.str());
+		break;
+		
+		case 4:
+			ibrocolis += 1;
+			ss4 << ibrocolis << endl;
+			atext[4].setString(ss4.str());		
+			break;
+		
+		case 5:
+			ibeterraba += 1;
+			ss5 << ibeterraba << endl;
+			atext[5].setString(ss5.str());
+		break;
+	}
 }
