@@ -20,7 +20,7 @@ public:
 private:
 
 	int posicaox, posicaoy;
-	int planta, money, leite;
+	int planta, money = 0, leite;
 	int icereja, imelancia, itomate, icenoura, ibrocolis, ibeterraba;
 
 	sf::Font font;

@@ -3,7 +3,7 @@
 #include <ctime>
 using namespace std;
 #define tam 4
-#define tamLista 6
+#define tamLista 6 
 
 
 
@@ -202,7 +202,7 @@ class Lista {
 				Lista();
 				bool Vazia();
 				bool Cheia();
-				void Insere();
+				void Insere(int x);
 				Planta Retira(int indiceRetiraLista);
 				int getNroElementos();
 			
@@ -228,7 +228,7 @@ Lista::Lista(){
 
 int Lista::getNroElementos(){
 	int i, cont;
-	
+	cont = 0;
 	for (i=0; i<tamLista; i++){
 		if (field[0]->checagem != 0)
 			cont++;
@@ -255,18 +255,20 @@ bool Lista::Cheia(){
 
 //TODA A VEZ QUE ALGUM ELEMENTO FOR RETIRADO, É CHAMADA AUTOMATICAMENTE ESSA FUNÇÃO TAMBÉM PARA QUE OUTRO SEJA COLOCADO NO LUGAR
 
-void Lista::Insere(){		//esse metodo nao vai receber nada
+void Lista::Insere(int x){		//esse metodo nao vai receber nada
+	cout << "Entrou insere" << endl;
 	int i;
-	srand(time(NULL));
-	int x = rand() % 5;
+	cout << "X:" << x << endl;
+	//int x = rand() % 5;
 	Melancia m;
 	Tomate t;
 	Cenoura c;
 	Beterraba b;
 	Brocolis br;
 	Cereja ce;
-	
+	cout << "Criou os objetos" << endl;
 	for (i=0; i<tamLista; i++){
+		cout << "Loop" << i << ":" << endl;
 		if (field[i]->checagem == 0){
 			switch(x){
 				case 0:
@@ -289,15 +291,22 @@ void Lista::Insere(){		//esse metodo nao vai receber nada
 					break;
 			}
 			field[i]->checagem = 1;
-			if (i!= tam){
-				field[i]->next = field[i+1];
-				field[i-1]->next = field[i];
+			if (i < tamLista){
+				if (i == 0){
+					field[i]->next = field[i+1];
+					field[5]->next = field[i];   // linha que da o bug
+					cout << "Logica deu certo" << endl;
+				}else{
+					field[i]->next = field[i+1];
+					field[i-1]->next = field[i];
 				}
+			}
 			else {
 				field[i]->next = field[0];
 				field[i-1]->next = field[i];
 			}
 		}
+		cout << "Loop" << i << endl;
 	}
 }
 
@@ -323,7 +332,7 @@ Planta Lista::Retira(int indiceRetiraLista){
 
 
 int main() {
-	
+	srand(time(NULL));
 	bool teste;
 	int tm1, tc1, tb1;
 
@@ -358,5 +367,12 @@ int main() {
 	
 	cout<< spot.getNroElementos() << endl;
 	
+	Lista lista;
+	cout << "Criou lista" << endl;
+	cout << lista.Vazia() << endl;
+	cout << lista.Cheia() << endl;
+	cout << lista.getNroElementos() << endl;
+	lista.Insere(rand() % 5);
+	cout << "Após insere:" << lista.getNroElementos() << endl;
 	return 0;
 }
