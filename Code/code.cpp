@@ -1,9 +1,9 @@
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
 using namespace std;
 #define tam 4
 #define tamLista 6
-
 
 
 
@@ -124,7 +124,9 @@ class SpotPlantar {
 };
 
 //METODOS DA SPOTPLANTAR
-	
+
+
+//funciona	
 SpotPlantar::SpotPlantar(){
 	int i;
 	
@@ -134,6 +136,8 @@ SpotPlantar::SpotPlantar(){
 	}
 }
 
+
+//funciona
 int SpotPlantar::getNroElementos(){
 	int i, cont;
 	cont = 0;
@@ -145,6 +149,8 @@ int SpotPlantar::getNroElementos(){
 	return cont;
 }
 
+
+//funciona
 bool SpotPlantar::Vazia(){
 	if (SpotPlantar::getNroElementos() == 0)
 		return true;
@@ -152,6 +158,8 @@ bool SpotPlantar::Vazia(){
 		return false;
 }
 
+
+//funciona
 bool SpotPlantar::Cheia(){
 	if (SpotPlantar::getNroElementos() == tam)
 		return true;
@@ -159,7 +167,7 @@ bool SpotPlantar::Cheia(){
 		return false;
 }
 
-
+//funciona
 bool SpotPlantar::Insere(Planta& p1, int i){
 	if (SpotPlantar::Cheia() != true){
 		if (field[i]->checagem == 0){
@@ -192,10 +200,9 @@ Planta SpotPlantar::Retira(int indiceRetira, bool& deuCerto){
 class Lista {
 		public:
 				Lista();
-				~Lista();
 				bool Vazia();
 				bool Cheia();
-				void Insere(Planta&);
+				void Insere();
 				Planta Retira(int indiceRetiraLista);
 				int getNroElementos();
 			
@@ -207,7 +214,7 @@ class Lista {
 //METODOS LISTA
 
 //AQUI É NECESSÁRIO QUE A LISTA SEJAM INICIADAS COM PLANTINHAS RANDOM MAS AINDA NÃO SEI COMO IMPLEMENTAR ISSO
-//COLOCAR NO LUGAR DE "NULL" QUANDO CONSEGUIR - null retirado
+//COLOCAR NO LUGAR DE "NULL" QUANDO CONSEGUIR
 Lista::Lista(){
 	int i;
 	
@@ -215,11 +222,9 @@ Lista::Lista(){
 		field[i] = new node;
 		field[i]->checagem = 0;
 	}
+	
 }
 
-Lista::~Lista(){
-	delete [] field;
-}
 
 int Lista::getNroElementos(){
 	int i, cont;
@@ -228,6 +233,7 @@ int Lista::getNroElementos(){
 		if (field[0]->checagem != 0)
 			cont++;
 	}
+	
 	return cont;
 }
 
@@ -245,14 +251,43 @@ bool Lista::Cheia(){
 		return false;
 }
 
+
+
 //TODA A VEZ QUE ALGUM ELEMENTO FOR RETIRADO, É CHAMADA AUTOMATICAMENTE ESSA FUNÇÃO TAMBÉM PARA QUE OUTRO SEJA COLOCADO NO LUGAR
 
-void Lista::Insere(Planta& p1){
+void Lista::Insere(){		//esse metodo nao vai receber nada
 	int i;
+	srand(time(NULL));
+	int x = rand() % 5;
+	Melancia m;
+	Tomate t;
+	Cenoura c;
+	Beterraba b;
+	Brocolis br;
+	Cereja ce;
 	
-	for (i=0; i<0; i++){
+	for (i=0; i<tamLista; i++){
 		if (field[i]->checagem == 0){
-			field[i]->info = p1;
+			switch(x){
+				case 0:
+					field[i]->info = m;
+					break;
+				case 1:
+					field[i]->info = t;
+					break;
+				case 2:
+					field[i]->info = c;
+					break;
+				case 3:
+					field[i]->info = b;
+					break;
+				case 4:
+					field[i]->info = br;
+					break;
+				case 5:
+					field[i]->info = ce;
+					break;
+			}
 			field[i]->checagem = 1;
 			if (i!= tam){
 				field[i]->next = field[i+1];
@@ -268,8 +303,10 @@ void Lista::Insere(Planta& p1){
 
 Planta Lista::Retira(int indiceRetiraLista){
 	int i;
-	for (i=0; i<0; i++){
+	Planta aux;
+	for (i=0; i<tamLista; i++){
 		if (indiceRetiraLista == i){
+			aux = field[i]->info; 
 			if(i!=tamLista || i!=0){
 				field[i-1]->next = field[i+1];
 			} else if (i==0){
@@ -278,6 +315,7 @@ Planta Lista::Retira(int indiceRetiraLista){
 					field[i-1]->next = field[0];
 		}
 	}
+	return aux;
 }
 
 
