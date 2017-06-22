@@ -202,7 +202,7 @@ class Lista {
 				Lista();
 				bool Vazia();
 				bool Cheia();
-				void Insere(int x);
+				void Insere();
 				Planta Retira(int indiceRetiraLista);
 				int getNroElementos();
 			
@@ -255,19 +255,16 @@ bool Lista::Cheia(){
 
 //TODA A VEZ QUE ALGUM ELEMENTO FOR RETIRADO, É CHAMADA AUTOMATICAMENTE ESSA FUNÇÃO TAMBÉM PARA QUE OUTRO SEJA COLOCADO NO LUGAR
 
-void Lista::Insere(int x){		//esse metodo nao vai receber nada
-	cout << "Entrou insere" << endl;
+void Lista::Insere(){		//esse metodo nao vai receber nada
 	int i;
-	cout << "X:" << x << endl;
-	//int x = rand() % 5;
-	Melancia m;
-	Tomate t;
-	Cenoura c;
-	Beterraba b;
-	Brocolis br;
-	Cereja ce;
-	cout << "Criou os objetos" << endl;
+	int x = rand() % 5;
 	for (i=0; i<tamLista; i++){
+		Melancia m;
+		Tomate t;
+		Cenoura c;
+		Beterraba b;
+		Brocolis br;
+		Cereja ce;
 		cout << "Loop" << i << ":" << endl;
 		if (field[i]->checagem == 0){
 			switch(x){
@@ -294,19 +291,21 @@ void Lista::Insere(int x){		//esse metodo nao vai receber nada
 			if (i < tamLista){
 				if (i == 0){
 					field[i]->next = field[i+1];
-					field[5]->next = field[i];   // linha que da o bug
-					cout << "Logica deu certo" << endl;
+					//field[5]->next = field[i];   // linha que da o bug
+					cout << "Apontou primeiro." << endl;
 				}else{
 					field[i]->next = field[i+1];
 					field[i-1]->next = field[i];
+					cout << "Apontou entre primeiro e ultimo." << endl;
 				}
 			}
 			else {
 				field[i]->next = field[0];
 				field[i-1]->next = field[i];
+				cout << "Apontou ultimo" << endl;
 			}
 		}
-		cout << "Loop" << i << endl;
+		cout << "Loop fim." << endl;
 	}
 }
 
@@ -341,6 +340,7 @@ int main() {
 	Melancia m1;
 	Cereja c1;
 	Brocolis b1;
+	Planta testep;
 	
 	cout << "Plantas alocadas" << endl;
 	
@@ -362,17 +362,24 @@ int main() {
 	cout << "Spot vazio:" << spot.Vazia() << endl;
 
 	teste = spot.Insere(m1, 1);
-
-	cout << "Inseriu m1" << endl;
+	teste = spot.Insere(c1, 2);
+	teste = spot.Insere(b1, 3);
+	cout << "Inseriu as frutas." << endl;
 	
 	cout<< spot.getNroElementos() << endl;
+
+	testep = spot.Retira(3, teste);
+
+	cout << "Removeu" << testep.getValor() << endl;
+
+	// remover elementos e testar
 	
 	Lista lista;
 	cout << "Criou lista" << endl;
 	cout << lista.Vazia() << endl;
 	cout << lista.Cheia() << endl;
 	cout << lista.getNroElementos() << endl;
-	lista.Insere(rand() % 5);
+	lista.Insere();
 	cout << "Após insere:" << lista.getNroElementos() << endl;
 	return 0;
 }
