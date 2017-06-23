@@ -3,7 +3,7 @@
 #include <ctime>
 using namespace std;
 #define tam 4
-#define tamLista 6 
+#define tamLista 6
 
 
 
@@ -218,11 +218,10 @@ class Lista {
 Lista::Lista(){
 	int i;
 	
-	for (i=0; i<0; i++){
+	for (i=0; i<tamLista; i++){
 		field[i] = new node;
 		field[i]->checagem = 0;
 	}
-	
 }
 
 
@@ -230,7 +229,7 @@ int Lista::getNroElementos(){
 	int i, cont;
 	cont = 0;
 	for (i=0; i<tamLista; i++){
-		if (field[0]->checagem != 0)
+		if (field[i]->checagem != 0)
 			cont++;
 	}
 	
@@ -265,7 +264,6 @@ void Lista::Insere(){		//esse metodo nao vai receber nada
 		Beterraba b;
 		Brocolis br;
 		Cereja ce;
-		cout << "Loop" << i << ":" << endl;
 		if (field[i]->checagem == 0){
 			switch(x){
 				case 0:
@@ -291,21 +289,13 @@ void Lista::Insere(){		//esse metodo nao vai receber nada
 			if (i < tamLista){
 				if (i == 0){
 					field[i]->next = field[i+1];
-					//field[5]->next = field[i];   // linha que da o bug
-					cout << "Apontou primeiro." << endl;
-				}else{
+				}else if(i < tamLista-1){
 					field[i]->next = field[i+1];
-					field[i-1]->next = field[i];
-					cout << "Apontou entre primeiro e ultimo." << endl;
+				}else{
+					field[i]->next = field[0];
 				}
 			}
-			else {
-				field[i]->next = field[0];
-				field[i-1]->next = field[i];
-				cout << "Apontou ultimo" << endl;
-			}
 		}
-		cout << "Loop fim." << endl;
 	}
 }
 
@@ -315,18 +305,18 @@ Planta Lista::Retira(int indiceRetiraLista){
 	for (i=0; i<tamLista; i++){
 		if (indiceRetiraLista == i){
 			aux = field[i]->info; 
-			if(i!=tamLista || i!=0){
+			field[i]->checagem = 0;
+			/*if(i!=tamLista || i!=0){
 				field[i-1]->next = field[i+1];
 			} else if (i==0){
 					field[tamLista]->next = field[i+1];
-				} else
+				} else{
 					field[i-1]->next = field[0];
+				} reescrever esse if */
 		}
 	}
 	return aux;
 }
-
-
 
 
 
@@ -381,5 +371,11 @@ int main() {
 	cout << lista.getNroElementos() << endl;
 	lista.Insere();
 	cout << "Após insere:" << lista.getNroElementos() << endl;
+
+	testep = lista.Retira(1);
+	cout << "Retirou elemento." << endl;
+	cout << "Removeu" << testep.getValor() << endl;
+	cout << "Após remove:" << lista.getNroElementos() << endl;
+ 
 	return 0;
 }
