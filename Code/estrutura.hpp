@@ -5,19 +5,28 @@ using namespace std;
 #define tam 4
 #define tamLista 6
 
-
+/*
+	1 = cereja
+	2 =	melancia
+	3 =	tomate
+	4 = cenoura
+	5 = brocolis
+	6 = beterraba
+*/
 
 //CLASSES
 
 class Planta{
 	public: 
-			int getValor();
-			int getTempo();
-			Planta();
+	int getValor();
+	int getTempo();
+	int getTipo();
+	Planta();
 	
 	protected:
-			int tempoCresc;
-			int valor;
+	int tipoplanta;
+	int tempoCresc;
+	int valor;
 	
 };
 
@@ -67,31 +76,37 @@ class Cereja : public Planta {
 };
 
 Melancia::Melancia() : Planta(){
+	tipoplanta = 2;
 	tempoCresc = 15;
 	valor = 200;
 };
 
 Tomate::Tomate() : Planta(){
+	tipoplanta = 3;
 	tempoCresc = 9;
 	valor = 90;
 };
 
 Cenoura::Cenoura() : Planta(){
+	tipoplanta = 4;
 	tempoCresc = 6;
 	valor = 40;
 };
 
 Beterraba::Beterraba() : Planta(){
+	tipoplanta = 6;
 	tempoCresc = 4;
 	valor = 25;
 };
 
 Brocolis::Brocolis(): Planta(){
+	tipoplanta = 5;
 	tempoCresc = 2;
 	valor = 10;
 };
 
 Cereja::Cereja(): Planta(){
+	tipoplanta = 1;
 	tempoCresc = 12;
 	valor = 125;
 };
@@ -109,6 +124,9 @@ int Planta::getTempo(){
 }
 
 
+int Planta::getTipo(){
+	return this->tipoplanta;
+}
 
 class SpotPlantar {
 	public:
@@ -205,6 +223,7 @@ class Lista {
 				void Insere();
 				Planta Retira(int indiceRetiraLista);
 				int getNroElementos();
+				int Exibe(int index);
 			
 		protected:
 				node *field[tamLista];
@@ -224,6 +243,9 @@ Lista::Lista(){
 	}
 }
 
+int Lista::Exibe(int index){
+	return field[index]->info.getTipo();
+}
 
 int Lista::getNroElementos(){
 	int i, cont;
@@ -254,10 +276,11 @@ bool Lista::Cheia(){
 
 //TODA A VEZ QUE ALGUM ELEMENTO FOR RETIRADO, É CHAMADA AUTOMATICAMENTE ESSA FUNÇÃO TAMBÉM PARA QUE OUTRO SEJA COLOCADO NO LUGAR
 
-void Lista::Insere(){		//esse metodo nao vai receber nada
+void Lista::Insere(){
+    srand(time(NULL));		//esse metodo nao vai receber nada
 	int i;
-	int x = rand() % 5;
 	for (i=0; i<tamLista; i++){
+		int x = rand() % 5;
 		Melancia m;
 		Tomate t;
 		Cenoura c;

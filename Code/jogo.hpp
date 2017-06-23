@@ -1,5 +1,6 @@
 #include "cScreen.hpp"
 #include "Plantas.hpp"
+#include "estrutura.hpp"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <ctime>
@@ -9,6 +10,9 @@ using namespace std;
 
 class jogo : public cScreen{
 private:
+    SpotPlantar spots;
+    Lista lista;
+    Planta mouseplanta;
     int posicaox, posicaoy, posicao;
     int mousestate, plantstate;
     int countdown = 30;
@@ -49,7 +53,7 @@ jogo::jogo(void){
 }
 
 int jogo::Run(sf::RenderWindow &window){
-
+    lista.Insere();
     if (!font.loadFromFile("../Fonts/barn.otf")){
         std::cout << "Error" << std::endl;
     }
@@ -129,24 +133,143 @@ int jogo::Run(sf::RenderWindow &window){
 
     Plantas player(window.getSize().x, window.getSize().y);
 
+    std::cout << lista.Exibe(1) << " " << lista.Exibe(2) << " " << lista.Exibe(3) << " " << lista.Exibe(4) << " " << lista.Exibe(5) <<endl;
     //Plantinhas
-    sf::Sprite Planta1(texcenoura);
-    Planta1.setPosition(sf::Vector2f(4,495));
-
-    sf::Sprite Planta2(texmelancia);
+    sf::Sprite Planta1;
+     Planta1.setPosition(sf::Vector2f(4,495));
+    switch (lista.Exibe(0)){
+        case 1:
+            Planta1.setTexture(texcereja);
+        break;
+        case 2:
+            Planta1.setTexture(texmelancia);
+        break;
+        case 3:
+            Planta1.setTexture(textomate);
+        break;
+        case 4:
+            Planta1.setTexture(texcenoura);
+        break;
+        case 5:
+            Planta1.setTexture(texbrocolis);
+        break;
+        case 6:
+            Planta1.setTexture(texbeterraba);
+        break;
+    }
+    sf::Sprite Planta2;
     Planta2.setPosition(sf::Vector2f(60,495));
+    switch (lista.Exibe(1)){
+        case 1:
+            Planta2.setTexture(texcereja);
+        break;
+        case 2:
+            Planta2.setTexture(texmelancia);
+        break;
+        case 3:
+            Planta2.setTexture(textomate);
+        break;
+        case 4:
+            Planta2.setTexture(texcenoura);
+        break;
+        case 5:
+            Planta2.setTexture(texbrocolis);
+        break;
+        case 6:
+            Planta2.setTexture(texbeterraba);
+        break;
+    }
 
-    sf::Sprite Planta3(textomate);
+    sf::Sprite Planta3;
     Planta3.setPosition(sf::Vector2f(120,495));
+    switch (lista.Exibe(2)){
+        case 1:
+            Planta3.setTexture(texcereja);
+        break;
+        case 2:
+            Planta3.setTexture(texmelancia);
+        break;
+        case 3:
+            Planta3.setTexture(textomate);
+        break;
+        case 4:
+            Planta3.setTexture(texcenoura);
+        break;
+        case 5:
+            Planta3.setTexture(texbrocolis);
+        break;
+        case 6:
+            Planta3.setTexture(texbeterraba);
+        break;
+    }
 
-    sf::Sprite Planta4(texcenoura);
+    sf::Sprite Planta4;
     Planta4.setPosition(sf::Vector2f(170,495));
-
-    sf::Sprite Planta5(texbrocolis);
+    switch (lista.Exibe(3)){
+        case 1:
+            Planta4.setTexture(texcereja);
+        break;
+        case 2:
+            Planta4.setTexture(texmelancia);
+        break;
+        case 3:
+            Planta4.setTexture(textomate);
+        break;
+        case 4:
+            Planta4.setTexture(texcenoura);
+        break;
+        case 5:
+            Planta4.setTexture(texbrocolis);
+        break;
+        case 6:
+            Planta4.setTexture(texbeterraba);
+        break;
+    }
+    sf::Sprite Planta5;
     Planta5.setPosition(sf::Vector2f(230,495));
+    switch (lista.Exibe(4)){
+        case 1:
+            Planta5.setTexture(texcereja);
+        break;
+        case 2:
+            Planta5.setTexture(texmelancia);
+        break;
+        case 3:
+            Planta5.setTexture(textomate);
+        break;
+        case 4:
+            Planta5.setTexture(texcenoura);
+        break;
+        case 5:
+            Planta5.setTexture(texbrocolis);
+        break;
+        case 6:
+            Planta5.setTexture(texbeterraba);
+        break;
+    }
 
-    sf::Sprite Planta6(texbeterraba);
+    sf::Sprite Planta6;
     Planta6.setPosition(sf::Vector2f(280,495));
+    switch (lista.Exibe(5)){
+        case 1:
+            Planta6.setTexture(texcereja);
+        break;
+        case 2:
+            Planta6.setTexture(texmelancia);
+        break;
+        case 3:
+            Planta6.setTexture(textomate);
+        break;
+        case 4:
+            Planta6.setTexture(texcenoura);
+        break;
+        case 5:
+            Planta6.setTexture(texbrocolis);
+        break;
+        case 6:
+            Planta6.setTexture(texbeterraba);
+        break;
+    }
 
 
     while (window.isOpen()){

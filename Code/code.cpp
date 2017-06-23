@@ -13,11 +13,13 @@ class Planta{
 	public: 
 			int getValor();
 			int getTempo();
+			int getTipo();
 			Planta();
 	
 	protected:
-			int tempoCresc;
-			int valor;
+		int tipoplanta;
+		int tempoCresc;
+		int valor;
 	
 };
 
@@ -67,34 +69,41 @@ class Cereja : public Planta {
 };
 
 Melancia::Melancia() : Planta(){
+	tipoplanta = 2;
 	tempoCresc = 15;
 	valor = 200;
 };
 
 Tomate::Tomate() : Planta(){
+	tipoplanta = 3;
 	tempoCresc = 9;
 	valor = 90;
 };
 
 Cenoura::Cenoura() : Planta(){
+	tipoplanta = 4;
 	tempoCresc = 6;
 	valor = 40;
 };
 
 Beterraba::Beterraba() : Planta(){
+	tipoplanta = 6;
 	tempoCresc = 4;
 	valor = 25;
 };
 
 Brocolis::Brocolis(): Planta(){
+	tipoplanta = 5;
 	tempoCresc = 2;
 	valor = 10;
 };
 
 Cereja::Cereja(): Planta(){
+	tipoplanta = 1;
 	tempoCresc = 12;
 	valor = 125;
 };
+
 
 Planta::Planta(){
 	
@@ -108,6 +117,9 @@ int Planta::getTempo(){
 	return this->tempoCresc;
 }
 
+int Planta::getTipo(){
+	return this->tipoplanta;
+}
 
 
 class SpotPlantar {
@@ -205,6 +217,7 @@ class Lista {
 				void Insere();
 				Planta Retira(int indiceRetiraLista);
 				int getNroElementos();
+				int Exibe(int index);
 			
 		protected:
 				node *field[tamLista];
@@ -224,6 +237,9 @@ Lista::Lista(){
 	}
 }
 
+int Lista::Exibe(int index){
+	return field[index]->info.getTipo();
+}
 
 int Lista::getNroElementos(){
 	int i, cont;
@@ -256,8 +272,8 @@ bool Lista::Cheia(){
 
 void Lista::Insere(){		//esse metodo nao vai receber nada
 	int i;
-	int x = rand() % 5;
 	for (i=0; i<tamLista; i++){
+		int x = rand() % 5;
 		Melancia m;
 		Tomate t;
 		Cenoura c;
@@ -346,6 +362,12 @@ int main() {
 
 	cout << "Tempo:" << tm1 << " - " << tc1 << " - " << tb1 << endl;
 
+	tm1 = m1.getTipo();
+	tc1 = c1.getTipo();
+	tb1 = b1.getTipo();
+
+	cout << "Tipo:" << tm1 << " - " << tc1 << " - " << tb1 << endl;
+	
 	SpotPlantar spot;
 	
 	cout << "Spot criado" << endl;
@@ -376,6 +398,8 @@ int main() {
 	cout << "Retirou elemento." << endl;
 	cout << "Removeu" << testep.getValor() << endl;
 	cout << "Após remove:" << lista.getNroElementos() << endl;
+
+	cout << lista.Exibe(0) << " " << lista.Exibe(1) << " " << lista.Exibe(2) << " " << lista.Exibe(3) << " " << lista.Exibe(4) << " " << lista.Exibe(5) << endl;
  
 	return 0;
 }
