@@ -15,6 +15,7 @@ private:
     Lista lista;
     Planta mouseplanta;
     int posicaox, posicaoy, posicao;
+    int planta1, planta2, planta3, planta4, planta5, planta6;
     int mousestate, plantstate;
     int countdown = 30;
     int countdown_vaca = 10;
@@ -135,10 +136,12 @@ int jogo::Run(sf::RenderWindow &window){
 
     Plantas player(window.getSize().x, window.getSize().y);
 
-    std::cout << lista.Exibe(1) << " " << lista.Exibe(2) << " " << lista.Exibe(3) << " " << lista.Exibe(4) << " " << lista.Exibe(5) <<endl;
+    std::cout << lista.Exibe(0) << " " << lista.Exibe(1) << " " << lista.Exibe(2) << " " << lista.Exibe(3) << " " << lista.Exibe(4) << " " << lista.Exibe(5) <<endl;
+    
     //Plantinhas
+
     sf::Sprite Planta1;
-     Planta1.setPosition(sf::Vector2f(4,495));
+    Planta1.setPosition(sf::Vector2f(4,495));
     switch (lista.Exibe(0)){
         case 1:
             Planta1.setTexture(texcereja);
@@ -314,32 +317,146 @@ int jogo::Run(sf::RenderWindow &window){
                                     plantstate = -1;
                                 break;
                                 case 0:
-                                    mousesprite.setTexture(texcereja);
+                                	switch (lista.Exibe(0)){
+								        case 1:
+											mousesprite.setTexture(texcereja);
+								        break;
+								        case 2:
+								            mousesprite.setTexture(texmelancia);
+								        break;
+								        case 3:
+								            mousesprite.setTexture(textomate);
+								        break;
+								        case 4:
+								            mousesprite.setTexture(texcenoura);
+								        break;
+								        case 5:
+								            mousesprite.setTexture(texbrocolis);
+								        break;
+								        case 6:
+								            mousesprite.setTexture(texbeterraba);
+								        break;
+								    }       
                                     plantstate = 0;
                                 break;
 
                                 case 1:
-                                    mousesprite.setTexture(texmelancia);
+                                    switch (lista.Exibe(1)){
+								        case 1:
+											mousesprite.setTexture(texcereja);
+								        break;
+								        case 2:
+								            mousesprite.setTexture(texmelancia);
+								        break;
+								        case 3:
+								            mousesprite.setTexture(textomate);
+								        break;
+								        case 4:
+								            mousesprite.setTexture(texcenoura);
+								        break;
+								        case 5:
+								            mousesprite.setTexture(texbrocolis);
+								        break;
+								        case 6:
+								            mousesprite.setTexture(texbeterraba);
+								        break;
+								    }    
                                     plantstate = 1;
                                 break;
 
                                 case 2:
-                                    mousesprite.setTexture(textomate);
+                                    switch (lista.Exibe(2)){
+								        case 1:
+											mousesprite.setTexture(texcereja);
+								        break;
+								        case 2:
+								            mousesprite.setTexture(texmelancia);
+								        break;
+								        case 3:
+								            mousesprite.setTexture(textomate);
+								        break;
+								        case 4:
+								            mousesprite.setTexture(texcenoura);
+								        break;
+								        case 5:
+								            mousesprite.setTexture(texbrocolis);
+								        break;
+								        case 6:
+								            mousesprite.setTexture(texbeterraba);
+								        break;
+								    }    
                                     plantstate = 2;
                                 break;
 
                                 case 3:
-                                    mousesprite.setTexture(texcenoura);
+                                    switch (lista.Exibe(3)){
+								        case 1:
+											mousesprite.setTexture(texcereja);
+								        break;
+								        case 2:
+								            mousesprite.setTexture(texmelancia);
+								        break;
+								        case 3:
+								            mousesprite.setTexture(textomate);
+								        break;
+								        case 4:
+								            mousesprite.setTexture(texcenoura);
+								        break;
+								        case 5:
+								            mousesprite.setTexture(texbrocolis);
+								        break;
+								        case 6:
+								            mousesprite.setTexture(texbeterraba);
+								        break;
+								    }    
                                     plantstate = 3;
                                 break;
 
                                 case 4:
-                                    mousesprite.setTexture(texbrocolis);
+                                    switch (lista.Exibe(4)){
+								        case 1:
+											mousesprite.setTexture(texcereja);
+								        break;
+								        case 2:
+								            mousesprite.setTexture(texmelancia);
+								        break;
+								        case 3:
+								            mousesprite.setTexture(textomate);
+								        break;
+								        case 4:
+								            mousesprite.setTexture(texcenoura);
+								        break;
+								        case 5:
+								            mousesprite.setTexture(texbrocolis);
+								        break;
+								        case 6:
+								            mousesprite.setTexture(texbeterraba);
+								        break;
+								    }    
                                     plantstate = 4;
                                 break;
 
                                 case 5:
-                                    mousesprite.setTexture(texbeterraba);
+                                    switch (lista.Exibe(5)){
+								        case 1:
+											mousesprite.setTexture(texcereja);
+								        break;
+								        case 2:
+								            mousesprite.setTexture(texmelancia);
+								        break;
+								        case 3:
+								            mousesprite.setTexture(textomate);
+								        break;
+								        case 4:
+								            mousesprite.setTexture(texcenoura);
+								        break;
+								        case 5:
+								            mousesprite.setTexture(texbrocolis);
+								        break;
+								        case 6:
+								            mousesprite.setTexture(texbeterraba);
+								        break;
+								    }    
                                     plantstate = 5;
                                 break;
                             }
