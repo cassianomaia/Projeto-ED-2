@@ -1,6 +1,7 @@
 #include "cScreen.hpp"
 #include "Plantas.hpp"
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include <ctime>
 #include <sstream>
@@ -38,6 +39,7 @@ private:
     sf::Sprite mousesprite;
     sf::Sprite background;
     sf::Texture texture;
+    sf::Music music;
 
 public:
 	jogo(void);

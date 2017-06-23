@@ -1,11 +1,15 @@
 #include "cScreen.hpp"
 #include "Menu.hpp"
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+
 
 class mainmenu : public cScreen{
 private:
     int posicaoy, posicaox;
     int SelectedItemIndex;
+    sf::Music music;
+
 
 public:
 	mainmenu(void);
@@ -18,8 +22,12 @@ mainmenu::mainmenu(void){
 
 int mainmenu::Run(sf::RenderWindow &window){
 
-    sf::Sprite background;
+    if (!music.openFromFile("../Sounds/CountrySong.ogg")){
 
+    }
+    music.play();
+
+    sf::Sprite background;
     sf::Texture texture;
 
     if(!texture.loadFromFile("../Images/menu_sem_texto.bmp")){
@@ -27,11 +35,6 @@ int mainmenu::Run(sf::RenderWindow &window){
     }
 
     background.setTexture(texture);
-
-    /*sf::Sprite sprite;
-    sprite.setTexture(texture);
-    sprite.setScale(sf::Vector2f(0.75, 0.75));
-    sprite.setPosition(sf::Vector2f(110,10));*/
 
     Menu menu(window.getSize().x, window.getSize().y);
 
@@ -54,26 +57,6 @@ int mainmenu::Run(sf::RenderWindow &window){
                         break;
                     }
 
-                case sf::Event::KeyReleased:
-                    switch(event.key.code){
-                        /*case sf::Keyboard::Up:
-                            menu.MoveUp();
-                        break;
-                        
-                        case sf::Keyboard::Down:
-                            menu.MoveDown();
-                        break;
-
-                        case sf::Keyboard::Return:
-                            return menu.GetPressedItem();
-                        break;
-                        
-                        case sf::Keyboard::Escape:
-                            window.close();
-                        break;*/
-                    }
-                    
-                    break;
 
                 case sf::Event::Closed:
                     window.close();

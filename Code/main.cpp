@@ -1,4 +1,5 @@
-#include "SFML/Graphics.hpp"
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include "Screens.hpp"
 
@@ -8,6 +9,7 @@ int main(){
     int screen = 0;
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "Fazendinha Mil grau");
+    sf::Music music;
 
     mainmenu s0;
     Screens.push_back(&s0);
