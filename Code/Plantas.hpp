@@ -129,7 +129,7 @@ int Plantas::PositionPlants(int posicaox, int posicaoy){
 	if (posicaoy>=498 && posicaoy<=549){
 		if (posicaox>= 4 && posicaox<=66){
 			planta = 0;
-			std::cout << "Cereja" << std::endl;
+			std::cout << "Planta 1" << std::endl;
 				icereja--;
 				/*if (icereja >= 0){
 					std::ostringstream ss0;
@@ -142,7 +142,7 @@ int Plantas::PositionPlants(int posicaox, int posicaoy){
 	if (posicaoy>=498 && posicaoy<=551){
 		if (posicaox>= 68 && posicaox<=125){
 			planta = 1;
-			std::cout << "Melancia" << std::endl;
+			std::cout << "Planta 2" << std::endl;
 			imelancia--;
 			/*if (imelancia >= 0){
 					std::ostringstream ss1;
@@ -154,7 +154,7 @@ int Plantas::PositionPlants(int posicaox, int posicaoy){
 	if (posicaoy>=498 && posicaoy<=555){
 		if (posicaox>= 134 && posicaox<=189){
 			planta = 2;
-			std::cout << "Tomate" << std::endl;
+			std::cout << "Planta 3" << std::endl;
 			itomate--;
 			/*if (itomate >= 0){
 					std::ostringstream ss2;
@@ -167,7 +167,7 @@ int Plantas::PositionPlants(int posicaox, int posicaoy){
 	if (posicaoy>=485 && posicaoy<=562){
 		if (posicaox>= 199 && posicaox<=245){
 			planta = 3;
-			std::cout << "Cenoura" << std::endl;
+			std::cout << "Planta 4" << std::endl;
 			icenoura--;
 			/*if (icenoura >= 0){
 					std::ostringstream ss3;
@@ -179,7 +179,7 @@ int Plantas::PositionPlants(int posicaox, int posicaoy){
 	if (posicaoy>=498 && posicaoy<=560){
 		if (posicaox>= 248 && posicaox<=307){
 			planta = 4;
-			std::cout << "Brócolis" << std::endl;
+			std::cout << "Planta 5" << std::endl;
 			ibrocolis--;
 			/*if (ibrocolis >= 0){
 					std::ostringstream ss4;
@@ -191,7 +191,7 @@ int Plantas::PositionPlants(int posicaox, int posicaoy){
 	if (posicaoy>=484 && posicaoy<=564){
 		if (posicaox>= 313 && posicaox<=342){
 			planta = 5;
-			std::cout << "Beterraba" << std::endl;
+			std::cout << "planta 6" << std::endl;
 			ibeterraba--;
 			/*if (ibeterraba >= 0){
 					std::ostringstream ss5;

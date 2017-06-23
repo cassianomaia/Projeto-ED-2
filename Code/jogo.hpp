@@ -312,6 +312,7 @@ int jogo::Run(sf::RenderWindow &window){
                                     plantstate = -1;
                                 break;
                                 case 0:
+                                    
                                     mousesprite.setTexture(texcereja);
                                     plantstate = 0;
                                 break;
