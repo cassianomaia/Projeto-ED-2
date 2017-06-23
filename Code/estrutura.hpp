@@ -5,21 +5,28 @@ using namespace std;
 #define tam 4
 #define tamLista 6
 
-
+/*
+	1 = cereja
+	2 =	melancia
+	3 =	tomate
+	4 = cenoura
+	5 = brocolis
+	6 = beterraba
+*/
 
 //CLASSES
 
 class Planta{
 	public: 
-			int getValor();
-			int getTempo();
-			int getTipo();
-			Planta();
+	int getValor();
+	int getTempo();
+	int getTipo();
+	Planta();
 	
 	protected:
-		int tipoplanta;
-		int tempoCresc;
-		int valor;
+	int tipoplanta;
+	int tempoCresc;
+	int valor;
 	
 };
 
@@ -104,7 +111,6 @@ Cereja::Cereja(): Planta(){
 	valor = 125;
 };
 
-
 Planta::Planta(){
 	
 }
@@ -117,10 +123,10 @@ int Planta::getTempo(){
 	return this->tempoCresc;
 }
 
+
 int Planta::getTipo(){
 	return this->tipoplanta;
 }
-
 
 class SpotPlantar {
 	public:
@@ -270,7 +276,8 @@ bool Lista::Cheia(){
 
 //TODA A VEZ QUE ALGUM ELEMENTO FOR RETIRADO, É CHAMADA AUTOMATICAMENTE ESSA FUNÇÃO TAMBÉM PARA QUE OUTRO SEJA COLOCADO NO LUGAR
 
-void Lista::Insere(){		//esse metodo nao vai receber nada
+void Lista::Insere(){
+    srand(time(NULL));		//esse metodo nao vai receber nada
 	int i;
 	for (i=0; i<tamLista; i++){
 		int x = rand() % 5;
@@ -322,84 +329,7 @@ Planta Lista::Retira(int indiceRetiraLista){
 		if (indiceRetiraLista == i){
 			aux = field[i]->info; 
 			field[i]->checagem = 0;
-			/*if(i!=tamLista || i!=0){
-				field[i-1]->next = field[i+1];
-			} else if (i==0){
-					field[tamLista]->next = field[i+1];
-				} else{
-					field[i-1]->next = field[0];
-				} reescrever esse if */
 		}
 	}
 	return aux;
-}
-
-
-
-int main() {
-	srand(time(NULL));
-	bool teste;
-	int tm1, tc1, tb1;
-
-	cout << "Bool e ints criados" <<endl;
-	
-	Melancia m1;
-	Cereja c1;
-	Brocolis b1;
-	Planta testep;
-	
-	cout << "Plantas alocadas" << endl;
-	
-	tm1 = m1.getValor();
-	tc1 = c1.getValor();
-	tb1 = b1.getValor();
-
-	cout << "Valores:" << tm1 << " - " << tc1 << " - " << tb1 << endl;
-
-	tm1 = m1.getTempo();
-	tc1 = c1.getTempo();
-	tb1 = b1.getTempo();	
-
-	cout << "Tempo:" << tm1 << " - " << tc1 << " - " << tb1 << endl;
-
-	tm1 = m1.getTipo();
-	tc1 = c1.getTipo();
-	tb1 = b1.getTipo();
-
-	cout << "Tipo:" << tm1 << " - " << tc1 << " - " << tb1 << endl;
-	
-	SpotPlantar spot;
-	
-	cout << "Spot criado" << endl;
-	cout << "Spot vazio:" << spot.Vazia() << endl;
-
-	teste = spot.Insere(m1, 1);
-	teste = spot.Insere(c1, 2);
-	teste = spot.Insere(b1, 3);
-	cout << "Inseriu as frutas." << endl;
-	
-	cout<< spot.getNroElementos() << endl;
-
-	testep = spot.Retira(3, teste);
-
-	cout << "Removeu" << testep.getValor() << endl;
-
-	// remover elementos e testar
-	
-	Lista lista;
-	cout << "Criou lista" << endl;
-	cout << lista.Vazia() << endl;
-	cout << lista.Cheia() << endl;
-	cout << lista.getNroElementos() << endl;
-	lista.Insere();
-	cout << "Após insere:" << lista.getNroElementos() << endl;
-
-	testep = lista.Retira(1);
-	cout << "Retirou elemento." << endl;
-	cout << "Removeu" << testep.getValor() << endl;
-	cout << "Após remove:" << lista.getNroElementos() << endl;
-
-	cout << lista.Exibe(0) << " " << lista.Exibe(1) << " " << lista.Exibe(2) << " " << lista.Exibe(3) << " " << lista.Exibe(4) << " " << lista.Exibe(5) << endl;
- 
-	return 0;
 }
