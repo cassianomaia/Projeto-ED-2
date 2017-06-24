@@ -316,7 +316,7 @@ int jogo::Run(sf::RenderWindow &window){
                                     }
                                     plantstate = -1;
                                 break;
-                                case 0:
+                                case 0:                                                                                   	
                                 	switch (lista.Exibe(0)){
 								        case 1:
 											mousesprite.setTexture(texcereja);
@@ -336,7 +336,9 @@ int jogo::Run(sf::RenderWindow &window){
 								        case 6:
 								            mousesprite.setTexture(texbeterraba);
 								        break;
-								    }       
+								    }
+
+								    
                                     plantstate = 0;
                                 break;
 

@@ -280,7 +280,7 @@ void Lista::Insere(){
     srand(time(NULL));		//esse metodo nao vai receber nada
 	int i;
 	for (i=0; i<tamLista; i++){
-		int x = rand() % 5;
+		int x = rand() % 6;
 		Melancia m;
 		Tomate t;
 		Cenoura c;
