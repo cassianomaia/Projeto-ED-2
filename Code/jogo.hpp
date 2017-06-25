@@ -14,17 +14,16 @@ private:
     SpotPlantar spots;
     Lista lista;
     Planta mouseplanta;
+
     int posicaox, posicaoy, posicao;
     int planta1, planta2, planta3, planta4, planta5, planta6;
     int mousestate, plantstate;
     int countdown = 30;
     int countdown_vaca = 10;
-    int countdown_slot0 = 0;
     int countdown_slot1 = 0;
     int countdown_slot2 = 0;
     int countdown_slot3 = 0;
     int countdown_slot4 = 0;
-    int countdown_slot5 = 0;
     sf::Clock clockgeral;
     sf::Font font;
     sf::Text timerText;
@@ -41,6 +40,13 @@ private:
     sf::Texture texcenoura;
     sf::Texture texbrocolis;
     sf::Texture texbeterraba;
+    sf::Texture nenhuma;
+    sf::Texture slotcereja;
+    sf::Texture slotmelancia;
+    sf::Texture slottomate;
+    sf::Texture slotcenoura;
+    sf::Texture slotbrocolis;
+    sf::Texture slotbeterraba;
     sf::Sprite mousesprite;
     sf::Sprite background;
     sf::Texture texture;
@@ -73,6 +79,10 @@ int jogo::Run(sf::RenderWindow &window){
     timerhead.setColor(sf::Color::Black);
     timerhead.setPosition(473, 0);
     timerhead.setCharacterSize(40);
+
+    if(!nenhuma.loadFromFile("../Images/ibagens_png/")){
+        std::cout << "Error" << std::endl;
+    }
 
     if(!semeado.loadFromFile("../Images/ibagens_png/semente.png")){
         std::cout << "Error" << std::endl;
@@ -125,6 +135,26 @@ int jogo::Run(sf::RenderWindow &window){
         std::cout << "Error" << std::endl;
     }
     if(!texbeterraba.loadFromFile("../Images/Mouse/beterraba.png")){
+        std::cout << "Error" << std::endl;
+    }
+
+    //Slots plantados textures
+    if(!slotcereja.loadFromFile("../Images/ibagens_recortadas_png/cereja.png")){
+        std::cout << "Error" << std::endl;
+    }
+    if(!slotmelancia.loadFromFile("../Images/ibagens_recortadas_png/melancia.png")){
+        std::cout << "Error" << std::endl;
+    }
+    if(!slottomate.loadFromFile("../Images/ibagens_recortadas_png/tomate.png")){
+        std::cout << "Error" << std::endl;
+    }
+    if(!slotcenoura.loadFromFile("../Images/ibagens_recortadas_png/cenoura.png")){
+        std::cout << "Error" << std::endl;
+    }
+    if(!slotbrocolis.loadFromFile("../Images/ibagens_recortadas_png/brocolis.png")){
+        std::cout << "Error" << std::endl;
+    }
+    if(!slotbeterraba.loadFromFile("../Images/ibagens_recortadas_png/beterraba.png")){
         std::cout << "Error" << std::endl;
     }
 
@@ -296,18 +326,24 @@ int jogo::Run(sf::RenderWindow &window){
                             switch (mousestate = player.PositionPlants(posicaox, posicaoy)){
                                 case -1:
                                     if (Slot1.getGlobalBounds().contains(posicaox, posicaoy )){
+                                        spots.Insere(mouseplanta, plantstate);
                                         Slot1.setTexture(semeado);
-                                        std::cout << "slot 1" << std::endl;
+                                        std::cout << "slot 1" << std::endl;                                        
+
                                     }
                                     else if(Slot2.getGlobalBounds().contains(posicaox, posicaoy )){
+                                        spots.Insere(mouseplanta, plantstate);
                                         Slot2.setTexture(semeado);
                                         std::cout << "slot 2" << std::endl;
+                                        
                                     }
                                     else if(Slot3.getGlobalBounds().contains(posicaox, posicaoy )){
+                                        spots.Insere(mouseplanta, plantstate);
                                         Slot3.setTexture(semeado);
                                         std::cout << "slot 3" << std::endl;
                                     }
                                     else if(Slot4.getGlobalBounds().contains(posicaox, posicaoy )){
+                                        spots.Insere(mouseplanta, plantstate);
                                         Slot4.setTexture(semeado);
                                         std::cout << "slot 4" << std::endl;
                                     }
@@ -316,11 +352,13 @@ int jogo::Run(sf::RenderWindow &window){
                                     }
                                     plantstate = -1;
                                 break;
-                                case 0:                                                                                   	
-                                	switch (lista.Exibe(0)){
+                                case 0: 
+                                    mouseplanta = lista.Retira(0);
+                                    
+                                    switch (lista.Exibe(0)){
 								        case 1:
 											mousesprite.setTexture(texcereja);
-								        break;
+                                        break;
 								        case 2:
 								            mousesprite.setTexture(texmelancia);
 								        break;
@@ -336,13 +374,15 @@ int jogo::Run(sf::RenderWindow &window){
 								        case 6:
 								            mousesprite.setTexture(texbeterraba);
 								        break;
+
 								    }
 
-								    
                                     plantstate = 0;
                                 break;
 
                                 case 1:
+                                    mouseplanta = lista.Retira(1);
+
                                     switch (lista.Exibe(1)){
 								        case 1:
 											mousesprite.setTexture(texcereja);
@@ -367,6 +407,8 @@ int jogo::Run(sf::RenderWindow &window){
                                 break;
 
                                 case 2:
+                                    mouseplanta = lista.Retira(2);
+
                                     switch (lista.Exibe(2)){
 								        case 1:
 											mousesprite.setTexture(texcereja);
@@ -391,6 +433,8 @@ int jogo::Run(sf::RenderWindow &window){
                                 break;
 
                                 case 3:
+                                    mouseplanta = lista.Retira(3);
+
                                     switch (lista.Exibe(3)){
 								        case 1:
 											mousesprite.setTexture(texcereja);
@@ -415,6 +459,8 @@ int jogo::Run(sf::RenderWindow &window){
                                 break;
 
                                 case 4:
+                                    mouseplanta = lista.Retira(4);
+
                                     switch (lista.Exibe(4)){
 								        case 1:
 											mousesprite.setTexture(texcereja);
@@ -439,6 +485,8 @@ int jogo::Run(sf::RenderWindow &window){
                                 break;
 
                                 case 5:
+                                    mouseplanta = lista.Retira(5);
+
                                     switch (lista.Exibe(5)){
 								        case 1:
 											mousesprite.setTexture(texcereja);
@@ -484,14 +532,16 @@ int jogo::Run(sf::RenderWindow &window){
         }
 
         //Cronômetro Geral
+        int countdown_slot1 = mouseplanta.getTempo();
+        int countdown_slot2 = mouseplanta.getTempo();
+        int countdown_slot3 = mouseplanta.getTempo();
+        int countdown_slot4 = mouseplanta.getTempo();
+
         int timer = clockgeral.getElapsedTime().asSeconds();
         if (timer > 0 && countdown > 0){
             countdown--;
             if (countdown_vaca > 0){
                 countdown_vaca--;
-            }
-            if (countdown_slot0 > 0){
-                countdown_slot0--;
             }
             if (countdown_slot1 > 0){
                 countdown_slot1--;
@@ -505,9 +555,7 @@ int jogo::Run(sf::RenderWindow &window){
             if (countdown_slot4 > 0){
                 countdown_slot4--;
             }
-            if (countdown_slot5 > 0){
-                countdown_slot5--;
-            }
+            
             timerText.setString(to_string(countdown));
             clockgeral.restart();
         }
@@ -530,6 +578,30 @@ int jogo::Run(sf::RenderWindow &window){
                         break;
                     }
             }
+        }
+
+        if(countdown_slot1 == 0){
+            switch (mouseplanta.getTipo()){
+                case 1:
+                    Slot1.setTexture(slotcereja);
+                break;
+                case 2:
+                    Slot1.setTexture(slotmelancia);
+                break;
+                case 3:
+                    Slot1.setTexture(slottomate);
+                break;
+                case 4:
+                    Slot1.setTexture(slotcenoura);
+                break;
+                case 5:
+                    Slot1.setTexture(slotbrocolis);
+                break;
+                case 6:
+                    Slot1.setTexture(slotbeterraba);
+                break;
+            }
+
         }
 
 
