@@ -45,16 +45,6 @@ Plantas::Plantas(float width, float height){
 		//handle error
 	}
 
-
-	/*std::ostringstream ss0;
-	ss0 << icereja << endl;
-	atext[0].setFont(font);
-	atext[0].setColor(sf::Color::Black);
-	atext[0].setPosition(sf::Vector2f(25,550));	
-	atext[0].setCharacterSize(30);	
-	atext[0].setString(ss0.str());*/
-
-
 	dinheiro[0].setFont(font);
 	dinheiro[0].setColor(sf::Color::Black);
 	dinheiro[0].setPosition(sf::Vector2f(580,27));	
@@ -98,11 +88,6 @@ int Plantas::PositionPlants(int posicaox, int posicaoy){
 			planta = 0;
 			std::cout << "Planta 1" << std::endl;
 				icereja--;
-				/*if (icereja >= 0){
-					std::ostringstream ss0;
-					ss0 << icereja << endl;
-					atext[0].setString(ss0.str());
-				}*/
 		}
 	}
 	if (posicaoy>=498 && posicaoy<=551){

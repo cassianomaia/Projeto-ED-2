@@ -95,7 +95,7 @@ int jogo::Run(sf::RenderWindow &window){
     }
     //Imagem slot baixo direita
     sf::Sprite Slot1(slotvazio);
-    Slot1.setPosition(sf::Vector2f(200,420));
+    Slot1.setPosition(sf::Vector2f(220,420));
 
     //Imagem slot baixo esquerda
     sf::Sprite Slot2(slotvazio);
@@ -103,11 +103,11 @@ int jogo::Run(sf::RenderWindow &window){
 
     //Imagem slot cima esquerda
     sf::Sprite Slot3(slotvazio);
-    Slot3.setPosition(sf::Vector2f(191,360));
+    Slot3.setPosition(sf::Vector2f(191,350));
 
     //Imagem slot cima direita
     sf::Sprite Slot4(slotvazio);
-    Slot4.setPosition(sf::Vector2f(260,382));
+    Slot4.setPosition(sf::Vector2f(280,370));
 
     //Vaquinha
     if(!vaquinha.loadFromFile("../Images/ibagens_png/de_boa.png")){
