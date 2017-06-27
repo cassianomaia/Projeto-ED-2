@@ -328,8 +328,8 @@ int jogo::Run(sf::RenderWindow &window){
                             switch (mousestate = player.PositionPlants(posicaox, posicaoy)){
                                 case -1:
                                     if (Slot1.getGlobalBounds().contains(posicaox, posicaoy )){
-                                    	spots.Insere(mouseplanta, 1);
-                                        Slot1.setTexture(semeado);
+                                    	spots.Insere(mouseplanta, 1); //aqui temos de retirar a planta do mouse, e deixar uma planta generica com valores zero
+                                        Slot1.setTexture(semeado);    // /\ ou da pra usar o mouse state 
                                         countdown_slot1 = mouseplanta.getTempo(); 
                                         jataplantado1 = true;
 
@@ -453,7 +453,8 @@ int jogo::Run(sf::RenderWindow &window){
                                 case 0:
 
                                 	mouseplanta = lista.Retira(0);
-                                                                        
+                                    //colocar lista insere abaixo de cada um
+                                    // no final colocar para gerar os sprites novamente;                              
                                     switch (mouseplanta.getTipo()){
 								        case 1:
 											mousesprite.setTexture(texcereja);
@@ -708,7 +709,7 @@ int jogo::Run(sf::RenderWindow &window){
 		        break;
 
 		        }
-	            jataplantado1 = false;
+	            jataplantado1 = false; // qd crescer criar variavel cresceu, para qd clicarmos no slot, ele eliminar a planta
 	        }
         }
 
