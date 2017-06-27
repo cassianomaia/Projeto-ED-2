@@ -24,9 +24,9 @@ private:
     int countdown = 30;
     int countdown_vaca = 10;
     int countdown_slot1 = -1;
-    int countdown_slot2 = 0;
-    int countdown_slot3 = 0;
-    int countdown_slot4 = 0;
+    int countdown_slot2 = -1;
+    int countdown_slot3 = -1;
+    int countdown_slot4 = -1;
     sf::Clock clockgeral;
     sf::Font font;
     sf::Text timerText;
@@ -327,7 +327,7 @@ int jogo::Run(sf::RenderWindow &window){
                                     	spots.Insere(mouseplanta, plantstate);
                                         Slot1.setTexture(semeado);
                                         countdown_slot1 = mouseplanta.getTempo(); 
-                                        tempo = 1;
+                                        //tempo = 1;
                                     	                                                                               
                                         std::cout << "slot 1" << std::endl;
                                     }
@@ -335,7 +335,7 @@ int jogo::Run(sf::RenderWindow &window){
                                         spots.Insere(mouseplanta, plantstate);
                                         Slot2.setTexture(semeado);
                                         countdown_slot2 = mouseplanta.getTempo();
-                                        tempo = 2;
+                                        //tempo = 2;
 
                                         std::cout << "slot 2" << std::endl;                                        
                                     }
@@ -343,7 +343,7 @@ int jogo::Run(sf::RenderWindow &window){
                                         spots.Insere(mouseplanta, plantstate);
                                         Slot3.setTexture(semeado);
                                         countdown_slot3 = mouseplanta.getTempo();
-                                        tempo = 3;
+                                        //tempo = 3;
 
                                         std::cout << "slot 3" << std::endl;
                                     }
@@ -351,7 +351,7 @@ int jogo::Run(sf::RenderWindow &window){
                                         spots.Insere(mouseplanta, plantstate);                                        
                                         Slot4.setTexture(semeado);
                                         countdown_slot4 = mouseplanta.getTempo();
-                                        tempo = 4;
+                                        //tempo = 4;
 
                                         std::cout << "slot 4" << std::endl;
                                     }
@@ -359,7 +359,7 @@ int jogo::Run(sf::RenderWindow &window){
                                         player.retornaplanta(plantstate);
                                     }
 
-                                    plantstate = -1;
+                                    
                                 break;
                                 
                                 case 0:
@@ -394,7 +394,7 @@ int jogo::Run(sf::RenderWindow &window){
                                 case 1:
                                 	mouseplanta = lista.Retira(1);
 
-                                    switch (mouseplanta.getTipo(1)){
+                                    switch (mouseplanta.getTipo()){
 								        case 1:
 											mousesprite.setTexture(texcereja);
 								        break;
@@ -420,8 +420,10 @@ int jogo::Run(sf::RenderWindow &window){
                                 break;
 
                                 case 2:
+
+                                	mouseplanta = lista.Retira(2);
                                     
-                                    switch (lista.Exibe(2)){
+                                    switch (mouseplanta.getTipo()){
 								        case 1:
 											mousesprite.setTexture(texcereja);
 								        break;
@@ -441,14 +443,15 @@ int jogo::Run(sf::RenderWindow &window){
 								            mousesprite.setTexture(texbeterraba);
 								        break;
 								    } 
-
-                                    mouseplanta = lista.Retira(2);   
+                                   
                                     plantstate = 2;
                                 break;
 
                                 case 3:
+
+                                	mouseplanta = lista.Retira(3);
                                     
-                                    switch (lista.Exibe(3)){
+                                    switch (mouseplanta.getTipo()){
 								        case 1:
 											mousesprite.setTexture(texcereja);
 								        break;
@@ -468,41 +471,15 @@ int jogo::Run(sf::RenderWindow &window){
 								            mousesprite.setTexture(texbeterraba);
 								        break;
 								    }
-
-                                    mouseplanta = lista.Retira(3);   
+                                      
                                     plantstate = 3;
                                 break;
 
                                 case 4:
-                                    
-                                    switch (lista.Exibe(4)){
-								        case 1:
-											mousesprite.setTexture(texcereja);
-								        break;
-								        case 2:
-								            mousesprite.setTexture(texmelancia);
-								        break;
-								        case 3:
-								            mousesprite.setTexture(textomate);
-								        break;
-								        case 4:
-								            mousesprite.setTexture(texcenoura);
-								        break;
-								        case 5:
-								            mousesprite.setTexture(texbrocolis);
-								        break;
-								        case 6:
-								            mousesprite.setTexture(texbeterraba);
-								        break;
-								    }  
 
-                                    mouseplanta = lista.Retira(4);  
-                                    plantstate = 4;
-                                break;
-
-                                case 5:
+                                	mouseplanta = lista.Retira(4);
                                     
-                                    switch (lista.Exibe(5)){
+                                    switch (mouseplanta.getTipo()){
 								        case 1:
 											mousesprite.setTexture(texcereja);
 								        break;
@@ -522,8 +499,35 @@ int jogo::Run(sf::RenderWindow &window){
 								            mousesprite.setTexture(texbeterraba);
 								        break;
 								    } 
+                                      
+                                    plantstate = 4;
+                                break;
 
-                                    mouseplanta = lista.Retira(5);   
+                                case 5:
+
+                                	mouseplanta = lista.Retira(5);
+                                    
+                                    switch (mouseplanta.getTipo()){
+								        case 1:
+											mousesprite.setTexture(texcereja);
+								        break;
+								        case 2:
+								            mousesprite.setTexture(texmelancia);
+								        break;
+								        case 3:
+								            mousesprite.setTexture(textomate);
+								        break;
+								        case 4:
+								            mousesprite.setTexture(texcenoura);
+								        break;
+								        case 5:
+								            mousesprite.setTexture(texbrocolis);
+								        break;
+								        case 6:
+								            mousesprite.setTexture(texbeterraba);
+								        break;
+								    } 
+                                      
                                     plantstate = 5;
                                 break;
                             }
@@ -593,10 +597,9 @@ int jogo::Run(sf::RenderWindow &window){
             }
         }
 
-        if(tempo == 1){
+        //if(tempo == 1){
 	        if (countdown_slot1 == 0){
-	            	std::cout << "Acabou o tempo" << std::endl;
-	            	switch (mouseplanta.getTipo()){
+	               	switch (lista.Exibe(0)){
 		            case 1:
 		                Slot1.setTexture(slotcereja);
 		            break;
@@ -617,11 +620,11 @@ int jogo::Run(sf::RenderWindow &window){
 		                break;
 		            }
 	        }
-	    }
+	   // }
 
-	    if (tempo == 2){
+	    //if (tempo == 2){
 	    	if(countdown_slot2 == 0){
-	            switch (mouseplanta.getTipo()){
+	            switch (lista.Exibe(1)){
 	                case 1:
 	                    Slot2.setTexture(slotcereja);
 	                break;
@@ -642,94 +645,58 @@ int jogo::Run(sf::RenderWindow &window){
 	                break;
             	}
         	}
-	    }
-
-        
-        
-
-                    /*switch(event.type){
-                        case sf::Event::MouseButtonPressed:                    
-                            switch(event.key.code){
-                                case sf::Mouse::Left:  
-                                    retirarslot = spots.Retira(plantstate, ok);
-                                    Slot1.setTexture(slotvazio);                     
-                                    player.addmoney(mouseplanta.getValor());                            
-                                break;
-                            }
-                        break;
-                    }*/
-                  
-
-        /*if(countdown_slot2 == 0){
-            switch (mouseplanta.getTipo()){
-                case 1:
-                    Slot2.setTexture(slotcereja);
-                break;
-                case 2:
-                    Slot2.setTexture(slotmelancia);
-                break;
-                case 3:
-                    Slot2.setTexture(slottomate);
-                break;
-                case 4:
-                    Slot2.setTexture(slotcenoura);
-                break;
-                case 5:
-                    Slot2.setTexture(slotbrocolis);
-                break;
-                case 6:
-                    Slot2.setTexture(slotbeterraba);
-                break;
-            }
-        }
-       
+	    //}                       
             
-        if(countdown_slot3 == 0){
-            switch (mouseplanta.getTipo()){
-                case 1:
-                    Slot3.setTexture(slotcereja);
-                break;
-                case 2:
-                    Slot3.setTexture(slotmelancia);
-                break;
-                case 3:
-                    Slot3.setTexture(slottomate);
-                break;
-                case 4:
-                    Slot3.setTexture(slotcenoura);
-                break;
-               case 5:
-                    Slot3.setTexture(slotbrocolis);
-                break;
-                case 6:
-                    Slot3.setTexture(slotbeterraba);
-                break;
-            }
-        }
+        //if (tempo == 3){
+	    	if(countdown_slot3 == 0){
+	            switch (lista.Exibe(2)){
+	                case 1:
+	                    Slot3.setTexture(slotcereja);
+	                break;
+	                case 2:
+	                    Slot3.setTexture(slotmelancia);
+	                break;
+	                case 3:
+	                    Slot3.setTexture(slottomate);
+	                break;
+	                case 4:
+	                    Slot3.setTexture(slotcenoura);
+	                break;
+	                case 5:
+	                    Slot3.setTexture(slotbrocolis);
+	                break;
+	                case 6:
+	                    Slot3.setTexture(slotbeterraba);
+	                break;
+            	}
+        	}
+	    //}
         
 
-        if(countdown_slot4 == 0){
-            switch (mouseplanta.getTipo()){
-                case 1:
-                    Slot4.setTexture(slotcereja);
-                break;
-                case 2:
-                    Slot4.setTexture(slotmelancia);
-                break;
-                case 3:
-                    Slot4.setTexture(slottomate);
-                break;
-                case 4:
-                    Slot4.setTexture(slotcenoura);
-                break;
-                case 5:
-                    Slot4.setTexture(slotbrocolis);
-                break;
-                case 6:
-                    Slot4.setTexture(slotbeterraba);
-                break;
-            }         
-        }*/
+        //if (tempo == 4){
+	    	if(countdown_slot4 == 0){
+	            switch (lista.Exibe(3)){
+	                case 1:
+	                    Slot4.setTexture(slotcereja);
+	                break;
+	                case 2:
+	                    Slot4.setTexture(slotmelancia);
+	                break;
+	                case 3:
+	                    Slot4.setTexture(slottomate);
+	                break;
+	                case 4:
+	                    Slot4.setTexture(slotcenoura);
+	                break;
+	                case 5:
+	                    Slot4.setTexture(slotbrocolis);
+	                break;
+	                case 6:
+	                    Slot4.setTexture(slotbeterraba);
+	                break;
+            	}
+        	}
+	    //}
 
 
         mousesprite.setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(window)));
