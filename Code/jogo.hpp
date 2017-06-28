@@ -88,28 +88,28 @@ int jogo::Run(sf::RenderWindow &window){
     timerhead.setPosition(473, 0);
     timerhead.setCharacterSize(40);
 
-    if(!semeado.loadFromFile("../Images/ibagens_png/semente.png")){
+    if(!semeado.loadFromFile("../Images/imagensnovas/semeado.png")){
         std::cout << "Error" << std::endl;
     }
 
-    if(!slotvazio.loadFromFile("../Images/ibagens_png/terra5.png")){
+    if(!slotvazio.loadFromFile("../Images/imagensnovas/vazio.png")){
         std::cout << "Error" << std::endl;
     }
     //Imagem slot baixo direita
     sf::Sprite Slot1(slotvazio);
-    Slot1.setPosition(sf::Vector2f(220,420));
+    Slot1.setPosition(sf::Vector2f(220,380));
 
     //Imagem slot baixo esquerda
     sf::Sprite Slot2(slotvazio);
-    Slot2.setPosition(sf::Vector2f(132,398));
+    Slot2.setPosition(sf::Vector2f(132,360));
 
     //Imagem slot cima esquerda
     sf::Sprite Slot3(slotvazio);
-    Slot3.setPosition(sf::Vector2f(191,350));
+    Slot3.setPosition(sf::Vector2f(191,310));
 
     //Imagem slot cima direita
     sf::Sprite Slot4(slotvazio);
-    Slot4.setPosition(sf::Vector2f(280,370));
+    Slot4.setPosition(sf::Vector2f(280,330));
 
     //Vaquinha
     if(!vaquinha.loadFromFile("../Images/ibagens_png/de_boa.png")){
@@ -143,22 +143,22 @@ int jogo::Run(sf::RenderWindow &window){
     }
 
     //Slots plantados textures
-    if(!slotcereja.loadFromFile("../Images/imagens_recortadas_png/cereja.png")){
+    if(!slotcereja.loadFromFile("../Images/imagensnovas/cereja.png")){
         std::cout << "Error" << std::endl;
     }
-    if(!slotmelancia.loadFromFile("../Images/imagens_recortadas_png/melancia.png")){
+    if(!slotmelancia.loadFromFile("../Images/imagensnovas/melancia.png")){
         std::cout << "Error" << std::endl;
     }
-    if(!slottomate.loadFromFile("../Images/imagens_recortadas_png/tomate.png")){
+    if(!slottomate.loadFromFile("../Images/imagensnovas/tomate.png")){
         std::cout << "Error" << std::endl;
     }
-    if(!slotcenoura.loadFromFile("../Images/imagens_recortadas_png/cenoura.png")){
+    if(!slotcenoura.loadFromFile("../Images/imagensnovas/cenoura.png")){
         std::cout << "Error" << std::endl;
     }
-    if(!slotbrocolis.loadFromFile("../Images/imagens_recortadas_png/brocolis.png")){
+    if(!slotbrocolis.loadFromFile("../Images/imagensnovas/brocolis.png")){
         std::cout << "Error" << std::endl;
     }
-    if(!slotbeterraba.loadFromFile("../Images/imagens_recortadas_png/beterraba.png")){
+    if(!slotbeterraba.loadFromFile("../Images/imagensnovas/beterraba.png")){
         std::cout << "Error" << std::endl;
     }
 
@@ -987,10 +987,10 @@ int jogo::Run(sf::RenderWindow &window){
         window.clear();
         window.draw(background);
         player.draw(window);
-        window.draw(Slot1);
-        window.draw(Slot2);
-        window.draw(Slot3);
         window.draw(Slot4);
+        window.draw(Slot3);
+        window.draw(Slot2);
+        window.draw(Slot1);
         window.draw(Vaquinha);
         window.draw(timerText);
         window.draw(timerhead);
