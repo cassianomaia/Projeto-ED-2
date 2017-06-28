@@ -375,7 +375,7 @@ int jogo::Run(sf::RenderWindow &window){
 									           case 3:
 									               planta2 = 3;
 									           break;
-									   	   	case 4:
+									   	   	   case 4:
 									               planta2 = 4;
 									           break;
 									           case 5:
@@ -862,24 +862,24 @@ int jogo::Run(sf::RenderWindow &window){
        	}
 
         switch (lista.Exibe(0)){
-        case 1:
-            Planta1.setTexture(texcereja);
-        break;
-        case 2:
-            Planta1.setTexture(texmelancia);
-        break;
-        case 3:
-            Planta1.setTexture(textomate);
-        break;
-        case 4:
-            Planta1.setTexture(texcenoura);
-        break;
-        case 5:
-            Planta1.setTexture(texbrocolis);
-        break;
-        case 6:
-            Planta1.setTexture(texbeterraba);
-        break;
+            case 1:
+                Planta1.setTexture(texcereja);
+            break;
+            case 2:
+                Planta1.setTexture(texmelancia);
+            break;
+            case 3:
+                Planta1.setTexture(textomate);
+            break;
+            case 4:
+                Planta1.setTexture(texcenoura);
+            break;
+            case 5:
+                Planta1.setTexture(texbrocolis);
+            break;
+            case 6:
+                Planta1.setTexture(texbeterraba);
+            break;
     }
     switch (lista.Exibe(1)){
         case 1:
@@ -1009,7 +1009,7 @@ int jogo::Run(sf::RenderWindow &window){
 
         if (countdown == 0){
             if (player.FimJogo() == true){
-                
+
             }
         }
 

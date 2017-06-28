@@ -17,7 +17,7 @@ public:
 	int RetirarLeite(int posicaox, int posicaoy);
 	void addmoney(int qtd);
 	void retornaplanta(int index);
-	bool FimJogo(int money, int valorMeta);
+	bool FimJogo();
 
 
 private:
@@ -215,6 +215,7 @@ void Plantas::retornaplanta(int index){
 
 bool Plantas::FimJogo(){
 	if(this->money >= this->valorMeta){
+
 		return true;
 	}
 	else{
