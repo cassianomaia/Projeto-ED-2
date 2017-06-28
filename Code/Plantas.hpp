@@ -17,18 +17,20 @@ public:
 	int RetirarLeite(int posicaox, int posicaoy);
 	void addmoney(int qtd);
 	void retornaplanta(int index);
+	bool FimJogo(int money, int valorMeta);
 
 
 private:
 
 	int posicaox, posicaoy, indexplanta;
-	int planta, money = 0, leite;
+	int planta, money = 0, leite, valorMeta = 400;
 	int icereja, imelancia, itomate, icenoura, ibrocolis, ibeterraba;
 
 
 	sf::Font font;
 	sf::Text atext[6];
 	sf::Text dinheiro[2];
+	sf::Text meta[2];
 
 };
 
@@ -57,7 +59,22 @@ Plantas::Plantas(float width, float height){
 	dinheiro[1].setColor(sf::Color::Black);
 	dinheiro[1].setPosition(sf::Vector2f(730,27));	
 	dinheiro[1].setCharacterSize(40);	
-	dinheiro[1].setString(ss6.str());	
+	dinheiro[1].setString(ss6.str());
+
+	meta[0].setFont(font);
+	meta[0].setColor(sf::Color::Black);
+	meta[0].setPosition(sf::Vector2f(638,55));	
+	meta[0].setCharacterSize(40);	
+	meta[0].setString("META: ");
+
+	std::ostringstream ss7;
+	ss7 << valorMeta << endl;
+	meta[1].setFont(font);
+	meta[1].setColor(sf::Color::Black);
+	meta[1].setPosition(sf::Vector2f(730,55));	
+	meta[1].setCharacterSize(40);	
+	meta[1].setString(ss7.str());
+	
 
 	planta = -1;
 
@@ -74,6 +91,10 @@ void Plantas::draw(sf::RenderWindow &window){
 	dinheiro[1].setString(to_string(money));
 	for(int j=0; j < 2; j++){
 		window.draw(dinheiro[j]);
+	}
+	meta[1].setString(to_string(valorMeta));
+	for(int k=0; k < 2; k++){
+		window.draw(meta[k]);
 	}
 }
 
@@ -189,5 +210,14 @@ void Plantas::retornaplanta(int index){
 			ss5 << ibeterraba << endl;
 			atext[5].setString(ss5.str());
 		break;
+	}
+}
+
+bool Plantas::FimJogo(){
+	if(this->money >= this->valorMeta){
+		return true;
+	}
+	else{
+		return false;
 	}
 }
