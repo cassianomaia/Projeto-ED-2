@@ -319,139 +319,141 @@ int jogo::Run(sf::RenderWindow &window){
 
             switch(event.type){
                 case sf::Event::MouseButtonPressed:
-                    
                     switch(event.key.code){
-
                         case sf::Mouse::Left:
                             std::cout << "Pressed" << std::endl;
                             std::cout << posicaox << " , "<< posicaoy << std::endl;
                             switch (mousestate = player.PositionPlants(posicaox, posicaoy)){
                                 case -1:
                                     if (Slot1.getGlobalBounds().contains(posicaox, posicaoy )){
-                                    	spots.Insere(mouseplanta, 1); //aqui temos de retirar a planta do mouse, e deixar uma planta generica com valores zero
-                                        Slot1.setTexture(semeado);    // /\ ou da pra usar o mouse state 
-                                        countdown_slot1 = mouseplanta.getTempo(); 
-                                        jataplantado1 = true;
-
-                                        switch (mouseplanta.getTipo()){
-									        case 1:
-									            planta1 = 1;
-									        break;
-									        case 2:
-									            planta1 = 2;
-									        break;
-									        case 3:
-									            planta1 = 3;
-									        break;
-									   		case 4:
-									            planta1 = 4;
-									        break;
-									        case 5:
-									            planta1 = 5;
-									        break;
-									        case 6:
-									            planta1 = 6;
-									        break;
-									    }
-
-                                        std::cout << "slot 1" << std::endl;
+                                    	if(mouseplanta.getTipo() != 0){
+                                            spots.Insere(mouseplanta, 1); //aqui temos de retirar a planta do mouse, e deixar uma planta generica com valores zero
+                                            Slot1.setTexture(semeado);    // /\ ou da pra usar o mouse state 
+                                            countdown_slot1 = mouseplanta.getTempo(); 
+                                            jataplantado1 = true;
+    
+                                            switch (mouseplanta.getTipo()){
+									           case 1:
+									               planta1 = 1;
+									           break;
+									           case 2:
+									               planta1 = 2;
+									           break;
+									           case 3:
+									               planta1 = 3;
+									           break;
+									   	   	   case 4:
+									               planta1 = 4;
+									           break;
+									           case 5:
+									               planta1 = 5;
+									           break;
+									           case 6:
+									               planta1 = 6;
+									           break;
+									       }
+                                            mouseplanta.removePlanta();
+                                            std::cout << "slot 1" << std::endl;
+                                        }
                                     }
                                     else if(Slot2.getGlobalBounds().contains(posicaox, posicaoy )){
-                                        spots.Insere(mouseplanta, 2);
-                                        Slot2.setTexture(semeado);
-                                        countdown_slot2 = mouseplanta.getTempo();
-                                        jataplantado2 = true;
-
-                                        switch (mouseplanta.getTipo()){
-									        case 1:
-									            planta2 = 1;
-									        break;
-									        case 2:
-									            planta2 = 2;
-									        break;
-									        case 3:
-									            planta2 = 3;
-									        break;
-									   		case 4:
-									            planta2 = 4;
-									        break;
-									        case 5:
-									            planta2 = 5;
-									        break;
-									        case 6:
-									            planta2 = 6;
-									        break;
-									    }
-
-                                        std::cout << "slot 2" << std::endl;                                        
+                                        if(mouseplanta.getTipo() != 0){
+                                            spots.Insere(mouseplanta, 2);
+                                                Slot2.setTexture(semeado);
+                                                countdown_slot2 = mouseplanta.getTempo();
+                                                jataplantado2 = true;
+    
+                                            switch (mouseplanta.getTipo()){
+									           case 1:
+									               planta2 = 1;
+									           break;
+									           case 2:
+									               planta2 = 2;
+									           break;
+									           case 3:
+									               planta2 = 3;
+									           break;
+									   	   	case 4:
+									               planta2 = 4;
+									           break;
+									           case 5:
+									               planta2 = 5;
+									           break;
+									           case 6:
+									               planta2 = 6;
+									           break;
+									       }
+                                            mouseplanta.removePlanta();
+                                            std::cout << "slot 2" << std::endl;                                        
+                                        }
                                     }
                                     else if(Slot3.getGlobalBounds().contains(posicaox, posicaoy )){
-                                        spots.Insere(mouseplanta, 3);
-                                        Slot3.setTexture(semeado);
-                                        countdown_slot3 = mouseplanta.getTempo();
-                                        jataplantado3 = true;
-
-                                        switch (mouseplanta.getTipo()){
-									        case 1:
-									            planta3 = 1;
-									        break;
-									        case 2:
-									            planta3 = 2;
-									        break;
-									        case 3:
-									            planta3 = 3;
-									        break;
-									   		case 4:
-									            planta3 = 4;
-									        break;
-									        case 5:
-									            planta3 = 5;
-									        break;
-									        case 6:
-									            planta3 = 6;
-									        break;
-									    }
-
-                                        std::cout << "slot 3" << std::endl;
+                                        if(mouseplanta.getTipo() != 0){
+                                            spots.Insere(mouseplanta, 3);
+                                            Slot3.setTexture(semeado);
+                                            countdown_slot3 = mouseplanta.getTempo();
+                                            jataplantado3 = true;
+                                            switch (mouseplanta.getTipo()){
+    									      case 1:
+    									          planta3 = 1;
+    									      break;
+    									      case 2:
+    									          planta3 = 2;
+    									      break;
+    									      case 3:
+    									          planta3 = 3;
+    									      break;
+    									   	   case 4:
+    									          planta3 = 4;
+    									      break;
+    									      case 5:
+    									          planta3 = 5;
+    									      break;
+    									      case 6:
+    									          planta3 = 6;
+    									      break;
+    									   }
+                                            mouseplanta.removePlanta();
+                                            std::cout << "slot 3" << std::endl;
+                                        }
                                     }
                                     else if(Slot4.getGlobalBounds().contains(posicaox, posicaoy )){
-                                        spots.Insere(mouseplanta, 4);                                        
-                                        Slot4.setTexture(semeado);
-                                        countdown_slot4 = mouseplanta.getTempo();
-                                        jataplantado4 = true;
-
-                                        switch (mouseplanta.getTipo()){
-									        case 1:
-									            planta4 = 1;
-									        break;
-									        case 2:
-									            planta4 = 2;
-									        break;
-									        case 3:
-									            planta4 = 3;
-									        break;
-									   		case 4:
-									            planta4 = 4;
-									        break;
-									        case 5:
-									            planta4 = 5;
-									        break;
-									        case 6:
-									            planta4 = 6;
-									        break;
-									    }
-
-                                        std::cout << "slot 4" << std::endl;
+                                        if(mouseplanta.getTipo() != 0){
+                                            spots.Insere(mouseplanta, 4);                                        
+                                                Slot4.setTexture(semeado);
+                                                countdown_slot4 = mouseplanta.getTempo();
+                                                jataplantado4 = true;
+    
+                                            switch (mouseplanta.getTipo()){
+									           case 1:
+									               planta4 = 1;
+									           break;
+									           case 2:
+									               planta4 = 2;
+									           break;
+									           case 3:
+									               planta4 = 3;
+									           break;
+									   	   	   case 4:
+									               planta4 = 4;
+									           break;
+									           case 5:
+									               planta4 = 5;
+									           break;
+									           case 6:
+									               planta4 = 6;
+									           break;
+									       }
+                                            mouseplanta.removePlanta();
+                                            std::cout << "slot 4" << std::endl;
+                                        }
                                     }
                                     else {
                                         player.retornaplanta(plantstate);
                                     }
-
-                                    
                                 break;
                                 
                                 case 0:
-
                                 	mouseplanta = lista.Retira(0);
                                     //colocar lista insere abaixo de cada um
                                     // no final colocar para gerar os sprites novamente;                              
@@ -476,7 +478,7 @@ int jogo::Run(sf::RenderWindow &window){
 								        break;
 
 								    }
-
+                                    lista.Insere();
                                     plantstate = 0;
                                 break;
 
@@ -504,7 +506,7 @@ int jogo::Run(sf::RenderWindow &window){
 								        break;
 								    }
 
-                                       
+                                    lista.Insere();
                                     plantstate = 1;
                                 break;
 
@@ -532,7 +534,7 @@ int jogo::Run(sf::RenderWindow &window){
 								            mousesprite.setTexture(texbeterraba);
 								        break;
 								    } 
-                                   
+                                    lista.Insere();
                                     plantstate = 2;
                                 break;
 
@@ -560,7 +562,7 @@ int jogo::Run(sf::RenderWindow &window){
 								            mousesprite.setTexture(texbeterraba);
 								        break;
 								    }
-                                      
+                                    lista.Insere();
                                     plantstate = 3;
                                 break;
 
@@ -588,7 +590,7 @@ int jogo::Run(sf::RenderWindow &window){
 								            mousesprite.setTexture(texbeterraba);
 								        break;
 								    } 
-                                      
+                                    lista.Insere();
                                     plantstate = 4;
                                 break;
 
@@ -616,29 +618,26 @@ int jogo::Run(sf::RenderWindow &window){
 								            mousesprite.setTexture(texbeterraba);
 								        break;
 								    } 
-                                      
+                                    lista.Insere();
                                     plantstate = 5;
                                 break;
                             }
                         break;
                     }
 
+
                 case sf::Event::KeyReleased:
                     switch(event.key.code){
-                                                
                         case sf::Keyboard::Escape:
                             return 0;
                         break;
-                    }
-                    
-                    break;
+                    } 
+                break;
 
                 case sf::Event::Closed:
                     window.close();
-                    break;
-                
+                break;
             }
-
         }
 
         //Cronômetro Geral   
@@ -796,6 +795,127 @@ int jogo::Run(sf::RenderWindow &window){
 	            jataplantado4 = false;
 	        }
        	}
+
+        switch (lista.Exibe(0)){
+        case 1:
+            Planta1.setTexture(texcereja);
+        break;
+        case 2:
+            Planta1.setTexture(texmelancia);
+        break;
+        case 3:
+            Planta1.setTexture(textomate);
+        break;
+        case 4:
+            Planta1.setTexture(texcenoura);
+        break;
+        case 5:
+            Planta1.setTexture(texbrocolis);
+        break;
+        case 6:
+            Planta1.setTexture(texbeterraba);
+        break;
+    }
+    switch (lista.Exibe(1)){
+        case 1:
+            Planta2.setTexture(texcereja);
+        break;
+        case 2:
+            Planta2.setTexture(texmelancia);
+        break;
+        case 3:
+            Planta2.setTexture(textomate);
+        break;
+        case 4:
+            Planta2.setTexture(texcenoura);
+        break;
+        case 5:
+            Planta2.setTexture(texbrocolis);
+        break;
+        case 6:
+            Planta2.setTexture(texbeterraba);
+        break;
+    }
+    switch (lista.Exibe(2)){
+        case 1:
+            Planta3.setTexture(texcereja);
+        break;
+        case 2:
+            Planta3.setTexture(texmelancia);
+        break;
+        case 3:
+            Planta3.setTexture(textomate);
+        break;
+        case 4:
+            Planta3.setTexture(texcenoura);
+        break;
+        case 5:
+            Planta3.setTexture(texbrocolis);
+        break;
+        case 6:
+            Planta3.setTexture(texbeterraba);
+        break;
+    }
+    switch (lista.Exibe(3)){
+        case 1:
+            Planta4.setTexture(texcereja);
+        break;
+        case 2:
+            Planta4.setTexture(texmelancia);
+        break;
+        case 3:
+            Planta4.setTexture(textomate);
+        break;
+        case 4:
+            Planta4.setTexture(texcenoura);
+        break;
+        case 5:
+            Planta4.setTexture(texbrocolis);
+        break;
+        case 6:
+            Planta4.setTexture(texbeterraba);
+        break;
+    }
+    switch (lista.Exibe(4)){
+        case 1:
+            Planta5.setTexture(texcereja);
+        break;
+        case 2:
+            Planta5.setTexture(texmelancia);
+        break;
+        case 3:
+            Planta5.setTexture(textomate);
+        break;
+        case 4:
+            Planta5.setTexture(texcenoura);
+        break;
+        case 5:
+            Planta5.setTexture(texbrocolis);
+        break;
+        case 6:
+            Planta5.setTexture(texbeterraba);
+        break;
+    }
+    switch (lista.Exibe(5)){
+        case 1:
+            Planta6.setTexture(texcereja);
+        break;
+        case 2:
+            Planta6.setTexture(texmelancia);
+        break;
+        case 3:
+            Planta6.setTexture(textomate);
+        break;
+        case 4:
+            Planta6.setTexture(texcenoura);
+        break;
+        case 5:
+            Planta6.setTexture(texbrocolis);
+        break;
+        case 6:
+            Planta6.setTexture(texbeterraba);
+        break;
+    }
 
 
         mousesprite.setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(window)));

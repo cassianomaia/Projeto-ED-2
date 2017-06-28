@@ -22,6 +22,7 @@ class Planta{
 	int getTempo();
 	int getTipo();
 	Planta();
+	void removePlanta();
 	
 	protected:
 	int tipoplanta;
@@ -126,6 +127,12 @@ int Planta::getTempo(){
 
 int Planta::getTipo(){
 	return this->tipoplanta;
+}
+
+void Planta::removePlanta(){
+	this->tipoplanta = 0;
+	this->tempoCresc = 0;
+	this->valor = 0;
 }
 
 class SpotPlantar {
