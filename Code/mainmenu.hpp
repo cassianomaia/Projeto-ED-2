@@ -25,6 +25,7 @@ int mainmenu::Run(sf::RenderWindow &window){
     if (!music.openFromFile("../Sounds/CountrySong.ogg")){
 
     }
+    music.setLoop(true);
     music.play();
 
     sf::Sprite background;
