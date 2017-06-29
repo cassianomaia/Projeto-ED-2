@@ -2,11 +2,14 @@
 #include <SFML/Audio.hpp>
 #include <iostream>
 #include "Screens.hpp"
+#include "meta.hpp"
+    
+meta metaatual;
 
 int main(){
 
     std::vector<cScreen*> Screens;
-    int screen = 0;
+    int screen = 0; 
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "Fazendinha Mil grau");
     sf::Music music;

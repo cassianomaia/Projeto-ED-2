@@ -24,10 +24,11 @@ private:
     int valor1;
     int planta;
     int tempo = 0;    
+    int metaatual = 0;
     int posicaox, posicaoy, posicao;
     int planta1, planta2, planta3, planta4, planta5, planta6;
     int mousestate, plantstate;
-    int countdown = 60;
+    int countdown = 30;
     int countdown_vaca = 10;
     int countdown_slot1 = -1;
     int countdown_slot2 = -1;
@@ -71,6 +72,9 @@ jogo::jogo(void){
 
 int jogo::Run(sf::RenderWindow &window){
     lista.Insere();
+
+    metaatual = meta.getmeta();
+    
     if (!font.loadFromFile("../Fonts/barn.otf")){
         std::cout << "Error" << std::endl;
     }
@@ -168,7 +172,7 @@ int jogo::Run(sf::RenderWindow &window){
     }
     background.setTexture(texture);
 
-    Plantas player(window.getSize().x, window.getSize().y);
+    Plantas player(window.getSize().x, window.getSize().y, metaatual);
 
     std::cout << lista.Exibe(0) << " " << lista.Exibe(1) << " " << lista.Exibe(2) << " " << lista.Exibe(3) << " " << lista.Exibe(4) << " " << lista.Exibe(5) <<endl;
     

@@ -9,7 +9,7 @@ using namespace std;
 class Plantas{
 
 public:
-	Plantas (float width, float height);
+	Plantas (float width, float height, int x);
 	~Plantas();
 
 	void draw(sf::RenderWindow &window);
@@ -23,7 +23,7 @@ public:
 private:
 
 	int posicaox, posicaoy, indexplanta;
-	int planta, money = 0, leite, valorMeta = 400;
+	int planta, money = 0, leite, valorMeta = 0;
 	int icereja, imelancia, itomate, icenoura, ibrocolis, ibeterraba;
 
 
@@ -34,8 +34,8 @@ private:
 
 };
 
-Plantas::Plantas(float width, float height){
-
+Plantas::Plantas(float width, float height, int x){
+	valorMeta = x;
 	icereja = 5;
 	icenoura = 5;
 	itomate = 5;
