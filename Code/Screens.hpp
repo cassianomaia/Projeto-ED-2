@@ -8,5 +8,6 @@
 #include "mainmenu.hpp"
 #include "jogo.hpp"
 #include "howto.hpp"
-
+#include "ganhou.hpp"
+#include "perdeu.hpp"
 #endif //SCREENS_HPP_INCLUDED

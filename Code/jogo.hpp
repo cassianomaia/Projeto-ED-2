@@ -62,19 +62,16 @@ private:
     sf::Music music;
 
 public:
-	jogo(void);
+	jogo(int meta);
 	virtual int Run(sf::RenderWindow &window);
 };
 
-jogo::jogo(void){
-
+jogo::jogo(int meta){
+    this->metaatual = meta;
 }
 
 int jogo::Run(sf::RenderWindow &window){
     lista.Insere();
-
-    metaatual = meta.getmeta();
-    
     if (!font.loadFromFile("../Fonts/barn.otf")){
         std::cout << "Error" << std::endl;
     }
@@ -1013,7 +1010,9 @@ int jogo::Run(sf::RenderWindow &window){
 
         if (countdown == 0){
             if (player.FimJogo() == true){
-
+                return 3;
+            }else{
+                return 4;
             }
         }
 
