@@ -89,11 +89,11 @@ int jogo::Run(sf::RenderWindow &window){
     timerhead.setPosition(473, 0);
     timerhead.setCharacterSize(40);
 
-    if(!semeado.loadFromFile("../Images/imagensnovas/semeado.png")){
+    if(!semeado.loadFromFile("../Images/semeado.png")){
         std::cout << "Error" << std::endl;
     }
 
-    if(!slotvazio.loadFromFile("../Images/imagensnovas/vazio.png")){
+    if(!slotvazio.loadFromFile("../Images/vazio.png")){
         std::cout << "Error" << std::endl;
     }
     //Imagem slot baixo direita
@@ -113,13 +113,13 @@ int jogo::Run(sf::RenderWindow &window){
     Slot4.setPosition(sf::Vector2f(280,330));
 
     //Vaquinha
-    if(!vaquinha.loadFromFile("../Images/ibagens_png/de_boa.png")){
+    if(!vaquinha.loadFromFile("../Images/acordada.png")){
         std::cout << "Error" << std::endl;
     }
     sf::Sprite Vaquinha(vaquinha);
     Vaquinha.setPosition(sf::Vector2f(0,0));
 
-    if(!vaquinha_leite.loadFromFile("../Images/ibagens_png/dormindo_com_balde.png")){
+    if(!vaquinha_leite.loadFromFile("../Images/dormindo_com_balde.png")){
         std::cout << "Error" << std::endl;
     }
 
@@ -144,22 +144,22 @@ int jogo::Run(sf::RenderWindow &window){
     }
 
     //Slots plantados textures
-    if(!slotcereja.loadFromFile("../Images/imagensnovas/cereja.png")){
+    if(!slotcereja.loadFromFile("../Images/cereja.png")){
         std::cout << "Error" << std::endl;
     }
-    if(!slotmelancia.loadFromFile("../Images/imagensnovas/melancia.png")){
+    if(!slotmelancia.loadFromFile("../Images/melancia.png")){
         std::cout << "Error" << std::endl;
     }
-    if(!slottomate.loadFromFile("../Images/imagensnovas/tomate.png")){
+    if(!slottomate.loadFromFile("../Images/tomate.png")){
         std::cout << "Error" << std::endl;
     }
-    if(!slotcenoura.loadFromFile("../Images/imagensnovas/cenoura.png")){
+    if(!slotcenoura.loadFromFile("../Images/cenoura.png")){
         std::cout << "Error" << std::endl;
     }
-    if(!slotbrocolis.loadFromFile("../Images/imagensnovas/brocolis.png")){
+    if(!slotbrocolis.loadFromFile("../Images/brocolis.png")){
         std::cout << "Error" << std::endl;
     }
-    if(!slotbeterraba.loadFromFile("../Images/imagensnovas/beterraba.png")){
+    if(!slotbeterraba.loadFromFile("../Images/beterraba.png")){
         std::cout << "Error" << std::endl;
     }
 
