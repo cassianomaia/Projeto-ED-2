@@ -27,7 +27,7 @@ private:
     int metaatual = 0;
     int posicaox, posicaoy, posicao;
     int planta1, planta2, planta3, planta4, planta5, planta6;
-    int mousestate, plantstate;
+    int mousestate;
     int countdown = 60;
     int countdown_vaca = 10;
     int countdown_slot1 = -1;
@@ -324,8 +324,6 @@ int jogo::Run(sf::RenderWindow &window){
                 case sf::Event::MouseButtonPressed:
                     switch(event.key.code){
                         case sf::Mouse::Left:
-                            std::cout << "Pressed" << std::endl;
-                            std::cout << posicaox << " , "<< posicaoy << std::endl;
                             switch (mousestate = player.PositionPlants(posicaox, posicaoy)){
                                 case -1:
                                     if (Slot1.getGlobalBounds().contains(posicaox, posicaoy )){
@@ -356,7 +354,6 @@ int jogo::Run(sf::RenderWindow &window){
 									           break;
 									       }
                                             mouseplanta.removePlanta();
-                                            std::cout << "slot 1" << std::endl;
                                         }
                                     }
                                     else if(Slot2.getGlobalBounds().contains(posicaox, posicaoy )){
@@ -386,8 +383,7 @@ int jogo::Run(sf::RenderWindow &window){
 									               planta2 = 6;
 									           break;
 									       }
-                                            mouseplanta.removePlanta();
-                                            std::cout << "slot 2" << std::endl;                                        
+                                            mouseplanta.removePlanta();                                      
                                         }
                                     }
                                     else if(Slot3.getGlobalBounds().contains(posicaox, posicaoy )){
@@ -417,7 +413,6 @@ int jogo::Run(sf::RenderWindow &window){
     									      break;
     									   }
                                             mouseplanta.removePlanta();
-                                            std::cout << "slot 3" << std::endl;
                                         }
                                     }
                                     else if(Slot4.getGlobalBounds().contains(posicaox, posicaoy )){
@@ -448,11 +443,7 @@ int jogo::Run(sf::RenderWindow &window){
 									           break;
 									       }
                                             mouseplanta.removePlanta();
-                                            std::cout << "slot 4" << std::endl;
                                         }
-                                    }
-                                    else {
-                                        player.retornaplanta(plantstate);
                                     }
                                 break;
                                 
@@ -482,7 +473,6 @@ int jogo::Run(sf::RenderWindow &window){
 
 								    }
                                     lista.Insere();
-                                    plantstate = 0;
                                 break;
 
                                 case 1:
@@ -510,7 +500,6 @@ int jogo::Run(sf::RenderWindow &window){
 								    }
 
                                     lista.Insere();
-                                    plantstate = 1;
                                 break;
 
                                 case 2:
@@ -538,7 +527,6 @@ int jogo::Run(sf::RenderWindow &window){
 								        break;
 								    } 
                                     lista.Insere();
-                                    plantstate = 2;
                                 break;
 
                                 case 3:
@@ -566,7 +554,6 @@ int jogo::Run(sf::RenderWindow &window){
 								        break;
 								    }
                                     lista.Insere();
-                                    plantstate = 3;
                                 break;
 
                                 case 4:
@@ -594,7 +581,6 @@ int jogo::Run(sf::RenderWindow &window){
 								        break;
 								    } 
                                     lista.Insere();
-                                    plantstate = 4;
                                 break;
 
                                 case 5:
@@ -622,7 +608,6 @@ int jogo::Run(sf::RenderWindow &window){
 								        break;
 								    } 
                                     lista.Insere();
-                                    plantstate = 5;
                                 break;
                             }
                         break;
@@ -676,8 +661,6 @@ int jogo::Run(sf::RenderWindow &window){
                     switch(event.key.code){
 
                         case sf::Mouse::Left:
-                            std::cout << "Pressed" << std::endl;
-                            std::cout << posicaox << " , "<< posicaoy << std::endl;
                             if(player.RetirarLeite(posicaox, posicaoy) == 1){
                                 countdown_vaca = 10;
                                 Vaquinha.setTexture(vaquinha);

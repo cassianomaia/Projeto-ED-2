@@ -71,7 +71,6 @@ void Menu::MoveUp(){
 	if(SelectedItemIndex - 1 >= 1){
 		menu[SelectedItemIndex].setColor(sf::Color::Black);
 		SelectedItemIndex--;
-		cout << SelectedItemIndex << endl;
 		menu[SelectedItemIndex].setColor(sf::Color::Red);
 	}
 }
@@ -80,7 +79,6 @@ void Menu::MoveDown(){
 	if(SelectedItemIndex + 1 < Max_Itens){
 		menu[SelectedItemIndex].setColor(sf::Color::Black);
 		SelectedItemIndex++;
-		cout << SelectedItemIndex << endl;
 		menu[SelectedItemIndex].setColor(sf::Color::Red);
 	}
 }
@@ -146,7 +144,5 @@ int Menu::GetPressedItem(int posicaox, int posicaoy){
 
 		}	
 	}
-
-	cout << SelectedItemIndex << endl;
 	return SelectedItemIndex;
 }

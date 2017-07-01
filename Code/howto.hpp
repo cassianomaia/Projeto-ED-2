@@ -66,7 +66,6 @@ int howto::Run(sf::RenderWindow &window){
                 case sf::Event::MouseButtonPressed:
                     switch(event.key.code){
                         case sf::Mouse::Left:
-                        	std::cout << posicaox << " , " << posicaoy << std::endl;
                            if(posicaox >= 650 && posicaox <= 740){
                             	if (posicaoy >= 545 && posicaoy <= 571){
                             		posicao = 1;

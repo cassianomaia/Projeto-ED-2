@@ -16,15 +16,13 @@ public:
 	int PositionPlants(int posicaox, int posicaoy);
 	int RetirarLeite(int posicaox, int posicaoy);
 	void addmoney(int qtd);
-	void retornaplanta(int index);
 	bool FimJogo();
 
 
 private:
 
-	int posicaox, posicaoy, indexplanta;
+	int posicaox, posicaoy;
 	int planta, money = 0, leite, valorMeta = 0;
-	int icereja, imelancia, itomate, icenoura, ibrocolis, ibeterraba;
 
 
 	sf::Font font;
@@ -36,12 +34,6 @@ private:
 
 Plantas::Plantas(float width, float height, int x){
 	valorMeta = x;
-	icereja = 5;
-	icenoura = 5;
-	itomate = 5;
-	imelancia = 5; 
-	ibeterraba = 5;
-	ibrocolis = 5;
 
 	if (!font.loadFromFile("../Fonts/barn.otf")){
 		//handle error
@@ -107,44 +99,31 @@ int Plantas::PositionPlants(int posicaox, int posicaoy){
 	if (posicaoy>=498 && posicaoy<=549){
 		if (posicaox>= 4 && posicaox<=66){
 			planta = 0;
-			std::cout << "Planta 1" << std::endl;
-				icereja--;
 		}
 	}
 	if (posicaoy>=498 && posicaoy<=551){
 		if (posicaox>= 68 && posicaox<=125){
-			planta = 1;
-			std::cout << "Planta 2" << std::endl;
-			imelancia--;
-			
+			planta = 1;	
 		}
 	}
 	if (posicaoy>=498 && posicaoy<=555){
 		if (posicaox>= 134 && posicaox<=189){
 			planta = 2;
-			std::cout << "Planta 3" << std::endl;
-			itomate--;
 		}	
 	}
 	if (posicaoy>=485 && posicaoy<=562){
 		if (posicaox>= 199 && posicaox<=245){
 			planta = 3;
-			std::cout << "Planta 4" << std::endl;
-			icenoura--;
 		}	
 	}
 	if (posicaoy>=498 && posicaoy<=560){
 		if (posicaox>= 248 && posicaox<=307){
 			planta = 4;
-			std::cout << "Planta 5" << std::endl;
-			ibrocolis--;
 		}	
 	}
 	if (posicaoy>=484 && posicaoy<=564){
 		if (posicaox>= 313 && posicaox<=342){
 			planta = 5;
-			std::cout << "planta 6" << std::endl;
-			ibeterraba--;
 		}	
 	}
 
@@ -155,7 +134,6 @@ int Plantas::RetirarLeite(int posicaox, int posicaoy){
 	if (posicaoy>=289 && posicaoy<=475){
 		if (posicaox>= 568 && posicaox<=733){
 			leite = 1;
-			std::cout << "Leite" << std::endl;
 			return leite;
 		}	
 	}
@@ -163,54 +141,6 @@ int Plantas::RetirarLeite(int posicaox, int posicaoy){
 
 void Plantas::addmoney(int qtd){
 	this->money += qtd;
-}
-
-void Plantas::retornaplanta(int index){
-	std::ostringstream ss0;
-	std::ostringstream ss1;
-	std::ostringstream ss2;
-	std::ostringstream ss3;
-	std::ostringstream ss4;
-	std::ostringstream ss5;
-
-
-	switch (index){
-		case 0:
-			icereja += 1;
-			ss0 << icereja << endl;
-			atext[0].setString(ss0.str());
-		break;
-		
-		case 1:
-			imelancia += 1;
-			ss1 << imelancia << endl;
-			atext[1].setString(ss1.str());		
-		break;
-		
-		case 2:
-			itomate += 1;
-			ss2 << itomate << endl;
-			atext[2].setString(ss2.str());
-		break;
-		
-		case 3:
-			icenoura += 1;
-			ss3 << icenoura << endl;
-			atext[3].setString(ss3.str());
-		break;
-		
-		case 4:
-			ibrocolis += 1;
-			ss4 << ibrocolis << endl;
-			atext[4].setString(ss4.str());		
-			break;
-		
-		case 5:
-			ibeterraba += 1;
-			ss5 << ibeterraba << endl;
-			atext[5].setString(ss5.str());
-		break;
-	}
 }
 
 bool Plantas::FimJogo(){
