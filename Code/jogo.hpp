@@ -28,7 +28,7 @@ private:
     int posicaox, posicaoy, posicao;
     int planta1, planta2, planta3, planta4, planta5, planta6;
     int mousestate, plantstate;
-    int countdown = 30;
+    int countdown = 60;
     int countdown_vaca = 10;
     int countdown_slot1 = -1;
     int countdown_slot2 = -1;

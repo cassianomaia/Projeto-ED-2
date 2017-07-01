@@ -32,9 +32,15 @@ int perdeu::Run(sf::RenderWindow &window){
 
     textperdeu.setFont(font);
     textperdeu.setColor(sf::Color::Black);
-    textperdeu.setString("Perdeu D:");
-    textperdeu.setPosition(sf::Vector2f(175,60));  
-    textperdeu.setCharacterSize(100);  
+    textperdeu.setString("Perdeu :/");
+    textperdeu.setPosition(sf::Vector2f(200,60));  
+    textperdeu.setCharacterSize(120);  
+
+    button.setFont(font);
+    button.setColor(sf::Color::Black);
+    button.setString("Voltar ao menu principal");
+    button.setPosition(sf::Vector2f(100,350));  
+    button.setCharacterSize(60);  
 
     if(!texture.loadFromFile("../Images/menu_sem_texto.bmp")){
         std::cout << "Error" << std::endl;
@@ -55,19 +61,28 @@ int perdeu::Run(sf::RenderWindow &window){
           
             switch(event.type){
                 case sf::Event::MouseButtonPressed:
-                    
+                   if (posicaoy>=376 && posicaoy<=413){
+                        if (posicaox>= 100 && posicaox<=688){
+                            return 0;
+                        }
+                    } 
                 break;
             	case sf::Event::MouseMoved:
-            		              	
-                break;         
+            	   if (posicaoy>=376 && posicaoy<=413){
+                        if (posicaox>= 100 && posicaox<=688){
+                            button.setColor(sf::Color::Red);
+                        }
+                    }else{
+                        button.setColor(sf::Color::Black);
+                    }
+                break;
             }
 
         }
 
         window.draw(background);
         window.draw(textperdeu);
-        //window.draw(howtoplay);
-        //window.draw(button);
+        window.draw(button);
         window.display();
     }
 	return (-1);

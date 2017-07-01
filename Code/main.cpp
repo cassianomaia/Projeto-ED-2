@@ -31,7 +31,14 @@ int main(){
                 meta += 400;
                 Screens[1] = new jogo(meta);
             break;
+            case 2:
+                Screens[2] = new howto;
+            break;
+            case 3:
+                Screens[3] = new ganhou;
+            break;
             case 4:
+                Screens[4] = new perdeu;
                 meta = 0;
             break;
         }
