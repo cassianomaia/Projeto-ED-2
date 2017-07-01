@@ -28,7 +28,7 @@ int main(){
                 meta = 0;
             break;
             case 1:
-                meta += 400;
+                meta += 500;
                 Screens[1] = new jogo(meta);
             break;
             case 2:
@@ -41,6 +41,9 @@ int main(){
                 Screens[4] = new perdeu;
                 meta = 0;
             break;
+            //case 5:
+                //window.close();
+            //break;
         }
     }
     return -1;

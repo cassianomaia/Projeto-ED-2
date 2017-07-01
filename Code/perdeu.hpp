@@ -32,14 +32,14 @@ int perdeu::Run(sf::RenderWindow &window){
 
     textperdeu.setFont(font);
     textperdeu.setColor(sf::Color::Black);
-    textperdeu.setString("Perdeu :/");
-    textperdeu.setPosition(sf::Vector2f(200,60));  
-    textperdeu.setCharacterSize(120);  
+    textperdeu.setString("GAME OVER");
+    textperdeu.setPosition(sf::Vector2f(190,60));  
+    textperdeu.setCharacterSize(110);  
 
     button.setFont(font);
     button.setColor(sf::Color::Black);
-    button.setString("Voltar ao menu principal");
-    button.setPosition(sf::Vector2f(100,350));  
+    button.setString("Voltar ao Menu");
+    button.setPosition(sf::Vector2f(220,250));  
     button.setCharacterSize(60);  
 
     if(!texture.loadFromFile("../Images/menu_sem_texto.bmp")){
@@ -58,18 +58,20 @@ int perdeu::Run(sf::RenderWindow &window){
             if (event.type == sf::Event::Closed){
                 window.close(); 
             }
+
+            std::cout << posicaox << " , "<< posicaoy << std::endl;
           
             switch(event.type){
                 case sf::Event::MouseButtonPressed:
-                   if (posicaoy>=376 && posicaoy<=413){
-                        if (posicaox>= 100 && posicaox<=688){
+                   if (posicaoy>=281 && posicaoy<=311){
+                        if (posicaox>= 220 && posicaox<=574){
                             return 0;
                         }
                     } 
                 break;
             	case sf::Event::MouseMoved:
-            	   if (posicaoy>=376 && posicaoy<=413){
-                        if (posicaox>= 100 && posicaox<=688){
+            	   if (posicaoy>=281 && posicaoy<=311){
+                        if (posicaox>= 220 && posicaox<=574){
                             button.setColor(sf::Color::Red);
                         }
                     }else{

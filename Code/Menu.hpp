@@ -38,20 +38,20 @@ Menu::Menu(float width, float height){
 
 	menu[1].setFont(font);
 	menu[1].setColor(sf::Color::Black);
-	menu[1].setString("PLAY");
-	menu[1].setPosition(sf::Vector2f(350,280));	
+	menu[1].setString("Jogar");
+	menu[1].setPosition(sf::Vector2f(345,280));	
 	menu[1].setCharacterSize(60);	
 
 	menu[2].setFont(font);
 	menu[2].setColor(sf::Color::Black);
-	menu[2].setString("HOW TO PLAY");
-	menu[2].setPosition(sf::Vector2f(270, 350));	
+	menu[2].setString("Como Jogar");
+	menu[2].setPosition(sf::Vector2f(280, 350));	
 	menu[2].setCharacterSize(60);	
 
 	menu[3].setFont(font);
 	menu[3].setColor(sf::Color::Black);
-	menu[3].setString("EXIT");
-	menu[3].setPosition(sf::Vector2f(350, 420));	
+	menu[3].setString("Sair");
+	menu[3].setPosition(sf::Vector2f(360, 420));	
 	menu[3].setCharacterSize(60);	
 
 	SelectedItemIndex = 0;
@@ -140,7 +140,7 @@ int Menu::GetPressedItem(int posicaox, int posicaoy){
 	}
 	else if (posicaoy>=451 && posicaoy<=480){
 		if (posicaox>= 351 && posicaox<=450){
-			SelectedItemIndex = 3;
+			SelectedItemIndex = 5;
 
 		}	
 	}

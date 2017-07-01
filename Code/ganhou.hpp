@@ -32,13 +32,13 @@ int ganhou::Run(sf::RenderWindow &window){
 
     textganhou.setFont(font);
     textganhou.setColor(sf::Color::Black);
-    textganhou.setString("Parabens!!");
-    textganhou.setPosition(sf::Vector2f(175,60));  
-    textganhou.setCharacterSize(120);  
+    textganhou.setString("Bom Trabalho!");
+    textganhou.setPosition(sf::Vector2f(150,60));  
+    textganhou.setCharacterSize(100);  
 
     button1.setFont(font);
     button1.setColor(sf::Color::Black);
-    button1.setString("Proximo nivel");
+    button1.setString("Proximo Nivel");
     button1.setPosition(sf::Vector2f(230,350));  
     button1.setCharacterSize(60);
 
