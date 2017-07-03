@@ -2,9 +2,16 @@
 #include <SFML/Audio.hpp>
 #include <iostream>
 #include "Screens.hpp"
+
+//Linha referente para remover o cmd no windows.
+//#include <windows.h>
     
 int main(){
-    int meta = 0;
+	//Linhas referentes para remover o cmd no windows.
+	//HWND hWnd = GetConsoleWindow();
+	//ShowWindow( hWnd, SW_HIDE );
+    
+	int meta = 0;
     std::vector<cScreen*> Screens;
     int screen = 0; 
 
